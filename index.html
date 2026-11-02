@@ -3,190 +3,449 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CBA 2025–2029 Pay Estimator | Kenyan Public Universities</title>
+<title>CBA 2025-2029 Pay Estimator</title>
 <meta name="author" content="Suleiman Gaitho">
-<meta name="version" content="1.0">
-<meta name="description" content="Free pay estimator for Kenyan public university staff (UASU and KUSU): new salary, back pay and take-home under the 2025–2029 CBA.">
-<meta property="og:title" content="CBA 2025–2029 Pay Estimator">
-<meta property="og:description" content="Estimate your new salary, back pay and take-home pay. For UASU and KUSU staff in Kenyan public universities.">
-<meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%B0%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Step-by-step estimate of new salary, back pay and take-home under the 2025-2029 CBA for UASU and KUSU staff.">
+<meta property="og:title" content="CBA 2025-2029 Pay Estimator">
+<meta property="og:description" content="Estimate new salary, back pay and take-home pay for UASU and KUSU staff.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0f172a;--mute:#64748b;--line:#e2e8f0;--bg:#f1f5f4;--card:#fff;--soft:#f1f5f9;--acc:#0f766e;--acc2:#115e59;--up:#15803d;--shadow:0 1px 2px rgba(15,23,42,.05),0 8px 24px -12px rgba(15,23,42,.12)}
-@media(prefers-color-scheme:dark){:root{--ink:#e6edf3;--mute:#94a3b8;--line:#243041;--bg:#0b1220;--card:#111a2b;--soft:#182235;--acc:#2dd4bf;--acc2:#14b8a6;--up:#4ade80;--shadow:0 8px 24px -12px rgba(0,0,0,.6)}}
+:root{--font:Ubuntu,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--paper:#fffdf8;--page:#f4efe6;--ink:#1c1917;--mute:#6b6257;--line:#e7e0d2;--indigo:#3730a3;--indigo2:#312e81;--tint:#eef2ff;--gold:#92400e;--goldbg:#fef3c7;--green:#166534;--shadow:0 1px 2px rgba(28,25,23,.06),0 10px 30px -18px rgba(28,25,23,.35)}
+@media(prefers-color-scheme:dark){:root{--paper:#1a1d27;--page:#11131b;--ink:#ececf1;--mute:#a4a8b8;--line:#2c3042;--indigo:#a5b4fc;--indigo2:#c7d2fe;--tint:#232846;--gold:#fcd34d;--goldbg:#3a2f12;--green:#86efac;--shadow:0 10px 30px -18px rgba(0,0,0,.7)}}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif}
-.top{background:linear-gradient(135deg,#064e3b 0%,#0f766e 55%,#0e7490 100%);color:#fff;padding:34px 16px 74px}
-.top .in{max-width:760px;margin:0 auto}
-.badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 12px;margin-bottom:12px}
-h1{font-size:clamp(24px,5vw,34px);line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
-.lead{color:rgba(255,255,255,.88);margin:0;font-size:15.5px;max-width:560px}
-.page{max-width:760px;margin:-48px auto 0;padding:0 16px 48px;position:relative}
-.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
-.box h2{font-size:12px;margin:0 0 14px;text-transform:uppercase;letter-spacing:.07em;color:var(--mute);font-weight:700}
-.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--soft);border-radius:12px;padding:4px;gap:4px}
-.seg input{position:absolute;opacity:0;pointer-events:none}
-.seg label{margin:0;text-align:center;padding:11px 8px;border-radius:9px;font-weight:600;font-size:15px;cursor:pointer;color:var(--mute);transition:all .15s}
-.seg input:checked+label{background:var(--acc);color:#fff;box-shadow:0 2px 8px rgba(15,118,110,.35)}
-@media(prefers-color-scheme:dark){.seg input:checked+label{color:#052e2b}}
-.seg input:focus-visible+label{outline:2px solid var(--acc);outline-offset:2px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
-@media(max-width:520px){.grid{grid-template-columns:1fr}}
-.full{grid-column:1/-1}
-label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin-bottom:5px}
-input[type=number],select{width:100%;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:16px;background:var(--card);color:var(--ink);transition:border-color .15s,box-shadow .15s}
-input:focus,select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(15,118,110,.2)}
-.check{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500;height:42px;margin:0;color:var(--ink)}
-.check input{width:20px;height:20px;accent-color:var(--acc)}
-details{margin-top:16px}
-summary{cursor:pointer;font-weight:600;color:var(--acc);font-size:15px;padding:6px 0}
-.hero{background:linear-gradient(135deg,#0f766e,#0e7490);color:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 12px 28px -12px rgba(15,118,110,.55)}
-.hero small{opacity:.9;font-size:13px;display:block}
-.hero .amt{font-size:clamp(32px,8vw,44px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:4px 0 10px;line-height:1.1}
-.hero small:last-child{display:inline-block;background:rgba(255,255,255,.18);padding:5px 12px;border-radius:999px;font-weight:600}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
-@media(max-width:600px){.stats{grid-template-columns:1fr}}
-.stat{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
-.stat small{color:var(--mute);font-size:12px;display:block;line-height:1.3;font-weight:600}
-.stat b{font-size:20px;font-variant-numeric:tabular-nums;display:block;margin-top:6px}
-.stat span{font-size:12px;color:var(--mute)}
-table{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
-th,td{padding:11px 6px;border-bottom:1px solid var(--line);text-align:right}
-th:first-child,td:first-child{text-align:left}
-th{font-size:12px;color:var(--mute);font-weight:600}
-tr.tot td{font-weight:700;border-bottom:none;background:var(--soft)}
-tr.tot td:first-child{border-radius:8px 0 0 8px}tr.tot td:last-child{border-radius:0 8px 8px 0}
-.pos{color:var(--up);font-weight:700}
-.warn{background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:16px}
-.note{font-size:14px;color:var(--mute);margin:6px 0 0;padding-left:18px}
-.note li{margin-bottom:6px}
-.sub{font-size:13px;color:var(--mute);margin-top:10px}
-.share{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 18px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .1s}
-.btn:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
-.btn.wa{background:#25d366;border-color:#25d366;color:#fff}
-.btn.wa:hover{background:#1ebe5a;border-color:#1ebe5a;color:#fff}
-.btn.fb{background:#1877f2;border-color:#1877f2;color:#fff}
-.btn.fb:hover{background:#166fe5;border-color:#166fe5;color:#fff}
-.foot{font-size:12.5px;color:var(--mute);margin-top:20px;line-height:1.7;text-align:center}
-.credit{margin-top:14px;padding:16px;border-radius:14px;background:var(--card);border:1px solid var(--line);color:var(--ink);font-size:14px}
-.credit a{color:var(--acc);font-weight:600;word-break:break-all}
-.fdbk textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px;background:var(--card);color:var(--ink);resize:vertical}
-.fdbk textarea:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(15,118,110,.2)}
-.fdbk p{margin:0 0 14px;color:var(--mute);font-size:14px}
-.rate{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.rate input{position:absolute;opacity:0;pointer-events:none}
-.rate label{margin:0;text-align:center;padding:10px 6px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)}
-.rate input:checked+label{background:var(--acc);border-color:var(--acc);color:#fff}
-@media(prefers-color-scheme:dark){.rate input:checked+label{color:#052e2b}}
-.rate input:focus-visible+label{outline:2px solid var(--acc);outline-offset:2px}
-.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
-.btn.pri:hover{color:#fff;opacity:.92}
-@media(prefers-color-scheme:dark){.btn.pri,.btn.pri:hover{color:#052e2b}}
-#fbMsg{font-size:13px;color:var(--up);margin-top:10px;min-height:18px}
-.how ol{margin:6px 0 0;padding-left:20px;font-size:14.5px;color:var(--ink)}
-.how li{margin-bottom:8px}
-.how b{color:var(--acc)}
-.ver{display:inline-block;font-size:12px;font-weight:700;background:var(--soft);color:var(--acc);border-radius:6px;padding:2px 8px;margin-left:6px}
-@media print{.how,.fdbk,.top{background:#fff;color:#000;padding:0}.lead{color:#444}.badge,.share,summary,#form,.foot,.seg{display:none}.page{margin:0}.box,.hero,.stat{box-shadow:none}.hero{background:#fff;color:#000;border:1px solid #000}}
+[hidden]{display:none!important}
+.gate{position:fixed;inset:0;background:rgba(15,15,20,.65);display:flex;align-items:center;justify-content:center;padding:16px;z-index:100}
+.gatebox{background:var(--paper);color:var(--ink);max-width:580px;width:100%;max-height:92vh;overflow:auto;border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.gatebox h2{font-size:21px;margin-bottom:10px}
+.gatebox p{margin:0 0 10px;font-size:15px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.hrp h1{font:700 16px var(--font);margin:0 0 2px}
+.hrp h2{font:700 13px var(--font);margin:10px 0 4px}
+.hrm{font-size:12px;color:#444;margin-bottom:8px}
+.hrcols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hrp table{width:100%;border-collapse:collapse;font-size:13px}
+.hrp td,.hrp th{border-bottom:1px solid #ccc;padding:4px;text-align:left}
+.hrp td:last-child,.hrp th:last-child{text-align:right}
+.hrn{font-size:11px;color:#444;margin-top:10px}
+.hrsign{margin-top:16px;font-size:12px}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tabs button{flex:1;min-height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);font:inherit;font-weight:700;font-size:15px;color:var(--mute);cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.tabs button:focus-visible{outline:3px solid var(--indigo);outline-offset:2px}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.6 var(--font)}
+.app{max-width:660px;margin:0 auto;min-height:100vh;padding:18px 16px 40px;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{width:42px;height:42px;border-radius:12px;background:var(--indigo);color:#fff;display:flex;align-items:center;justify-content:center;font:700 15px var(--font)}
+.brand b{display:block;font:700 19px var(--font)}
+.brand small{color:var(--mute);font-size:13px}
+.lang{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.lang button{border:0;background:none;padding:8px 12px;font:inherit;font-size:14px;font-weight:700;color:var(--mute);cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--indigo);color:#fff}
+.track{height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+.track i{display:block;height:100%;width:25%;background:var(--indigo);border-radius:99px;transition:width .3s}
+.stepno{font-size:13px;color:var(--mute);margin:10px 0 16px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow);flex:1}
+h2{font:700 24px/1.25 var(--font);margin:0 0 6px;outline:none}
+h3{font:700 16px var(--font);margin:22px 0 6px}
+.lede{color:var(--mute);margin:0 0 20px;font-size:15px}
+.choice{display:grid;gap:12px}
+.opt{position:relative;display:block;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;cursor:pointer;background:var(--paper)}
+.opt:hover{border-color:var(--indigo)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt b{display:block;font-size:17px}
+.opt small{color:var(--mute);font-size:14px}
+.opt:has(input:checked){border-color:var(--indigo);background:var(--tint)}
+.opt:has(input:focus-visible){outline:3px solid var(--indigo);outline-offset:2px}
+.field{margin-bottom:18px}
+.field label,.field .lbl{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+.why{font-size:13px;color:var(--mute);margin-top:6px}
+.tag{display:inline-block;font-size:12px;font-weight:700;background:var(--goldbg);color:var(--gold);border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:middle}
+select,input[type=number],input[type=text],textarea{width:100%;height:52px;border:1.5px solid var(--line);border-radius:12px;padding:0 14px;font:inherit;font-size:17px;background:var(--paper);color:var(--ink)}
+textarea{height:auto;min-height:100px;padding:12px 14px}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 4px var(--tint)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.row{grid-template-columns:1fr}}
+.toggle{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;background:var(--paper);font-weight:600}
+.toggle input{width:22px;height:22px;accent-color:var(--indigo)}
+.nav{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.btn{flex:1;min-height:52px;padding:0 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);font:inherit;font-weight:700;font-size:16px;color:var(--ink);cursor:pointer}
+.btn.go{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.btn.go:hover{background:var(--indigo2)}
+.btn.ghost{flex:0 0 auto}
+.btn:focus-visible,.sb:focus-visible,.lang button:focus-visible,summary:focus-visible{outline:3px solid var(--indigo);outline-offset:2px}
+.total{background:var(--indigo);color:#fff;border-radius:16px;padding:20px;margin-bottom:16px}
+.total small{opacity:.9;font-size:14px}
+.total .amt{font:700 34px var(--font);margin:4px 0 6px;font-variant-numeric:tabular-nums}
+.total .sub{display:inline-block;background:rgba(255,255,255,.16);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:600}
+.receipt{border:1.5px dashed var(--line);border-radius:18px;padding:18px 20px;background:var(--paper)}
+.line{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.line:last-child{border-bottom:none}
+.line span:first-child{color:var(--mute)}
+.line b{font-variant-numeric:tabular-nums;text-align:right}
+.up{color:var(--green)}
+table.yr{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin-top:6px}
+table.yr th,table.yr td{padding:9px 4px;border-bottom:1px solid var(--line);text-align:right}
+table.yr th:first-child,table.yr td:first-child{text-align:left}
+table.yr th{font-size:12px;color:var(--mute);font-weight:700}
+table.yr tr.tot td{font-weight:700}
+.status{border-radius:12px;padding:12px 14px;font-weight:700;margin-bottom:14px}
+.status.ok{background:#dcfce7;color:#166534}
+.status.bad{background:#fef3c7;color:#92400e}
+.help{margin:0 0 16px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--paper)}
+.help summary{font-size:14px}
+.helpin{font-size:14px;margin-top:10px}
+.helpin p{margin:6px 0}
+.helpin table.yr th,.helpin table.yr td{text-align:left;font-size:13px}
+.helpin ul,.helpin ol{padding-left:20px;margin:6px 0}
+.helpin li{margin-bottom:4px}
+.how{font-size:13px;color:var(--mute);margin:4px 0 6px}
+.warn{background:var(--goldbg);color:var(--gold);border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:16px}
+details{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:700;color:var(--indigo)}
+ul.list{font-size:14px;color:var(--mute);padding-left:18px;margin:10px 0 0}
+ul.list li{margin-bottom:6px}
+.terms dt{font-weight:700;margin-top:10px;font-size:15px}
+.terms dd{margin:2px 0 0;color:var(--mute);font-size:14px}
+.share{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
+.share p{margin:0 0 10px;font-weight:700}
+.shares{display:flex;flex-wrap:wrap;gap:10px}
+.sb{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-family:inherit}
+.sb.wa{background:#25d366;border-color:#25d366;color:#fff}
+.sb.fb{background:#1877f2;border-color:#1877f2;color:#fff}
+.fb-box{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+.fb-box label{display:block;font-weight:700;font-size:14px;margin:12px 0 6px}
+.fb-box .check{display:flex;gap:8px;align-items:center;font-weight:500;font-size:14px}
+.fb-box .check input{width:18px;height:18px}
+.legal{font-size:12.5px;color:var(--mute);text-align:center;margin-top:20px;line-height:1.6}
+.print-only{display:none}
+#msg{font-size:14px;color:var(--green);min-height:20px;margin-top:8px}
+@page{size:A4;margin:12mm}
+#hrPrint{display:none}
+@media print{
+  .app,.gate{display:none!important}
+  #hrPrint{display:block!important;color:#000;background:#fff;font-size:11px}
+  .hrp h1{font:700 15px Georgia,serif;margin:0 0 2px}
+  .hrp h2{font:700 12px Georgia,serif;margin:10px 0 4px}
+  .hrm{font-size:10px;color:#333;margin-bottom:8px}
+  .hrcols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .hrp table{width:100%;border-collapse:collapse;font-size:10.5px}
+  .hrp td,.hrp th{border-bottom:1px solid #bbb;padding:3px 4px;text-align:left}
+  .hrp td:last-child,.hrp th:last-child{text-align:right}
+  .hrn{font-size:9px;color:#333;margin-top:10px}
+  .hrsign{margin-top:18px;font-size:10px}
+}
+@media print{
+  .top,.track,.stepno,.nav,.share,.fb-box,summary,details>summary,.legal,#s1,#s2,#s3,.lede,.why,.how{display:none!important}
+  details[open]{display:block}
+  body{background:#fff;color:#000}
+  .panel{box-shadow:none;border:0;padding:0}
+  .print-only{display:block;margin-bottom:12px;font-size:13px}
+  .total{background:#fff;color:#000;border:1px solid #000}
+  .total small,.total .sub{color:#000}
+  .receipt{border:1px solid #000}
+}
 </style>
 </head>
 <body>
-<header class="top"><div class="in">
-  <span class="badge">Version 1.0 · UASU &amp; KUSU</span>
-  <h1>CBA 2025–2029 pay estimator</h1>
-  <p class="lead">Estimate your new salary, back pay and take-home under the Return to Work Formula of 30 October 2026.</p>
-</div></header>
-<div class="page">
-
-  <div class="box how">
-    <details>
-      <summary style="margin:0">How to use <span class="ver">V1.0</span></summary>
-      <ol>
-        <li><b>Pick your staff group:</b> Academic (UASU) or Administrative (KUSU).</li>
-        <li><b>Choose your grade and notch</b> exactly as on your July 2025 payslip.</li>
-        <li><b>Enter your allowances:</b> current commuter allowance, house allowance and pension percentage. Tick or untick NSSF to match your payslip.</li>
-        <li><b>Set your increment month</b> (the month your notch normally moves up).</li>
-        <li><b>Open More options</b> if you were promoted, want the full commuter amount from July 2025, or need to set the month book and ICT allowance is paid (UASU).</li>
-        <li><b>Read your results:</b> back pay, new monthly gross and take-home, the two back pay payments, and extra pay per financial year.</li>
-        <li><b>Check yourself:</b> type your July 2025 basic in "Basic on July 2025 payslip". A warning appears if it does not match your grade and notch.</li>
-        <li><b>Share, print or send feedback</b> using the buttons at the bottom of the page.</li>
-      </ol>
-      <p class="sub">Results update instantly as you change any field. Nothing you enter leaves your device.</p>
-    </details>
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle" hidden>
+  <div class="gatebox">
+    <div class="lang" role="group" aria-label="Language" style="margin-bottom:12px"><button type="button" id="gEn" aria-pressed="true">EN</button><button type="button" id="gSw" aria-pressed="false">SW</button></div>
+    <h2 id="gateTitle" data-t="gate_title">Before you start</h2>
+    <p data-t="gate_1">This tool is not endorsed by UASU, KUSU, IPUCCF, FKE, the Ministry of Education, or any university. It is not affiliated with any of them.</p>
+    <p data-t="gate_2">All results are estimates based on the assumptions below. They are not payroll advice, and your actual pay may differ.</p>
+    <p data-t="gate_3">Confirm final figures with your payroll office before you rely on them.</p>
+    <details><summary data-t="gate_list">Assumptions used</summary>
+    <ul class="list" id="gateList"></ul></details>
+    <label class="toggle" style="margin-top:16px"><input type="checkbox" id="gateCheck"> <span data-t="gate_check">I have read this and accept that the results are estimates only.</span></label>
+    <button class="btn go" id="gateBtn" type="button" disabled data-t="gate_btn" style="width:100%;margin-top:14px">Continue</button>
   </div>
+</div>
+<div id="hrPrint"></div>
+<main class="app">
 
-  <div class="box">
-    <h2>Staff group</h2>
-    <div class="seg" role="radiogroup" aria-label="Staff group">
-      <input type="radio" name="cat" id="catU" value="UASU" checked><label for="catU">Academic (UASU)</label>
-      <input type="radio" name="cat" id="catK" value="KUSU"><label for="catK">Administrative (KUSU)</label>
+  <header class="top">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">CBA</div>
+      <div><b data-t="title">Pay estimator 2025-2029</b><small data-t="subtitle">Return to Work Formula, 30 October 2026</small></div>
     </div>
-  </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="langEn" aria-pressed="true">EN</button>
+      <button type="button" id="langSw" aria-pressed="false">SW</button>
+    </div>
+  </header>
 
-  <form class="box" id="form" onsubmit="return false">
-    <h2>Your details</h2>
-    <div class="grid">
-      <div><label for="g0">Grade</label><select id="g0"></select></div>
-      <div><label for="n0">Notch</label><select id="n0"></select></div>
-      <div><label for="commuter">Commuter now (KES/month)</label><input type="number" id="commuter" value="15000" min="0"></div>
-      <div><label for="house">House allowance (KES/month)</label><input type="number" id="house" value="27800" min="0"></div>
-      <div><label for="pension">Pension (% of basic)</label><input type="number" id="pension" value="10" min="0" max="20" step="0.5"></div>
-      <div><label for="inc">Increment month</label><select id="inc"></select></div>
-      <div class="full"><label class="check"><input type="checkbox" id="nssf" checked> Deduct NSSF (6%, up to KES 108,000)</label></div>
+  <nav class="tabs" aria-label="Sections">
+    <button type="button" id="tabEst" aria-pressed="true" data-t="nav_est">Estimator</button>
+    <button type="button" id="tabAbout" aria-pressed="false" data-t="nav_about">About</button>
+  </nav>
+  <div class="track" aria-hidden="true"><i id="bar"></i></div>
+  <div class="stepno" id="stepno" aria-live="polite"></div>
+
+  <!-- Step 1 -->
+  <section class="panel" id="s1" aria-labelledby="h1">
+    <h2 id="h1" tabindex="-1" data-t="s1_title">Who are you?</h2>
+    <p class="lede" data-t="s1_lede">Choose your staff group, then your grade and notch from your July 2025 payslip.</p>
+    <div id="help1"></div>
+    <div class="choice" role="radiogroup" aria-label="Staff group">
+      <label class="opt"><input type="radio" name="cat" value="UASU" checked><b data-t="cat_u">Academic staff (UASU)</b><small data-t="cat_u_s">Grades 10A to 15A</small></label>
+      <label class="opt"><input type="radio" name="cat" value="KUSU"><b data-t="cat_k">Administrative staff (KUSU)</b><small data-t="cat_k_s">Grades 5 to 15</small></label>
     </div>
+    <div class="row" style="margin-top:22px">
+      <div class="field"><label for="g0" data-t="grade">Grade</label><select id="g0"></select></div>
+      <div class="field"><label for="n0" data-t="notch">Notch (July 2025 salary)</label><select id="n0"></select></div>
+    </div>
+    <div class="why" data-t="notch_hint">Each notch shows its July 2025 basic salary.</div>
+    <div class="field" style="margin-top:14px">
+      <label for="univName" data-t="univ">Your university (optional)</label>
+      <input type="text" id="univName" placeholder="" maxlength="80" autocomplete="organization">
+      <div class="why" data-t="univ_hint">Shown on the printed summary. Stored on this device only.</div>
+    </div>
+    <div class="nav" style="margin-top:14px"><button class="btn ghost" id="startPayslip" type="button" data-t="start_payslip">Start from my payslip</button>
+      <button class="btn ghost" id="forgetBtn" type="button" data-t="forget">Forget my answers</button></div>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="panel" id="s2" hidden aria-labelledby="h2">
+    <h2 id="h2" tabindex="-1" data-t="s2_title">Allowances</h2>
+    <div id="help2"></div>
+    <p class="lede" data-t="s2_lede">Prefilled with common values. Change them to match your payslip.</p>
+    <div class="row">
+      <div class="field">
+        <label for="commuter"><span data-t="commuter">Commuter allowance now</span> <span class="tag" data-t="prefilled">prefilled</span></label>
+        <input type="number" id="commuter" value="15000" min="0" inputmode="numeric">
+        <div class="why" data-t="commuter_hint">KES per month. Rises to KES 18,000 under the agreement.</div>
+      </div>
+
+      <div class="field">
+        <label class="toggle"><input type="checkbox" id="uniHigher"> <span data-t="uni_higher">My university pays a higher commuter rate</span></label>
+        <div id="uniBox" hidden style="margin-top:10px">
+          <label for="uniRateVal" data-t="uni_rate">University commuter rate (KES per month)</label>
+          <input type="number" id="uniRateVal" min="0" inputmode="numeric" placeholder="e.g. 20000">
+          <div class="why" data-t="uni_hint">Kept until the next review, as the agreement allows for universities already paying more.</div>
+          <label for="uniUntil" data-t="uni_until" style="margin-top:10px">Review date: the university rate ends</label>
+          <select id="uniUntil"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="house" data-t="house">House allowance</label>
+        <input type="number" id="house" value="27800" min="0" inputmode="numeric">
+        <div class="why" data-t="house_hint">KES per month. Unchanged by the agreement.</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="pension" data-t="pension">Pension (% of basic)</label>
+        <input type="number" id="pension" value="10" min="0" max="20" step="0.5" inputmode="decimal">
+        <div class="why" data-t="pension_hint">Enter 0 if you do not contribute.</div>
+        <label for="pensionMode" data-t="pension_mode" style="margin-top:12px">Pension is entered as</label>
+        <select id="pensionMode"><option value="pct" data-t="pm_pct">% of basic salary</option><option value="kes" data-t="pm_kes">KES per month</option></select>
+      </div>
+      <div class="field">
+        <span class="lbl" data-t="stat">Statutory deductions</span>
+        <label class="toggle"><input type="checkbox" id="nssf" checked> <span data-t="nssf">Deduct NSSF (6%, up to KES 108,000)</span></label>
+      </div>
+    </div>
+    <div class="field">
+      <label for="otherDed" data-t="other_ded">Loans, SACCO and other monthly deductions</label>
+      <input type="number" id="otherDed" placeholder="0" min="0" inputmode="numeric">
+      <div class="why" data-t="other_ded_hint">KES per month, taken after tax. Used in the payslip comparison.</div>
+    </div>
+    <div class="field">
+      <label for="otherAllow" data-t="other_allow">Other allowances kept unchanged (e.g. hardship)</label>
+      <input type="number" id="otherAllow" placeholder="0" min="0" inputmode="numeric">
+      <div class="why" data-t="other_allow_hint">KES per month. Taxable. Included in gross and kept the same in every year.</div>
+    </div>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="panel" id="s3" hidden aria-labelledby="h3">
+    <h2 id="h3" tabindex="-1" data-t="s3_title">Timing and options</h2>
+    <div id="help3"></div>
+    <p class="lede" data-t="s3_lede">When your notch moves up, and anything you want to compare.</p>
+    <div class="row">
+      <div class="field">
+        <label for="inc"><span data-t="inc">Increment month</span> <span class="tag" data-t="prefilled_jul">prefilled: July</span></label>
+        <select id="inc"></select>
+        <div class="why" data-t="inc_hint">The month your notch normally moves up by one step.</div>
+      </div>
+      <div class="field">
+        <label for="mode" data-t="mode">Commuter increase</label>
+        <select id="mode">
+          <option value="gradual" data-t="mode_g">Phased over 3 years</option>
+          <option value="full" data-t="mode_f">Full KES 18,000 from July 2025</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="bookM" data-t="bookm">Book &amp; ICT paid in (academic staff)</label>
+        <select id="bookM"></select>
+      </div>
+      <div class="field">
+        <label for="basicCheck" data-t="basic_check">Basic on July 2025 payslip (optional)</label>
+        <input type="number" id="basicCheck" placeholder="e.g. 97988" min="0" inputmode="numeric">
+        <div class="why" data-t="basic_check_hint">Used only to check your grade and notch.</div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="payslipNet" data-t="payslip_net">Take-home on your current payslip (optional)</label>
+      <input type="number" id="payslipNet" placeholder="e.g. 88625" min="0" inputmode="numeric">
+      <div class="why" data-t="payslip_net_hint">Used to compare the estimate with your actual pay.</div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="payGross" data-t="pay_gross">Gross pay on payslip (optional)</label>
+        <input type="number" id="payGross" placeholder="e.g. 128024" min="0" inputmode="numeric">
+        <div class="why" data-t="pay_gross_hint">Used to check the calculation.</div>
+      </div>
+      <div class="field">
+        <label for="payPaye" data-t="pay_paye">PAYE on payslip (optional)</label>
+        <input type="number" id="payPaye" placeholder="e.g. 25564" min="0" inputmode="numeric">
+        <div class="why" data-t="pay_paye_hint">Used to check the tax calculation.</div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="totalDed" data-t="total_ded">Total deductions on payslip (optional)</label>
+      <input type="number" id="totalDed" placeholder="e.g. 103054" min="0" inputmode="numeric">
+      <div class="why" data-t="total_ded_hint">Use the total deduction line. Do not include the allowable deduction. The tool works out the loans total from it.</div>
+      <div class="why" id="loansLive" style="color:var(--green);font-weight:600"></div>
+    </div>
+    <div class="nav" style="margin-top:4px"><button class="btn ghost" id="printStep3" type="button" data-t="print_step3">Print HR summary</button></div>
     <details>
-      <summary>More options</summary>
-      <div class="grid" style="margin-top:12px">
-        <div><label for="mode">Commuter increase</label><select id="mode"><option value="gradual">Phased over 3 years</option><option value="full">Full KES 18,000 from Jul 2025</option></select></div>
-        <div><label for="bookM">Book &amp; ICT paid in (UASU)</label><select id="bookM"></select></div>
-        <div><label for="basicCheck">Basic on July 2025 payslip (check)</label><input type="number" id="basicCheck" placeholder="optional" min="0"></div>
-        <div><label for="promoM">Promotion from</label><select id="promoM"></select></div>
-        <div><label for="promoG">New grade</label><select id="promoG"></select></div>
-        <div><label for="promoN">New notch</label><select id="promoN"></select></div>
+      <summary data-t="promo_sum">I expect a promotion</summary>
+      <div class="row" style="margin-top:14px">
+        <div class="field"><label for="promoM" data-t="promo_from">From month</label><select id="promoM"></select></div>
+        <div class="field"><label for="promoG" data-t="promo_grade">New grade</label><select id="promoG"></select></div>
+        <div class="field"><label for="promoN" data-t="promo_notch">New notch</label><select id="promoN"></select></div>
       </div>
     </details>
-  </form>
+  </section>
 
-  <div id="warn"></div>
-  <div id="out"></div>
+  <!-- Step 4 -->
+  <section class="panel" id="s4" hidden aria-labelledby="h4">
+    <div class="print-only" id="printHead"></div>
+    <div class="print-only" id="printSummary"></div>
+    <h2 id="h4" tabindex="-1" data-t="s4_title">Your estimate</h2>
+    <p class="lede" data-t="s4_lede">Figures are before tax unless marked.</p>
+    <div id="warn"></div>
+    <div id="out" aria-live="polite"></div>
 
-  <div class="box">
-    <h2>Share this calculator</h2>
-    <div class="share">
-      <a class="btn wa" id="shareWa" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="btn fb" id="shareFb" target="_blank" rel="noopener">Facebook</a>
-      <button class="btn" id="copyBtn" type="button">Copy link</button>
-      <button class="btn" type="button" onclick="window.print()">Print / Save PDF</button>
+    <div class="share" id="compare-share">
+      <p data-t="share">Share this estimator</p>
+      <div class="shares">
+        <a class="sb wa" id="shareWa" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="sb fb" id="shareFb" target="_blank" rel="noopener">Facebook</a>
+        <button class="sb" id="copyBtn" type="button" data-t="copy">Copy link</button>
+        <button class="sb" type="button" id="printBtn" data-t="print">Print HR summary</button>
+        <button class="sb" type="button" id="pdfBtn" data-t="save_pdf">Save as PDF</button>
+      </div>
+      <div class="nav" style="margin-top:18px">
+        <button class="btn" type="button" id="editBtn" data-t="edit">Edit answers</button>
+        <button class="btn" type="button" id="resetBtn" data-t="reset">Reset all</button>
+      </div>
+      <div class="how" style="margin:8px 0 0" data-t="print_hint"></div>
+      <div id="msg" role="status"></div>
     </div>
+
+    <div class="field" style="margin-top:10px">
+      <label for="hrLang" data-t="hr_lang">Printed summary language</label>
+      <select id="hrLang"><option value="en">English</option><option value="sw">Kiswahili</option></select>
+    </div>
+    <details>
+      <summary data-t="preview">Preview the printed summary</summary>
+      <div id="hrPreview" style="margin-top:10px;border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;color:#000"></div>
+    </details>
+    <details>
+      <summary data-t="assump">Key assumptions</summary>
+      <ul class="list" id="assumptions"></ul>
+    </details>
+  </section>
+
+  <div id="formErr" role="alert" style="color:#b91c1c;font-weight:700;margin:10px 0 0;min-height:0"></div>
+  <nav class="nav" id="nav" aria-label="Steps">
+    <button class="btn ghost" id="back" type="button" data-t="back">Back</button>
+    <button class="btn go" id="next" type="button" data-t="next">Continue</button>
+  </nav>
+
+  <section id="aboutView" class="panel" hidden aria-labelledby="aboutH">
+    <h2 id="aboutH" tabindex="-1" data-t="about_title">About the developer</h2>
+    <p class="lede" data-t="about_intro">Suleiman Gaitho develops software for universities and institutions, and provides consultancy.</p>
+    <div class="choice">
+      <div class="opt"><div style="font-size:12px;font-weight:700;color:var(--indigo);margin-bottom:4px" data-t="tag_im"></div><b data-t="a_im_t">Institution Meet</b><small data-t="a_im_d">In-house video conferencing platform. The number of users is limited only by your infrastructure.</small>
+        <div class="how" style="margin:8px 0 0" data-t="b_im"></div>
+        <a class="sb" href="#" data-demo="a_im_t" style="margin-top:10px;display:inline-flex">Request a demo</a></div>
+      <div class="opt"><div style="font-size:12px;font-weight:700;color:var(--indigo);margin-bottom:4px" data-t="tag_erp"></div><b data-t="a_erp_t">Customised institution ERP</b><div class="why" style="margin-top:4px;font-size:14px" data-t="a_erp_d">A customised ERP for institutions, with an integrated LMS, built to each institution's own definitions.</div><ul class="list" id="erpList"></ul>
+      <div class="how" style="margin:8px 0 0" data-t="b_erp"></div>
+        <a class="sb" href="#" data-demo="a_erp_t" style="margin-top:10px;display:inline-flex">Request a demo</a></div>
+      <div class="opt"><div style="font-size:12px;font-weight:700;color:var(--indigo);margin-bottom:4px" data-t="tag_odel"></div><b data-t="a_odel_t">Odel (customised)</b><div class="why" style="margin-top:4px;font-size:14px" data-t="a_odel_d">An API-driven platform that connects directly with your university ERP.</div><ul class="list" id="odelList"></ul>
+      <div class="how" style="margin:8px 0 0" data-t="b_odel"></div>
+        <a class="sb" href="#" data-demo="a_odel_t" style="margin-top:10px;display:inline-flex">Request a demo</a></div>
+      <div class="opt"><div style="font-size:12px;font-weight:700;color:var(--indigo);margin-bottom:4px" data-t="tag_lms"></div><b data-t="a_lms_t">LMS</b><div class="why" style="margin-top:4px;font-size:14px" data-t="a_lms_d">A learning management system for managing courses, content and learners, customisable for each institution.</div><ul class="list" id="lmsList"></ul>
+      <div class="how" style="margin:8px 0 0" data-t="b_lms"></div>
+        <a class="sb" href="#" data-demo="a_lms_t" style="margin-top:10px;display:inline-flex">Request a demo</a></div>
+      <div class="opt"><div style="font-size:12px;font-weight:700;color:var(--indigo);margin-bottom:4px" data-t="tag_col"></div><b data-t="a_col_t">College systems</b><div class="why" style="margin-top:4px;font-size:14px" data-t="a_col_d">Systems for TVET and private colleges, built around competency-based training (CBET) and placement through KUCCPS.</div><ul class="list" id="colList"></ul>
+      <div class="how" style="margin:8px 0 0" data-t="b_col"></div>
+        <a class="sb" href="#" data-demo="a_col_t" style="margin-top:10px;display:inline-flex">Request a demo</a></div>
+      <div class="opt"><div style="font-size:12px;font-weight:700;color:var(--indigo);margin-bottom:4px" data-t="tag_con"></div><b data-t="a_con_t">Consultancy</b><div class="why" style="margin-top:4px;font-size:14px" data-t="a_con_d">Advice and services on software and ICT systems for institutions.</div><ul class="list" id="conList"></ul>
+      <div class="how" style="margin:8px 0 0" data-t="b_con"></div></div>
+      <div class="opt"><b data-t="a_int_t">Integrations</b><div class="why" style="margin-top:4px;font-size:14px" data-t="a_int_d">Connections to national and financial systems. Each one depends on the provider's approval and API access.</div><ul class="list" id="intList"></ul></div>
+      <div class="opt"><b data-t="a_sec_t">Security and data protection</b><div class="why" style="margin-top:4px;font-size:14px" data-t="a_sec_d">How institutional data is stored, protected and accessed.</div><ul class="list" id="secList"></ul>
+      <div class="how" style="margin:8px 0 0" data-t="b_sec"></div></div>
+    </div>
+    <div class="share" style="margin-top:18px">
+      <p data-t="a_contact">Contact</p>
+      <p id="phoneRow" hidden style="margin:0 0 10px"><span data-t="a_phone">Phone</span>: <a id="phoneLink" href="#" style="color:var(--indigo);font-weight:700"></a></p>
+      <a class="sb" href="mailto:suleiman.abdullahi.gaitho@gmail.com">suleiman.abdullahi.gaitho@gmail.com</a>
+    </div>
+  </section>
+
+  <section class="fb-box panel" id="feedback" style="margin-top:20px;flex:none" aria-labelledby="hfb">
+    <h2 id="hfb" style="font-size:19px" data-t="fb_title">Feedback</h2>
+    <p class="lede" style="margin-bottom:6px" data-t="fb_lede">Report a wrong figure, suggest a feature or ask a question.</p>
+    <label for="fbType">Type</label>
+    <select id="fbType" style="height:46px">
+      <option>Suggestion</option><option>Wrong figure</option><option>Missing feature</option><option>Question</option><option>Other</option>
+    </select>
+    <label for="fbText" data-t="fb_msg">Message</label>
+    <textarea id="fbText" placeholder="Type here"></textarea>
+    <label class="check" style="margin-top:12px"><input type="checkbox" id="fbCtx" checked> <span data-t="fb_ctx">Include staff group, grade and notch (no pay figures)</span></label>
+    <div class="shares" style="margin-top:14px">
+      <button class="sb" style="background:var(--indigo);border-color:var(--indigo);color:#fff" id="fbSend" type="button" data-t="fb_send">Send by email</button>
+      <button class="sb" id="fbCopy" type="button" data-t="fb_copy">Copy message</button>
+    </div>
+    <div id="fbMsg" role="status" style="font-size:14px;color:var(--green);min-height:20px;margin-top:8px"></div>
+  </section>
+
+  <div class="legal">
+    <div data-t="disclaimer">Unofficial estimate for planning only. Not payroll advice and not affiliated with IPUCCF, FKE, UASU, KUSU or any university. Confirm final figures with your payroll office.</div>
+    <details style="margin-top:10px;text-align:left"><summary>What changed in version 2.0</summary>
+      <ul class="list">
+        <li>Commuter and car allowance are one field.</li>
+        <li>Pension can be entered as a percentage of basic or as KES per month.</li>
+        <li>Typing the basic from your July 2025 payslip sets your notch.</li>
+        <li>Loans can be worked out from the payslip total deduction line, and the figure updates as you type.</li>
+        <li>The payslip check gives one status line at the top of the results.</li>
+        <li>How-to-fill panels for each step, including what not to enter.</li>
+        <li>Other allowances, payslip gross and PAYE checks.</li>
+        <li>Yearly gross and take-home table to 2029.</li>
+        <li>Promotion warning, saved payslip checks, print summary, and a Report a wrong figure link.</li>
+        <li>Notch 12 note, worked example, terms shown with the results, and a collapsible yearly table.</li>
+        <li>Code split into js/ files. Version 2.1.</li>
+        <li>English and Kiswahili.</li>
+      </ul></details>
+    <div style="margin-top:8px">Version 2.1. Copyright 2026 Suleiman Gaitho, Garissa University. All rights reserved. Use and sharing are permitted; copying or modifying requires written permission.</div>
+    <div style="margin-top:14px;border-top:1px solid var(--line);padding-top:12px">
+      <div style="font-weight:700;color:var(--ink)" data-t="about_title">About the developer</div>
+      <div data-t="about_text">Developer of ERP systems, LMS, Institution Meet and consultancy services.</div>
+      <div>Suleiman Gaitho | <a href="mailto:suleiman.abdullahi.gaitho@gmail.com" style="color:var(--indigo)">suleiman.abdullahi.gaitho@gmail.com</a></div>
+    </div>
+    <div style="margin-top:6px"><a href="#feedback" id="reportWrong" data-t="report_wrong" style="color:var(--indigo);font-weight:700">Report a wrong figure</a></div>
+    <div style="margin-top:4px"><a href="mailto:suleiman.abdullahi.gaitho@gmail.com" style="color:var(--indigo)">suleiman.abdullahi.gaitho@gmail.com</a></div>
   </div>
-
-  <div class="box fdbk" id="feedback">
-    <h2>Feedback &amp; suggestions</h2>
-    <p>Found a wrong figure, a missing allowance or have an idea? Tell us and help improve this tool for all staff.</p>
-    <div class="grid">
-      <div class="full"><label>How useful was this estimate?</label>
-        <div class="rate">
-          <span><input type="radio" name="rate" id="r3" value="Very useful"><label for="r3">👍 Very useful</label></span>
-          <span><input type="radio" name="rate" id="r2" value="Okay"><label for="r2">😐 Okay</label></span>
-          <span><input type="radio" name="rate" id="r1" value="Not useful"><label for="r1">👎 Not useful</label></span>
-        </div></div>
-      <div><label for="fbType">Type</label><select id="fbType"><option>Suggestion</option><option>Wrong figure / error</option><option>Missing feature</option><option>Question</option><option>Other</option></select></div>
-      <div><label for="fbName">Name (optional)</label><input type="text" id="fbName" placeholder="Your name" style="width:100%;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:16px;background:var(--card);color:var(--ink)"></div>
-      <div class="full"><label for="fbText">Your message</label><textarea id="fbText" placeholder="Type here…"></textarea></div>
-      <div class="full"><label class="check"><input type="checkbox" id="fbCtx" checked> Include my staff group, grade and notch (no pay figures)</label></div>
-    </div>
-    <div class="share" style="margin-top:12px">
-      <button class="btn pri" id="fbSend" type="button">Send by email</button>
-      <button class="btn" id="fbCopy" type="button">Copy message</button>
-    </div>
-    <div id="fbMsg" role="status"></div>
-  </div>
-
-  <div class="foot">Unofficial estimate for planning only. It is not payroll advice and is not affiliated with IPUCCF, FKE, UASU, KUSU or any university. Confirm final figures with your payroll office.</div>
-  <div class="credit">Made by <b>Suleiman Gaitho</b>, Garissa University, for Kenyan public university staff.<br>For consultation: <a href="mailto:suleiman.abdullahi.gaitho@gmail.com">suleiman.abdullahi.gaitho@gmail.com</a><br><span style="color:var(--mute);font-size:12.5px">Version 1.0 · © 2026 Suleiman Gaitho. All rights reserved. Copying, modifying or redistributing this tool is not permitted without written permission.</span></div>
-</div>
+</main>
 
 <script>
 const KUSU_TABLE = {
@@ -231,14 +490,14 @@ function gName(g){ return CAT==="UASU" ? g+"A" : String(g); }
 function fillGrades(sel,keep,fallback){
   sel.innerHTML="";
   const list=gradeList();
-  list.forEach(g=>sel.add(new Option("Grade "+gName(g),g)));
+  list.forEach(g=>sel.add(new Option(gradeLabel(g),g)));
   sel.value = list.includes(keep) ? keep : fallback;
 }
 
 const num=n=>Math.round(n).toLocaleString("en-US");
 const fmt=n=>"KES "+num(n);
-const ded=n=>Math.round(n)===0?"–":"−"+num(n);
-const chg=n=>(n>=0?"+":"−")+num(Math.abs(n));
+const ded=n=>Math.round(n)===0?"-":"-"+num(n);
+const chg=n=>(n>=0?"+":"-")+num(Math.abs(n));
 
 const calMonth=m=>(6+m)%12;
 const calYear=m=>2025+Math.floor((6+m)/12);
@@ -301,34 +560,20 @@ function schedule(p){
     else if(m>=1 && calMonth(m)===p.inc && n<12){ n++; }
     const fy=fyOf(m);
     const basic=TABLE[g][n-1][fy];
-    const commuter=commuterFor(fy,p.cur,p.mode);
+    const commuter=(p.uniRate && (p.uniUntil==null || m<p.uniUntil))?p.uniRate:commuterFor(fy,p.cur,p.mode);
     const prof=(CAT==="UASU"&&UASU_PROF[g])?UASU_PROF[g]:0;
-    const gross=basic+commuter+p.house+prof;
+    const gross=basic+commuter+p.house+(p.otherAllow||0)+prof;
     rows.push({m,label:label(m),fy,g,n,basic,commuter,prof,gross,slip:payslip(gross,basic,p)});
   }
   return rows;
 }
 
-function readInputs(){
-  setCat();
-  return {
-    g0:+$("g0").value, n0:+$("n0").value,
-    cur:+$("commuter").value||0,
-    house:+$("house").value||0,
-    pct:Math.min(20,Math.max(0,+$("pension").value||0)),
-    nssf:$("nssf").checked,
-    inc:+$("inc").value,
-    mode:$("mode").value,
-    book:+$("bookM").value,
-    promo:+$("promoM").value===-1?null:{m:+$("promoM").value,grade:+$("promoG").value,notch:+$("promoN").value},
-    check:$("basicCheck").value===""?null:+$("basicCheck").value
-  };
-}
+
 
 function compute(p){
   const rows=schedule(p);
   const oldBasic=TABLE[p.g0][p.n0-1][0];
-  const oldGross=oldBasic+p.cur+p.house;
+  const oldGross=oldBasic+p.cur+p.house+(p.otherAllow||0);
   const oldSlip=payslip(oldGross,oldBasic,p);
   let a1G=0,a1B=0,a2G=0,a2B=0;
   const gain=[0,0,0,0,0];
@@ -357,148 +602,952 @@ function compute(p){
   return {rows,oldBasic,oldGross,oldSlip,a1G,a2G,inst,arr2,jan,gain,netExtra,bookPays};
 }
 
-function render(){
-  const p=readInputs();
-  const c=compute(p);
-  const money=n=>"KES "+num(n);
-  const minus=n=>Math.round(n)===0?"–":"−"+num(n);
 
+
+/* Pension as a percentage of July 2025 basic. If entered in KES, convert it. */
+function pensionPct(){
+  const v=+$("pension").value||0;
+  let raw=v;
+  if($("pensionMode").value==="kes"){
+    const basic=TABLE[+$("g0").value][(+$("n0").value)-1][0];
+    raw = basic ? v/basic*100 : 0;
+  }
+  return Math.min(20,Math.max(0,raw));
+}
+
+/* Designations shown after each grade. Add a title here when it is confirmed. */
+const DESIG={
+  UASU:{
+    10:"Graduate Assistant / Research Assistant",
+    11:"Assistant Lecturer / Tutorial Fellow / Junior Research Fellow",
+    12:"Lecturer / Research Fellow",
+    13:"Senior Lecturer / Senior Research Fellow",
+    14:"Associate Professor / Associate Research Professor",
+    15:"Professor / Research Professor"
+  },
+  KUSU:{}
+};
+function gradeLabel(g){
+  const d=DESIG[CAT][g];
+  return "Grade "+gName(g)+(d?" ("+d+")":"");
+}
+
+/* Loans and other deductions from the payslip total deduction line.
+   Subtracts the statutory and pension items the tool calculates. */
+function loansFromTotal(p, base, total){
+  const statutory=base.nssf+base.paye+base.shif+base.housing+base.pension+base.union;
+  return Math.max(0, Math.round(total-statutory));
+}
+
+/* Pure helpers, checked by tests.js */
+function pensionCheck(raw, mode, basic){
+  let pct = raw;
+  if(mode==="kes"){ pct = basic ? raw/basic*100 : 0; }
+  const used = Math.min(20, Math.max(0, pct));
+  return {used, capped: mode==="pct" && (raw<0 || raw>20)};
+}
+function missingIds(values, ids){
+  return ids.filter(id => values[id]===undefined || values[id]===null || values[id]==="");
+}
+function resolveHrLang(separate, savedState, uiLang){
+  return separate || (savedState && savedState.hrLang) || uiLang || "en";
+}
+
+/* ===== Language ===== */
+const T={
+en:{
+  title:"Pay estimator 2025-2029", subtitle:"Return to Work Formula, 30 October 2026",
+  s1_title:"Who are you?", s1_lede:"Choose your staff group, then your grade and notch from your July 2025 payslip.",
+  cat_u:"Academic staff (UASU)", cat_u_s:"Grades 10A to 15A", cat_k:"Administrative staff (KUSU)", cat_k_s:"Grades 5 to 15",
+  grade:"Grade", notch:"Notch (July 2025 salary)", notch_hint:"Each notch shows its July 2025 basic salary.",
+  s2_title:"Allowances", s2_lede:"Prefilled with common values. Change them to match your payslip.",
+  commuter:"Commuter or car allowance now", prefilled:"prefilled", commuter_hint:"KES per month. Car allowance is the commuter allowance. Rises to KES 18,000 under the agreement.",
+  house:"House allowance", house_hint:"KES per month. Unchanged by the agreement.",
+  pension:"Pension (% of basic)", pension_hint:"Check your payslip: the % of basic salary deducted as pension (for example 7.5).", stat:"Statutory deductions",
+  nssf:"Deduct NSSF (6%, up to KES 108,000)",
+  s3_title:"Timing and options", s3_lede:"When your notch moves up, and anything you want to compare.",
+  inc:"Increment month", prefilled_jul:"prefilled: July", inc_hint:"The month your notch normally moves up by one step.",
+  mode:"Commuter increase", mode_g:"Phased over 3 years", mode_f:"Full KES 18,000 from July 2025",
+  bookm:"Book & ICT paid in (academic staff)", basic_check:"Basic on July 2025 payslip (optional)", basic_check_hint:"Enter it and your notch is set for you.",
+  payslip_net:"Take-home on your current payslip (optional)", payslip_net_hint:"Used to compare the estimate with your actual pay.",
+  promo_sum:"I expect a promotion", promo_from:"From month", promo_grade:"New grade", promo_notch:"New notch",
+  s4_title:"Your estimate", s4_lede:"Figures are before tax unless marked.",
+  back:"Back", next:"Continue", see:"See my estimate", share:"Share this estimator", copy:"Copy link", print:"Print HR summary",
+  edit:"Edit answers", reset:"Reset all", assump:"Key assumptions", terms:"Terms explained",
+  backpay_hdr:"Back pay, July 2025 to December 2026, before tax", backpay_sub:"Take-home from back pay about",
+  pay_pay:"Back pay payments", inst_gross:"2025/26, each instalment: gross", inst_ded:"Deductions per instalment", inst_net:"Take-home per instalment",
+  arr2_gross:"Jul-Dec 2026, paid January 2027: gross", ded:"Deductions", net:"Take-home",
+  monthly:"Monthly pay", gross_now:"Gross now", gross_jan:"Gross from January 2027", net_now:"Take-home now", net_jan:"Take-home from January 2027",
+  yearly:"Extra gross pay per financial year",
+  by_year:"Gross and take-home by year",
+  other_ded:"Loans, HELB, SACCO and other after-tax deductions", other_ded_hint:"Total of all after-tax deductions on your payslip, per month.",
+  pc_item:"Item", pc_now:"Now (estimate)", pc_jan:"From January 2027", pc_chg:"Change",
+  pc_how:"Deductions are shown as amounts taken from pay. Loans and other deductions are taken after tax.",
+  pc_basic:"Basic", pc_comm:"Commuter", pc_house:"House", pc_prof:"Professorial", pc_gross:"Gross", pc_nssf:"NSSF", pc_paye:"PAYE", pc_shif:"SHIF", pc_hous:"Housing levy", pc_pen:"Pension", pc_union:"Union dues", pc_oth:"Loans and other deductions", pc_net:"Take-home",
+  pc_match:"The estimate now is KES {d} away from your payslip. Check your allowances, pension and NSSF setting.", pc_ok:"The estimate now matches your payslip.", pc_payslip:"Your payslip take-home",
+  uni_check:"Check the review date with your payroll office before you rely on this estimate.", pen_capped_note:"limited to 0% to 20%",
+  uni_until:"Review date: the university rate ends", uni_until_none:"Not set: keep it for the whole period",
+  uni_note_until:"Your university's commuter rate of KES {v} is used until {d}. After that the agreement rate applies.",
+  comm_uni_until:"Commuter allowance: your university's rate, KES {v} a month, until {d}. Then the agreement rate applies.",
+  how_title:"How the back pay is worked out", pen_warn:"Pension must be between 0% and 20%. {v}% is used for this estimate.",
+  f_grade:"Grade", f_notch:"Notch", f_commuter:"Commuter or car allowance", f_house:"House allowance", f_pension:"Pension",
+  err_fill:"Please fill in: {f}", print_hint:"Shortcut: Ctrl+P (Cmd+P on a Mac) prints the summary.",
+  comm_uni:"Commuter allowance: KES {v} a month, your university's rate, kept for the whole period.",
+  comm_agr:"Commuter allowance: rises to KES 18,000 under the agreement, phased over three years unless you chose the full amount.",
+  uni_rate_short:"university rate",
+  uni_higher:"My university pays a higher commuter rate", uni_rate:"University commuter rate (KES per month)",
+  uni_hint:"Kept until the next review, as the agreement allows for universities already paying more.",
+  uni_note:"Your university's higher commuter rate of KES {v} is kept for the whole period, as the agreement allows until the next review.",
+  hr_lang:"Printed summary language",
+  b_im:"Runs on your own infrastructure, so your meetings stay within your institution.",
+  b_erp:"Connects to the systems you already use, with a clear delivery plan and a planned migration.",
+  b_odel:"Connects through an API, so it works with the ERP you already have, and keeps exams and attendance protected.",
+  b_lms:"Fitted to your programmes and grading rules, so staff do not have to bend it to suit.",
+  b_col:"Built for CBET and KUCCPS placement, so colleges track competencies without workarounds.",
+  b_con:"Advice based on your systems and goals, with written scope and completion reports.",
+  b_sec:"Your data stays under your control: hosting agreed in writing, access by role, and security updates kept current.",
+  concerns_title:"What universities tell us bothers them", concerns_src:"Based on published reports and studies of Kenyan public universities.",
+  c1_p:"System projects that run over budget or never finish, often because of poor vendor selection and weak oversight.", c1_r:"Fixed scope, clear milestones, and written completion reports before final payment.",
+  c2_p:"Difficult integration with existing systems, and data migration.", c2_r:"Connects to existing systems through APIs, with the migration planned before go-live.",
+  c3_p:"Protecting examination and student data.", c3_r:"A safe browser for exams and CATs, and an inbuilt digi-protector. Access is limited by role.",
+  c4_p:"Cyberattacks, and legacy systems that are not patched.", c4_r:"Regular security updates, and a written support agreement.",
+  c5_p:"Losing service when a system or vendor is not available.", c5_r:"Hosting and support agreed in writing, and the institution keeps control of its data.",
+  univ:"Your university (optional)", univ_hint:"Shown on the printed summary. Stored on this device only.",
+  promo_check:"Check the new grade and notch against the official salary tables before you rely on this estimate.",
+  save_pdf:"Save as PDF", forget:"Forget my answers", preview:"Preview the printed summary", print_step3:"Print HR summary",
+  tag_im:"For universities, colleges and institutions.", tag_erp:"For universities and institutions.", tag_odel:"For universities.",
+  tag_lms:"For colleges, TVET and institutions.", tag_col:"For TVET and private colleges.", tag_con:"For institutions.",
+  cmp_title:"Current grade and new grade", cmp_now:"Current", cmp_new:"After promotion", cmp_month:"Month", cmp_gross:"Gross", cmp_net:"Take-home", cmp_diff:"Change in take-home",
+  hr_title:"Pay estimate summary", hr_inputs:"Inputs", hr_results:"Results", hr_prepared:"Prepared", hr_note:"Estimate only. Not payroll advice. Confirm with the payroll office. Not endorsed by UASU, KUSU, IPUCCF, FKE, the Ministry of Education or any university.", hr_sign:"Name and signature (optional)", hr_staff:"Staff group", hr_grade:"Grade", hr_notch:"Notch", hr_pension:"Pension", hr_nssf:"NSSF", hr_other:"Loans and other deductions", hr_promo:"Promotion", hr_yes:"Yes", hr_no:"No", hr_none:"None", req_demo:"Request a demo",
+  n12_note:"Notch 12 is the top of this grade, so no increments apply after July 2025.",
+  ex_title:"Worked example", ex_1:"2025/26 back pay: the new gross minus your current gross for each month, added up = {a}. Split into 3 equal instalments of {b}.",
+  ex_2:"July to December 2026: the same method gives {a}. It is paid with the January 2027 salary.",
+  start_payslip:"Start from my payslip",
+  extra_net:"Extra take-home to June 2029 (approximate: back pay, monthly differences and Book and ICT; loans do not change it)",
+  a_col_t:"College systems", a_col_d:"Systems for TVET and private colleges, built around competency-based training (CBET) and placement through KUCCPS.", a_col_mods:["Admissions and KUCCPS placement intake","Student records and fees","CBET competency assessment and tracking","Digital learning content and LMS","Trainer and staff records, including professional development","Graduate tracer studies linked to employers","Reports for TVETA accreditation and compliance"],
+  a_odel_t:"Odel (customised)", a_odel_d:"An API-driven platform that connects directly with your university ERP.", a_odel_mods:["Connects directly with the university ERP through an API","Automated class attendance and registers","Inbuilt video conferencing (Institution Meet)","Inbuilt digi-protector","Safe browser for exams and CATs"], a_phone:"Phone",
+  nav_est:"Estimator", nav_about:"About", about_intro:"Suleiman Gaitho develops software for universities and institutions, and provides consultancy.",
+  a_im_t:"Institution Meet", a_im_d:"In-house video conferencing platform. The number of users is limited only by your infrastructure.",
+  a_erp_t:"Customised institution ERP", a_erp_d:"A customised ERP for institutions, with an integrated LMS, built to each institution's own definitions.", a_erp_mods:["Integrated LMS","Automated admissions","Student records","Staff portal","Human resources (HR)","Finance","ODEL","Payroll","Customised institution portals","NOCs","Security"],
+  a_lms_t:"LMS", a_lms_d:"A learning management system for managing courses, content and learners, customisable for each institution.", a_lms_mods:["Courses and programme content","Assessments and CATs","Grading and learner progress","Customisable for each institution: branding, programmes and grading rules","Integrated with the institution ERP","Competency tracking for CBET programmes"],
+  a_con_t:"Consultancy", a_int_t:"Integrations", a_sec_t:"Security and data protection", a_sec_d:"How institutional data is stored, protected and accessed.", a_sec_mods:["Hosting: the institution chooses where its data is kept, on its own servers or on infrastructure agreed in writing","Access: limited to authorised users, by role","Personal data is handled in line with the Data Protection Act, 2019 (Kenya)","The institution owns its data","The pay estimator stores nothing on a server. Answers stay on the device"], a_int_d:"Connections to national and financial systems. Each one depends on the provider's approval and API access.", a_int_mods:["eCitizen","Bank APIs","M-Pesa","QMIS","KUCCPS","HELB","HEF","Others on request"], a_con_d:"Advice and services on software and ICT systems for institutions.", a_con_mods:["ICT systems audit","Systems administration","Software development","Advice on systems for institutions"], a_contact:"Contact",
+  about_title:"About the developer", about_text:"Developer of ERP systems, LMS, Institution Meet and consultancy services.",
+  promo_warn:"This promotion lowers your pay in some months. From {m} the new gross pay is lower than without it. Check the grade and notch.",
+  save_check:"Save this check", checks_title:"Saved checks", checks_none:"No saved checks yet.", checks_max:"Only the last three checks are kept.",
+  summary_title:"Summary", chk_date:"Date", chk_gross:"Gross", chk_paye:"PAYE", chk_net:"Net pay", report_wrong:"Report a wrong figure",
+  gate_title:"Before you start",
+  gate_1:"This tool is not endorsed by UASU, KUSU, IPUCCF, FKE, the Ministry of Education, or any university. It is not affiliated with any of them.",
+  gate_2:"All results are estimates based on the assumptions below. They are not payroll advice, and your actual pay may differ.",
+  gate_3:"Confirm final figures with your payroll office before you rely on them.",
+  gate_list:"Assumptions used:", gate_check:"I have read this and accept that the results are estimates only.", gate_btn:"Continue",
+  pension_mode:"Pension is entered as", pm_pct:"% of basic salary", pm_kes:"KES per month",
+  loans_live:"Loans and other deductions calculated from this: KES {v}",
+  status_ok:"Matches your payslip", status_bad:"Does not match your payslip. See the checklist below.",
+  pv_note:"Nothing you enter is stored or sent. Do not post payslips that show identity numbers online.",
+  total_ded:"Total deductions on payslip (optional)", total_ded_hint:"Use the total deduction line. Do not include the allowable deduction. The tool works out the loans total from it.",
+  help_btn:"How to fill", h1_body:["Choose the staff group, grade and notch shown on your July 2025 payslip.","The notch list shows the salary for each notch."],
+  map_line:"Payslip line", map_field:"Field in this tool", map_enter:"What to enter",
+  h2_map:[["Commuter or car allowance","Commuter or car allowance now","Enter the monthly amount. Car allowance is the commuter allowance."],["House allowance","House allowance","Enter the monthly amount."],["Hardship or other taxable allowance","Other allowances kept unchanged","Enter the monthly total."],["Pension (self)","Pension (% of basic)","Pension divided by basic, times 100. Example: basic 50,000 and pension 5,000 gives 10."],["NSSF (self)","Deduct NSSF","Keep ticked if NSSF is deducted."],["Loans, HELB, SACCO, mosque and other after-tax deductions","Loans, HELB, SACCO and other, or Total deductions in step 3","Enter the total of these, or enter the payslip total deduction in step 3."],["PAYE, SHIF, housing levy, union or KUSU deduction","Do not enter","The tool calculates these."],["Allowable deduction","Do not enter","It is not taken from net pay."]],
+  h3_map:[["Basic salary","Basic on July 2025 payslip","Optional. Checks your grade and notch."],["Gross pay","Gross pay on payslip","Optional. Checks the calculation."],["PAYE","PAYE on payslip","Optional. Checks the tax."],["Net pay","Take-home on your current payslip","Optional. Used for the comparison."],["Total deduction","Total deductions on payslip","Optional. The tool works out the loans total from it."]],
+  help_no_title:"Do not enter",
+  help_no:["The total deduction line in the loans field. Use Total deductions in step 3 instead.","PAYE, NSSF, SHIF, housing levy, pension or union dues in the loans field.","The allowable deduction, anywhere."],
+  help_privacy:"Nothing you enter is stored on this page. Do not post payslips that show identity numbers on public sites.",
+  help_who:"Ask your payroll office about allowable deductions, car allowance and any line this guide does not explain.",
+  help_rules:"Rules: Return to Work Formula, 30 October 2026. Tool version 2.1, 2 November 2026.",
+  faq_title:"Common questions",
+  faq:[["Is car allowance the same as commuter allowance?","Yes. Enter it in the commuter or car allowance field."],["Why does the loans figure look wrong?","It should be the total of your after-tax deductions. Check that you did not include PAYE, SHIF, housing levy, NSSF, pension or union dues."],["Why does the comparison not match?","Start with the pension percentage, then the allowances, then the loans and other deductions."]],
+  mismatch_title:"If the comparison does not match",
+  help_mismatch:["Check the pension percentage against your payslip.","Check the commuter and other allowances, including whether car allowance is commuter.","Check the loans and other deductions total, or the payslip total deduction.","Check gross pay and PAYE against the payslip."],
+  other_allow:"Other allowances kept unchanged (e.g. hardship)", other_allow_hint:"KES per month. Taxable. Included in gross and kept the same in every year.",
+  pay_gross:"Gross pay on payslip (optional)", pay_gross_hint:"Used to check the calculation.", pay_paye:"PAYE on payslip (optional)", pay_paye_hint:"Used to check the tax calculation.",
+  pc_oa:"Other allowances", rc_title:"Check against your payslip", rc_item:"Item", rc_est:"Estimate", rc_pay:"Payslip", rc_diff:"Difference",
+  rc_gross:"Gross pay", rc_paye:"PAYE", rc_net:"Net pay", rc_implied:"Other deductions implied by net pay", rc_entered:"Loans and other deductions used",
+  rc_ok:"The estimate matches your payslip within KES 2.", rc_check:"Check the items with a difference. Common causes: pension %, commuter or other allowances, and other deductions.",
+  yrs_title:"Take-home after loans, by year", yrs_how:"Monthly figures on the new scale, after your loans and other deductions.", yrs_per:"Period", yrs_gross:"Gross", yrs_net:"Take-home", yrs_chg:"Change vs payslip",
+  yrs_jan:"January 2027 (first new payslip)", yrs_fy:"{fy} average", yrs_warn:"Loans and deductions are more than your take-home pay. Check the amount entered.", by_year_how:"Average per month on the new scale, and totals for each year. Excludes back pay and Book and ICT.", yr:"Year", gross_m:"Gross per month", net_m:"Take-home per month", gross_y:"Gross per year", net_y:"Take-home per year", total:"Total to June 2029", extra_net:"Extra take-home to June 2029 (approximate)",
+  compare:"Compare with your payslip", pay_slip:"Take-home on your payslip", est_now:"Estimated take-home now", diff:"Difference",
+  diff_note:"If the difference is large, check your grade, notch and allowances.",
+  how_back:"Difference between new and current pay, month by month, from July 2025.",
+  how_inst:"The 2025/26 total is paid in three equal instalments, each taxed on top of your current payslip.",
+  how_arr2:"The July-December 2026 total is paid with the January 2027 salary.",
+  how_gross:"Gross pay = basic + commuter + house allowance (+ professorial allowance where applicable).",
+  book_line:"Annual book and ICT allowance: {amt} gross a year, paid in {m}. Take-home about {net} per payment.",
+  warn:"The basic on your payslip (KES {p}) does not match grade {g}, notch {n} (KES {e}). Check your grade and notch.",
+  printed:"Estimate printed", inputs:"Inputs",
+  disclaimer:"Unofficial estimate for planning only. Not payroll advice and not affiliated with IPUCCF, FKE, UASU, KUSU or any university. Confirm final figures with your payroll office.",
+  fb_title:"Feedback", fb_lede:"Report a wrong figure, suggest a feature or ask a question.", fb_msg:"Message", fb_ctx:"Include staff group, grade and notch (no pay figures)",
+  fb_send:"Send by email", fb_copy:"Copy message", fb_empty:"Please type a message first.", fb_sent:"Opening your email app.", fb_copied:"Copied.",
+  copied:"Copied", saved:"Your answers are saved on this device.", reset_done:"Answers reset.",
+  assumptions:["Your pay stays on your July 2025 payslip until December 2026.","Increments fall in the month you chose. The first is the next time that month comes after July 2025.","Commuter allowance rises to KES 18,000, phased over three years unless you chose the full amount.","Professorial allowance (UASU grades 15A and 14A) is paid monthly and included in back pay.","Book and ICT allowance starts July 2025, is paid once a year in the month you chose, and is taxed on top of that month's salary.","New salaries start in January 2027. The 2025/26 back pay is paid in three equal instalments.","Tax uses the 2025 monthly bands with KES 2,400 relief. NSSF is 6% up to KES 108,000. SHIF is 2.75% and housing levy 1.5%.","Annual leave, passage and baggage, professional allowance, SACCO and loans are not included."],
+  terms_list:[["Notch","A step within a grade. Your notch sets your basic salary."],["Basic salary","The core monthly salary. Pension is calculated on it."],["Commuter allowance","A monthly allowance for travel to work."],["Arrears (back pay)","Money owed for months when the new pay should already have been paid."],["PAYE","Income tax deducted from pay."],["NSSF","National Social Security Fund contribution, 6% up to KES 108,000."],["SHIF","Social Health Insurance Fund deduction, 2.75% of gross pay."],["Housing levy","Affordable housing deduction, 1.5% of gross pay."],["Pension","Retirement contribution, a percentage of basic salary."],["Union dues","2% of basic salary, paid to your union."]]
+},
+sw:{
+  title:"Kikokotoo cha malipo 2025-2029", subtitle:"Return to Work Formula, 30 Oktoba 2026",
+  s1_title:"Wewe ni nani?", s1_lede:"Chagua kundi lako la wafanyakazi, kisha daraja na notch kutoka payslip yako ya Julai 2025.",
+  cat_u:"Wafanyakazi wa kitaaluma (UASU)", cat_u_s:"Madaraja 10A hadi 15A", cat_k:"Wafanyakazi wa utawala (KUSU)", cat_k_s:"Madaraja 5 hadi 15",
+  grade:"Daraja", notch:"Notch (mshahara wa Julai 2025)", notch_hint:"Kila notch inaonyesha mshahara wake wa msingi wa Julai 2025.",
+  s2_title:"Posho", s2_lede:"Zimejazwa awali kwa thamani za kawaida. Zibadilishe ili zilingane na payslip yako.",
+  commuter:"Posho ya usafiri au gari sasa", prefilled:"imejazwa", commuter_hint:"KES kwa mwezi. Posho ya gari ni posho ya usafiri. Itapanda hadi KES 18,000 kwa makubaliano.",
+  house:"Posho ya nyumba", house_hint:"KES kwa mwezi. Haibadiliki kwa makubaliano haya.",
+  pension:"Pensheni (% ya mshahara wa msingi)", pension_hint:"Kagua payslip yako: asilimia ya mshahara wa msingi inayokatwa kama pensheni (k.m. 7.5).", stat:"Makato ya kisheria",
+  nssf:"Kata NSSF (6%, hadi KES 108,000)",
+  s3_title:"Muda na chaguo", s3_lede:"Notch yako inapopanda, na chochote unachotaka kulinganisha.",
+  inc:"Mwezi wa nyongeza", prefilled_jul:"imejazwa: Julai", inc_hint:"Mwezi ambao notch yako kawaida hupanda hatua moja.",
+  mode:"Ongezeko la posho ya usafiri", mode_g:"Kwa awamu ndani ya miaka 3", mode_f:"KES 18,000 kamili kuanzia Julai 2025",
+  bookm:"Malipo ya Vitabu na ICT (kitaaluma)", basic_check:"Mshahara wa msingi payslip ya Julai 2025 (si lazima)", basic_check_hint:"Ukiiweka, notch yako itawekwa kwa ajili yako.",
+  payslip_net:"Mshahara halisi kwenye payslip yako sasa (si lazima)", payslip_net_hint:"Hutumika kulinganisha makadirio na malipo yako halisi.",
+  promo_sum:"Nategemea kupandishwa cheo", promo_from:"Kuanzia mwezi", promo_grade:"Daraja jipya", promo_notch:"Notch mpya",
+  s4_title:"Makadirio yako", s4_lede:"Takwimu ni kabla ya kodi isipokuwa imeandikwa vinginevyo.",
+  back:"Nyuma", next:"Endelea", see:"Ona makadirio yangu", share:"Shiriki kikokotoo hiki", copy:"Nakili kiungo", print:"Chapisha muhtasari wa HR",
+  edit:"Hariri majibu", reset:"Weka upya yote", assump:"Dhana kuu", terms:"Maelezo ya maneno",
+  backpay_hdr:"Malimbikizo, Julai 2025 hadi Desemba 2026, kabla ya kodi", backpay_sub:"Mshahara halisi kutoka malimbikizo takriban",
+  pay_pay:"Malipo ya malimbikizo", inst_gross:"2025/26, kila malipo: jumla", inst_ded:"Makato kwa kila malipo", inst_net:"Mshahara halisi kwa kila malipo",
+  arr2_gross:"Jul-Des 2026, kulipwa Januari 2027: jumla", ded:"Makato", net:"Mshahara halisi",
+  monthly:"Mshahara wa kila mwezi", gross_now:"Jumla sasa", gross_jan:"Jumla kuanzia Januari 2027", net_now:"Mshahara halisi sasa", net_jan:"Mshahara halisi kuanzia Januari 2027",
+  yearly:"Ongezeko la jumla kwa mwaka wa fedha",
+  by_year:"Jumla na mshahara halisi kwa mwaka",
+  other_ded:"Mikopo, HELB, SACCO na makato mengine baada ya kodi", other_ded_hint:"Jumla ya makato yote baada ya kodi kwenye payslip yako, kwa mwezi.",
+  pc_item:"Kipengele", pc_now:"Sasa (makadirio)", pc_jan:"Kuanzia Januari 2027", pc_chg:"Mabadiliko",
+  pc_how:"Makato yanaonyeshwa kama kiasi kilichokatwa kwenye mshahara. Mikopo na makato mengine hukatwa baada ya kodi.",
+  pc_basic:"Msingi", pc_comm:"Usafiri", pc_house:"Nyumba", pc_prof:"Uprofesa", pc_gross:"Jumla", pc_nssf:"NSSF", pc_paye:"PAYE", pc_shif:"SHIF", pc_hous:"Levy ya nyumba", pc_pen:"Pensheni", pc_union:"Ada ya chama", pc_oth:"Mikopo na makato mengine", pc_net:"Mshahara halisi",
+  pc_match:"Makadirio ya sasa yako KES {d} mbali na payslip yako. Kagua posho, pensheni na mpangilio wa NSSF.", pc_ok:"Makadirio ya sasa yanalingana na payslip yako.", pc_payslip:"Mshahara halisi kwenye payslip yako",
+  uni_check:"Thibitisha tarehe ya mapitio na ofisi yako ya malipo kabla ya kutegemea makadirio haya.", pen_capped_note:"imepunguzwa hadi 0% hadi 20%",
+  uni_until:"Tarehe ya mapitio: kiwango cha chuo kinaisha", uni_until_none:"Haijawekwa: kibaki kwa kipindi chote",
+  uni_note_until:"Kiwango cha posho ya usafiri cha chuo chako cha KES {v} kinatumika hadi {d}. Baada ya hapo kiwango cha makubaliano kinatumika.",
+  comm_uni_until:"Posho ya usafiri: kiwango cha chuo chako, KES {v} kwa mwezi, hadi {d}. Baada ya hapo kiwango cha makubaliano.",
+  how_title:"Jinsi malimbikizo yanavyohesabiwa", pen_warn:"Pensheni lazima iwe kati ya 0% na 20%. {v}% inatumika kwa makadirio haya.",
+  f_grade:"Daraja", f_notch:"Notch", f_commuter:"Posho ya usafiri au gari", f_house:"Posho ya nyumba", f_pension:"Pensheni",
+  err_fill:"Tafadhali jaza: {f}", print_hint:"Njia ya mkato: Ctrl+P (Cmd+P kwenye Mac) huchapisha muhtasari.",
+  comm_uni:"Posho ya usafiri: KES {v} kwa mwezi, kiwango cha chuo chako, kinabaki kwa kipindi chote.",
+  comm_agr:"Posho ya usafiri: inapanda hadi KES 18,000 kwa mujibu wa makubaliano, kwa awamu ya miaka mitatu isipokuwa umechagua kamili.",
+  uni_rate_short:"kiwango cha chuo",
+  uni_higher:"Chuo changu kinalipa posho ya usafiri ya juu zaidi", uni_rate:"Posho ya usafiri ya chuo (KES kwa mwezi)",
+  uni_hint:"Itabaki hadi mapitio yanayofuata, kama makubaliano yanavyoruhusu kwa vyuo vinavyolipa zaidi tayari.",
+  uni_note:"Posho ya usafiri ya juu ya chuo chako ya KES {v} itabaki kwa kipindi chote, kama makubaliano yanavyoruhusu hadi mapitio yanayofuata.",
+  hr_lang:"Lugha ya muhtasari uliochapishwa",
+  b_im:"Inaendeshwa kwenye miundombinu yako, ili mikutano yako ibaki ndani ya taasisi yako.",
+  b_erp:"Inaunganishwa na mifumo unayotumia tayari, ikiwa na mpango wazi wa utekelezaji na uhamishaji uliopangwa.",
+  b_odel:"Inaunganishwa kupitia API, kwa hiyo inafanya kazi na ERP uliyonayo, na inalinda mitihani na mahudhurio.",
+  b_lms:"Inalingana na programu na kanuni zako za alama, kwa hiyo wafanyakazi hawalazimiki kuibadilisha.",
+  b_col:"Imejengwa kwa CBET na udahili wa KUCCPS, ili vyuo vifuatilie umahiri bila njia za mkato.",
+  b_con:"Ushauri unaozingatia mifumo na malengo yako, pamoja na wigo ulioandikwa na ripoti za kukamilika.",
+  b_sec:"Data yako inabaki chini ya udhibiti wako: uhifadhi uliokubaliwa kwa maandishi, ufikiaji kwa jukumu, na masasisho ya usalama yaliyo ya kisasa.",
+  concerns_title:"Mambo ambayo vyuo vinasema yanawasumbua", concerns_src:"Kulingana na ripoti na tafiti zilizochapishwa kuhusu vyuo vikuu vya umma nchini Kenya.",
+  c1_p:"Miradi ya mifumo inayozidi bajeti au isiyokamilika, mara nyingi kutokana na uteuzi duni wa mtoa huduma na usimamizi dhaifu.", c1_r:"Wigo ulio wazi, hatua zilizopangwa, na ripoti za kukamilika kwa maandishi kabla ya malipo ya mwisho.",
+  c2_p:"Ugumu wa kuunganisha na mifumo iliyopo, na uhamishaji wa data.", c2_r:"Inaunganishwa na mifumo iliyopo kupitia API, na uhamishaji umepangwa kabla ya kuanza kutumika.",
+  c3_p:"Kulinda data ya mitihani na ya wanafunzi.", c3_r:"Kivinjari salama kwa mitihani na CAT, na digi-protector iliyojengwa ndani. Ufikiaji umewekewa vikwazo kwa jukumu.",
+  c4_p:"Mashambulizi ya mtandao, na mifumo ya zamani isiyosasishwa.", c4_r:"Masasisho ya usalama ya mara kwa mara, na makubaliano ya msaada kwa maandishi.",
+  c5_p:"Kupoteza huduma mfumo au mtoa huduma anapokosekana.", c5_r:"Uhifadhi na msaada uliokubaliwa kwa maandishi, na taasisi inabaki na udhibiti wa data yake.",
+  univ:"Chuo chako (si lazima)", univ_hint:"Inaonyeshwa kwenye muhtasari uliochapishwa. Inahifadhiwa kwenye kifaa hiki pekee.",
+  promo_check:"Thibitisha daraja jipya na notch dhidi ya jedwali rasmi za mishahara kabla ya kutegemea makadirio haya.",
+  save_pdf:"Hifadhi kama PDF", forget:"Sahau majibu yangu", preview:"Angalia muhtasari utakaochapishwa", print_step3:"Chapisha muhtasari wa HR",
+  tag_im:"Kwa vyuo vikuu, vyuo na taasisi.", tag_erp:"Kwa vyuo vikuu na taasisi.", tag_odel:"Kwa vyuo vikuu.",
+  tag_lms:"Kwa vyuo, TVET na taasisi.", tag_col:"Kwa vyuo vya TVET na vyuo binafsi.", tag_con:"Kwa taasisi.",
+  cmp_title:"Daraja la sasa na daraja jipya", cmp_now:"Sasa", cmp_new:"Baada ya kupandishwa", cmp_month:"Mwezi", cmp_gross:"Jumla", cmp_net:"Mshahara halisi", cmp_diff:"Mabadiliko ya mshahara halisi",
+  hr_title:"Muhtasari wa makadirio ya malipo", hr_inputs:"Taarifa", hr_results:"Matokeo", hr_prepared:"Imeandaliwa", hr_note:"Makadirio tu. Si ushauri wa malipo. Thibitisha na ofisi ya malipo. Haijaidhinishwa na UASU, KUSU, IPUCCF, FKE, Wizara ya Elimu wala chuo kikuu chochote.", hr_sign:"Jina na sahihi (si lazima)", hr_staff:"Kundi la wafanyakazi", hr_grade:"Daraja", hr_notch:"Notch", hr_pension:"Pensheni", hr_nssf:"NSSF", hr_other:"Mikopo na makato mengine", hr_promo:"Kupandishwa cheo", hr_yes:"Ndiyo", hr_no:"Hapana", hr_none:"Hakuna", req_demo:"Omba onyesho",
+  n12_note:"Notch 12 ndiyo ya juu zaidi katika daraja hili, kwa hiyo hakuna nyongeza baada ya Julai 2025.",
+  ex_title:"Mfano wa hesabu", ex_1:"Malimbikizo ya 2025/26: mshahara mpya minus jumla ya sasa kwa kila mwezi, zikijumlishwa = {a}. Yagawanywe awamu 3 sawa za {b}.",
+  ex_2:"Julai hadi Desemba 2026: njia ile ile inatoa {a}. Hulipwa pamoja na mshahara wa Januari 2027.",
+  start_payslip:"Anza na payslip yangu",
+  extra_net:"Ongezeko la mshahara halisi hadi Juni 2029 (takriban: malimbikizo, tofauti za kila mwezi, na Vitabu na ICT; mikopo haibadilishi)",
+  a_col_t:"Mifumo ya vyuo", a_col_d:"Mifumo ya vyuo vya TVET na vyuo binafsi, iliyojengwa kwa mafunzo ya umahiri (CBET) na udahili kupitia KUCCPS.", a_col_mods:["Udahili na wanafunzi wanaopangiwa kupitia KUCCPS","Rekodi za wanafunzi na ada","Tathmini na ufuatiliaji wa umahiri (CBET)","Maudhui ya kujifunza kidijitali na LMS","Rekodi za wakufunzi na wafanyakazi, pamoja na maendeleo ya kitaaluma","Ufuatiliaji wa wahitimu unaounganishwa na waajiri","Ripoti za ithibati na utii kwa TVETA"],
+  a_odel_t:"Odel (ya kipekee)", a_odel_d:"Jukwaa linaloendeshwa kwa API, linaloungana moja kwa moja na ERP ya chuo chako.", a_odel_mods:["Inaunganishwa moja kwa moja na ERP ya chuo kupitia API","Mahudhurio ya darasa na rejista yaliyojiendesha","Mkutano wa video uliojengwa ndani (Institution Meet)","Digi-protector iliyojengwa ndani","Kivinjari salama kwa mitihani na CAT"], a_phone:"Simu",
+  nav_est:"Kikokotoo", nav_about:"Kuhusu", about_intro:"Suleiman Gaitho hutengeneza programu za vyuo na taasisi, na hutoa huduma za ushauri.",
+  a_im_t:"Institution Meet", a_im_d:"Jukwaa la mkutano wa video la ndani. Idadi ya watumiaji inategemea miundombinu yako pekee.",
+  a_erp_t:"ERP maalum ya taasisi", a_erp_d:"ERP maalum kwa taasisi, pamoja na LMS iliyounganishwa, iliyojengwa kulingana na ufafanuzi wa kila taasisi.", a_erp_mods:["LMS iliyounganishwa","Udahili wa kiotomatiki","Taarifa za wanafunzi","Portal ya wafanyakazi","Rasilimali watu (HR)","Fedha","ODEL","Malipo ya mishahara (payroll)","Portal maalum za taasisi","NOCs","Usalama"],
+  a_lms_t:"LMS", a_lms_d:"Mfumo wa usimamizi wa kujifunza wa kusimamia kozi, maudhui na wanafunzi, unaoweza kubadilishwa kwa kila taasisi.", a_lms_mods:["Kozi na maudhui ya programu","Tathmini na CAT","Alama na maendeleo ya mwanafunzi","Unaweza kubadilishwa kwa kila taasisi: chapa, programu na kanuni za alama","Umeunganishwa na ERP ya taasisi","Ufuatiliaji wa umahiri kwa programu za CBET"],
+  a_con_t:"Ushauri", a_int_t:"Miunganisho", a_sec_t:"Usalama na ulinzi wa data", a_sec_d:"Jinsi data ya taasisi inavyohifadhiwa, kulindwa na kufikiwa.", a_sec_mods:["Uhifadhi: taasisi huchagua mahali data yake inapohifadhiwa, kwenye seva zake au miundombinu iliyokubaliwa kwa maandishi","Ufikiaji: umewekewa vikwazo kwa watumiaji walioidhinishwa, kwa kulingana na jukumu lao","Data binafsi inashughulikiwa kulingana na Sheria ya Ulinzi wa Data, 2019 (Kenya)","Taasisi ndiyo mmiliki wa data yake","Kikokotoo cha malipo hakihifadhi chochote kwenye seva. Majibu yanabaki kwenye kifaa"], a_int_d:"Miunganisho na mifumo ya kitaifa na ya kifedha. Kila moja inategemea idhini na ufikiaji wa API wa mtoa huduma.", a_int_mods:["eCitizen","APIs za benki","M-Pesa","QMIS","KUCCPS","HELB","HEF","Nyingine kwa ombi"], a_con_d:"Ushauri na huduma kuhusu programu na mifumo ya TEHAMA kwa taasisi.", a_con_mods:["Ukaguzi wa mifumo ya TEHAMA","Usimamizi wa mifumo","Utengenezaji wa programu","Ushauri kuhusu mifumo kwa taasisi"], a_contact:"Mawasiliano",
+  about_title:"Kuhusu msanidi", about_text:"Msanidi wa mifumo ya ERP, LMS, Institution Meet na huduma za ushauri.",
+  promo_warn:"Kupandishwa huku kunapunguza mshahara wako katika baadhi ya miezi. Kuanzia {m} jumla mpya ni ndogo kuliko bila kupandishwa. Kagua daraja na notch.",
+  save_check:"Hifadhi ukaguzi huu", checks_title:"Ukaguzi uliohifadhiwa", checks_none:"Hakuna ukaguzi uliohifadhiwa bado.", checks_max:"Ukaguzi wa mwisho tatu tu ndio unahifadhiwa.",
+  summary_title:"Muhtasari", chk_date:"Tarehe", chk_gross:"Jumla", chk_paye:"PAYE", chk_net:"Mshahara halisi", report_wrong:"Ripoti takwimu isiyo sahihi",
+  gate_title:"Kabla ya kuanza",
+  gate_1:"Kikokotoo hiki hakijaidhinishwa na UASU, KUSU, IPUCCF, FKE, Wizara ya Elimu, wala chuo kikuu chochote. Hakihusiani nao.",
+  gate_2:"Matokeo yote ni makadirio kulingana na dhana zilizoorodheshwa hapa chini. Si ushauri wa malipo, na mshahara wako halisi unaweza kutofautiana.",
+  gate_3:"Thibitisha takwimu za mwisho na ofisi yako ya malipo kabla ya kuzitegemea.",
+  gate_list:"Dhana zilizotumika:", gate_check:"Nimesoma haya na nakubali kuwa matokeo ni makadirio tu.", gate_btn:"Endelea",
+  pension_mode:"Pensheni inaingizwa kama", pm_pct:"% ya mshahara wa msingi", pm_kes:"KES kwa mwezi",
+  loans_live:"Mikopo na makato mengine yaliyokokotolewa kutoka hapa: KES {v}",
+  status_ok:"Inalingana na payslip yako", status_bad:"Haiendani na payslip yako. Angalia orodha hapa chini.",
+  pv_note:"Chochote unachoingiza hakihifadhiwi wala hakitumwi. Usichapishe payslip zenye namba za utambulisho mtandaoni.",
+  total_ded:"Jumla ya makato kwenye payslip (si lazima)", total_ded_hint:"Tumia mstari wa jumla ya makato. Usijumuishe makato yanayoruhusiwa. Kikokotoo hukokotoa jumla ya mikopo kutoka kwake.",
+  help_btn:"Jinsi ya kujaza", h1_body:["Chagua kundi, daraja na notch vinavyoonekana kwenye payslip yako ya Julai 2025.","Orodha ya notch inaonyesha mshahara wa kila notch."],
+  map_line:"Mstari wa payslip", map_field:"Sehemu katika kikokotoo", map_enter:"Cha kuweka",
+  h2_map:[["Posho ya usafiri au gari","Posho ya usafiri au gari sasa","Weka kiasi cha kila mwezi. Posho ya gari ni posho ya usafiri."],["Posho ya nyumba","Posho ya nyumba","Weka kiasi cha kila mwezi."],["Posho ya mazingira magumu au nyingine ya kodi","Posho nyingine zisizobadilika","Weka jumla ya kila mwezi."],["Pensheni (yako)","Pensheni (% ya mshahara wa msingi)","Pensheni ikigawanywa kwa msingi, ikizidishwa na 100. Mfano: msingi 50,000 na pensheni 5,000 ni 10."],["NSSF (yako)","Kata NSSF","Acha imechaguliwa kama NSSF inakatwa."],["Mikopo, HELB, SACCO, msikiti na makato mengine baada ya kodi","Mikopo, HELB, SACCO na mengine, au Jumla ya makato hatua ya 3","Weka jumla ya haya, au weka jumla ya makato ya payslip hatua ya 3."],["PAYE, SHIF, levy ya nyumba, ada ya chama au KUSU","Usiweke","Kikokotoo kinahesabu haya."],["Makato yanayoruhusiwa","Usiweke","Hayakatwi kwenye mshahara halisi."]],
+  h3_map:[["Mshahara wa msingi","Mshahara wa msingi payslip ya Julai 2025","Si lazima. Hukagua daraja na notch."],["Jumla ya mshahara","Jumla ya mshahara kwenye payslip","Si lazima. Hukagua hesabu."],["PAYE","PAYE kwenye payslip","Si lazima. Hukagua kodi."],["Mshahara halisi","Mshahara halisi kwenye payslip yako sasa","Si lazima. Hutumika kulinganisha."],["Jumla ya makato","Jumla ya makato kwenye payslip","Si lazima. Kikokotoo hukokotoa mikopo kutoka kwake."]],
+  help_no_title:"Usiweke",
+  help_no:["Mstari wa jumla ya makato kwenye sehemu ya mikopo. Tumia Jumla ya makato hatua ya 3 badala yake.","PAYE, NSSF, SHIF, levy ya nyumba, pensheni au ada ya chama kwenye sehemu ya mikopo.","Makato yanayoruhusiwa, mahali popote."],
+  help_privacy:"Chochote unachoingiza hakihifadhiwi kwenye ukurasa huu. Usichapishe payslip zenye namba za utambulisho kwenye tovuti za umma.",
+  help_who:"Uliza ofisi yako ya malipo kuhusu makato yanayoruhusiwa, posho ya gari, na mstari wowote usioelezwa hapa.",
+  help_rules:"Kanuni: Return to Work Formula, 30 Oktoba 2026. Toleo la kikokotoo 2.1, 2 Novemba 2026.",
+  faq_title:"Maswali ya kawaida",
+  faq:[["Je, posho ya gari ni sawa na posho ya usafiri?","Ndiyo. Iweke kwenye sehemu ya posho ya usafiri au gari."],["Kwa nini takwimu ya mikopo inaonekana si sahihi?","Inapaswa kuwa jumla ya makato yako baada ya kodi. Hakikisha hujajumuisha PAYE, SHIF, levy ya nyumba, NSSF, pensheni au ada ya chama."],["Kwa nini ulinganisho haulingani?","Anza na asilimia ya pensheni, kisha posho, kisha mikopo na makato mengine."]],
+  mismatch_title:"Kama ulinganisho haulingani",
+  help_mismatch:["Kagua asilimia ya pensheni dhidi ya payslip yako.","Kagua posho za usafiri na nyingine, ikiwemo kama posho ya gari ni ya usafiri.","Kagua jumla ya mikopo na makato mengine, au jumla ya makato ya payslip.","Kagua jumla ya mshahara na PAYE dhidi ya payslip."],
+  other_allow:"Posho nyingine zisizobadilika (k.m. posho ya mazingira magumu)", other_allow_hint:"KES kwa mwezi. Hukatwa kodi. Imejumuishwa kwenye jumla na inabaki ile ile kwa miaka yote.",
+  pay_gross:"Jumla ya mshahara kwenye payslip (si lazima)", pay_gross_hint:"Hutumika kukagua hesabu.", pay_paye:"PAYE kwenye payslip (si lazima)", pay_paye_hint:"Hutumika kukagua hesabu ya kodi.",
+  pc_oa:"Posho nyingine", rc_title:"Linganisha na payslip yako", rc_item:"Kipengele", rc_est:"Makadirio", rc_pay:"Payslip", rc_diff:"Tofauti",
+  rc_gross:"Jumla ya mshahara", rc_paye:"PAYE", rc_net:"Mshahara halisi", rc_implied:"Makato mengine yaliyohesabiwa kutoka mshahara halisi", rc_entered:"Mikopo na makato mengine yaliyotumika",
+  rc_ok:"Makadirio yanalingana na payslip yako ndani ya KES 2.", rc_check:"Kagua vipengele vyenye tofauti. Sababu za kawaida: asilimia ya pensheni, posho za usafiri au nyingine, na makato mengine.",
+  yrs_title:"Mshahara halisi baada ya mikopo, kwa mwaka", yrs_how:"Takwimu za kila mwezi kwa kiwango kipya, baada ya mikopo na makato mengine.", yrs_per:"Kipindi", yrs_gross:"Jumla", yrs_net:"Mshahara halisi", yrs_chg:"Mabadiliko dhidi ya payslip",
+  yrs_jan:"Januari 2027 (payslip ya kwanza mpya)", yrs_fy:"Wastani wa {fy}", yrs_warn:"Mikopo na makato ni zaidi ya mshahara wako halisi. Kagua kiasi ulichoingiza.", by_year_how:"Wastani kwa mwezi kwa kiwango kipya, na jumla kwa kila mwaka. Hayajumuishi malimbikizo wala Vitabu na ICT.", yr:"Mwaka", gross_m:"Jumla kwa mwezi", net_m:"Halisi kwa mwezi", gross_y:"Jumla kwa mwaka", net_y:"Halisi kwa mwaka", total:"Jumla hadi Juni 2029", extra_net:"Ongezeko la mshahara halisi hadi Juni 2029 (takriban)",
+  compare:"Linganisha na payslip yako", pay_slip:"Mshahara halisi kwenye payslip", est_now:"Mshahara halisi uliokadiriwa sasa", diff:"Tofauti",
+  diff_note:"Tofauti ikiwa kubwa, kagua daraja, notch na posho zako.",
+  how_back:"Tofauti kati ya mshahara mpya na wa sasa, kila mwezi, kuanzia Julai 2025.",
+  how_inst:"Jumla ya 2025/26 inalipwa kwa awamu tatu sawa, kila moja ikikatwa kodi juu ya payslip yako ya sasa.",
+  how_arr2:"Jumla ya Julai-Desemba 2026 inalipwa pamoja na mshahara wa Januari 2027.",
+  how_gross:"Jumla ya mshahara = msingi + posho ya usafiri + posho ya nyumba (+ posho ya uprofesa ikiwa inatumika).",
+  book_line:"Posho ya kila mwaka ya Vitabu na ICT: {amt} kabla ya makato kila mwaka, inalipwa {m}. Mshahara halisi takriban {net} kwa malipo.",
+  warn:"Msingi kwenye payslip yako (KES {p}) hauendani na daraja {g}, notch {n} (KES {e}). Kagua daraja na notch yako.",
+  printed:"Makadirio yaliyochapishwa", inputs:"Taarifa ulizoweka",
+  disclaimer:"Makadirio yasiyo rasmi kwa mipango tu. Si ushauri wa malipo na haihusiani na IPUCCF, FKE, UASU, KUSU wala chuo kikuu chochote. Thibitisha takwimu za mwisho na ofisi yako ya malipo.",
+  fb_title:"Maoni", fb_lede:"Ripoti takwimu isiyo sahihi, pendekeza kipengele au uliza swali.", fb_msg:"Ujumbe", fb_ctx:"Jumuisha kundi, daraja na notch (bila takwimu za malipo)",
+  fb_send:"Tuma kwa barua pepe", fb_copy:"Nakili ujumbe", fb_empty:"Tafadhali andika ujumbe kwanza.", fb_sent:"Inafungua programu yako ya barua pepe.", fb_copied:"Imenakiliwa.",
+  copied:"Imenakiliwa", saved:"Majibu yako yamehifadhiwa kwenye kifaa hiki.", reset_done:"Majibu yamewekwa upya.",
+  assumptions:["Mshahara wako unabaki kwenye payslip ya Julai 2025 hadi Desemba 2026.","Nyongeza za notch hutokea katika mwezi uliochagua. Ya kwanza ni mwezi huo ukifika baada ya Julai 2025.","Posho ya usafiri hupanda hadi KES 18,000, kwa awamu ndani ya miaka mitatu isipokuwa umechagua kamili.","Posho ya uprofesa (madaraja 15A na 14A ya UASU) hulipwa kila mwezi na imejumuishwa kwenye malimbikizo.","Posho ya Vitabu na ICT huanza Julai 2025, hulipwa mara moja kwa mwaka katika mwezi uliochagua, na hukatwa kodi juu ya mshahara wa mwezi huo.","Mishahara mipya huanza Januari 2027. Malimbikizo ya 2025/26 hulipwa kwa awamu tatu sawa.","Kodi hutumia viwango vya 2025 vya kila mwezi na punguzo la KES 2,400. NSSF ni 6% hadi KES 108,000. SHIF ni 2.75% na levy ya nyumba ni 1.5%.","Posho ya likizo ya mwaka, usafiri wa mizigo, posho ya kitaaluma, SACCO na mikopo havijumuishwi."],
+  terms_list:[["Notch","Hatua ndani ya daraja. Notch yako huamua mshahara wako wa msingi."],["Mshahara wa msingi","Mshahara mkuu wa kila mwezi. Pensheni hukokotolewa juu yake."],["Posho ya usafiri","Posho ya kila mwezi ya kusafiri kwenda kazini."],["Malimbikizo","Fedha zinazodaiwa kwa miezi ambayo mshahara mpya ulipaswa kulipwa tayari."],["PAYE","Kodi ya mapato inayokatwa kwenye mshahara."],["NSSF","Mchango wa Mfuko wa Taifa wa Hifadhi ya Jamii, 6% hadi KES 108,000."],["SHIF","Makato ya Mfuko wa Bima ya Afya, 2.75% ya jumla ya mshahara."],["Levy ya nyumba","Makato ya nyumba za bei nafuu, 1.5% ya jumla ya mshahara."],["Pensheni","Mchango wa kustaafu, asilimia ya mshahara wa msingi."],["Ada ya chama","2% ya mshahara wa msingi, inayolipwa kwa chama chako."]]
+}};
+let LANG="en";
+const tr=(k,v)=>{let s=(T[LANG][k]!==undefined?T[LANG][k]:T.en[k]); if(s===undefined) s=k; if(v) for(const x in v) s=s.replace("{"+x+"}",v[x]); return s;};
+const MSW=["Januari","Februari","Machi","Aprili","Mei","Juni","Julai","Agosti","Septemba","Oktoba","Novemba","Desemba"];
+const monthName=i=>(LANG==="sw"?MSW:LONG)[i];
+const mLabel=m=>monthName(calMonth(m))+" "+calYear(m);
+
+/* ===== Wizard ===== */
+let step=1;
+const money=n=>"KES "+num(n);
+const minus=n=>Math.round(n)===0?"-":"-"+num(n);
+const plus=n=>(n>=0?"+":"-")+num(Math.abs(n));
+const sgn=n=>(Math.round(n)>=0?"+":"-")+num(Math.abs(n));
+
+function refreshNotches(sel,grade,keep){
+  const current = keep || +sel.value || 12;
+  sel.innerHTML="";
+  for(let n=1;n<=12;n++) sel.add(new Option(`Notch ${n} -> KES ${num(TABLE[grade][n-1][0])}`, n));
+  sel.value = current;
+}
+
+function buildMonthOptions(){
+  const keepInc=+$("inc").value, keepBook=+$("bookM").value, keepPromo=+$("promoM").value;
+  const inc=$("inc"); inc.innerHTML=""; for(let i=0;i<12;i++) inc.add(new Option(monthName(i),i)); inc.value=keepInc;
+  const bm=$("bookM"); bm.innerHTML=""; for(let i=0;i<12;i++) bm.add(new Option(monthName(i),i)); bm.value=keepBook;
+  const pm=$("promoM"); pm.innerHTML=""; pm.add(new Option(LANG==="sw"?"Hakuna kupandishwa":"No promotion",-1));
+  for(let m=0;m<48;m++) pm.add(new Option(mLabel(m),m));
+  pm.value=keepPromo;
+  buildUniUntil();
+}
+function buildUniUntil(){
+  const sel=$("uniUntil"); const keep=sel.value;
+  sel.innerHTML="";
+  sel.add(new Option(tr("uni_until_none"),""));
+  for(let m=0;m<48;m++) sel.add(new Option(mLabel(m),m));
+  sel.value=keep;
+}
+
+function applyLang(){
+  document.documentElement.lang=LANG;
+  document.querySelectorAll("[data-t]").forEach(el=>{ el.textContent=tr(el.dataset.t); });
+  $("langEn").setAttribute("aria-pressed",LANG==="en");
+  $("langSw").setAttribute("aria-pressed",LANG==="sw");
+  $("gEn").setAttribute("aria-pressed",LANG==="en");
+  $("gSw").setAttribute("aria-pressed",LANG==="sw");
+  $("assumptions").innerHTML=tr("assumptions").map(x=>`<li>${x}</li>`).join("");
+  $("gateList").innerHTML=tr("assumptions").map(x=>`<li>${x}</li>`).join("");
+  $("odelList").innerHTML=tr("a_odel_mods").map(x=>`<li>${x}</li>`).join("");
+  $("conList").innerHTML=tr("a_con_mods").map(x=>`<li>${x}</li>`).join("");
+  $("erpList").innerHTML=tr("a_erp_mods").map(x=>`<li>${x}</li>`).join("");
+  document.querySelectorAll("[data-t^='tag_']").forEach(el=>{ el.textContent=tr(el.dataset.t); });
+  $("colList").innerHTML=tr("a_col_mods").map(x=>`<li>${x}</li>`).join("");
+  $("intList").innerHTML=tr("a_int_mods").map(x=>`<li>${x}</li>`).join("");
+  $("secList").innerHTML=tr("a_sec_mods").map(x=>`<li>${x}</li>`).join("");
+  $("lmsList").innerHTML=tr("a_lms_mods").map(x=>`<li>${x}</li>`).join("");
+  document.querySelectorAll("[data-demo]").forEach(a=>{
+    a.textContent=tr("req_demo");
+    const name=tr(a.dataset.demo);
+    const subj=(LANG==="sw"?"Ombi la onyesho: ":"Demo request: ")+name;
+    const body=(LANG==="sw"?`Habari Suleiman, naomba onyesho la ${name}.`:`Hello Suleiman, I would like a demo of ${name}.`);
+    a.href="mailto:suleiman.abdullahi.gaitho@gmail.com?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);
+  });
+  const keepP=+$("promoG").value;
+  buildMonthOptions();
+  $("promoG").addEventListener; 
+  refreshNotches($("n0"),+$("g0").value);
+  refreshNotches($("promoN"),+$("promoG").value);
+  renderHelp();
+  show(step,true);
+  if(step===4) render();
+  try{localStorage.setItem("cba-lang",LANG);}catch(e){}
+}
+
+function show(n,quiet){
+  step=n;
+  for(let i=1;i<=4;i++) $("s"+i).hidden=(i!==n);
+  $("bar").style.width=(n/4*100)+"%";
+  $("stepno").textContent = n<4 ? (LANG==="sw"?`Hatua ${n} kati ya 3`:`Step ${n} of 3`) : tr("s4_title");
+  $("back").hidden=(n===1);
+  $("nav").hidden=(n===4);
+  $("feedback").hidden=(n!==4);
+  $("next").textContent=(n===3)?tr("see"):tr("next");
+  if(n===4) render();
+  if(!quiet){
+    window.scrollTo({top:0,behavior:"smooth"});
+    const h=$("h"+n); if(h) h.focus({preventScroll:true});
+  }
+}
+
+function readInputs(){
+  setCat();
+  return {
+    g0:+$("g0").value, n0:+$("n0").value,
+    cur:+$("commuter").value||0,
+    house:+$("house").value||0,
+    pct:pensionPct(),
+    nssf:$("nssf").checked,
+    inc:+$("inc").value,
+    mode:$("mode").value,
+    book:+$("bookM").value,
+    promo:+$("promoM").value===-1?null:{m:+$("promoM").value,grade:+$("promoG").value,notch:+$("promoN").value},
+    check:$("basicCheck").value===""?null:+$("basicCheck").value,
+    slipNet:$("payslipNet").value===""?null:+$("payslipNet").value,
+    other:+$("otherDed").value||0,
+    otherAllow:+$("otherAllow").value||0,
+    payGross:$("payGross").value===""?null:+$("payGross").value,
+    payPaye:$("payPaye").value===""?null:+$("payPaye").value,
+    totalDed:$("totalDed").value===""?null:+$("totalDed").value,
+    uniRate:($("uniHigher").checked && +$("uniRateVal").value>18000)?+$("uniRateVal").value:null,
+    hrLang:$("hrLang").value,
+    uniUntil:$("uniUntil").value===""?null:+$("uniUntil").value
+  };
+}
+
+function missingFor(ids){
+  const map={g0:"f_grade",n0:"f_notch",commuter:"f_commuter",house:"f_house",pension:"f_pension"};
+  const vals={}; ids.forEach(id=>{ vals[id]=$(id).value; });
+  return missingIds(vals, ids);
+}
+function missingNames(ids){ return ids.map(id=>tr({g0:"f_grade",n0:"f_notch",commuter:"f_commuter",house:"f_house",pension:"f_pension"}[id])); }
+
+function doPrint(){ render(); window.print(); }
+
+function render(){
+  const miss=missingFor(["g0","n0","commuter","house","pension"]);
+  if(miss.length){
+    $("warn").innerHTML="";
+    $("out").innerHTML=`<div class="warn">${tr("err_fill",{f:missingNames(miss).join(", ")})}</div>`;
+    return;
+  }
+  const p=readInputs();
+  let penMsg="";
+  const penCheck = pensionCheck(+$("pension").value, "pct", 0);
+  const penCapped = $("pensionMode").value==="pct" && penCheck.capped;
+  if(penCapped){ penMsg=`<div class="warn">${tr("pen_warn",{v:penCheck.used})}</div>`; }
+  if(p.totalDed!==null){ p.other=loansFromTotal(p, compute(p).oldSlip, p.totalDed); }
+  const c=compute(p);
   let warn="";
   if(p.check!==null && Math.abs(p.check-c.oldBasic)>1){
-    warn=`<div class="warn">The basic on your payslip (KES ${num(p.check)}) does not match grade ${gName(p.g0)}, notch ${p.n0} (KES ${num(c.oldBasic)}). Check your grade and notch.</div>`;
+    warn=`<div class="warn">${tr("warn",{p:num(p.check),g:gName(p.g0),n:p.n0,e:num(c.oldBasic)})}</div>`;
   }
-  $("warn").innerHTML=warn;
+  let promoWarn="";
+  if(p.promo){
+    const base=compute(Object.assign({},p,{promo:null}));
+    const m=p.promo.m;
+    const low=c.rows.some((r,i)=>i>=m && r.gross<base.rows[i].gross);
+    if(low) promoWarn=`<div class="warn">${tr("promo_warn",{m:mLabel(m)})}</div>`;
+  }
+  const n12 = (p.n0===12 && !p.promo) ? `<div class="how" style="margin:0 0 12px">${tr("n12_note")}</div>` : "";
+  $("warn").innerHTML=warn+promoWarn+n12+(p.promo?`<div class="how" style="margin:0 0 12px">${tr("promo_check")}</div>`:"")+(p.uniRate&&p.uniUntil!=null?`<div class="how" style="margin:0 0 12px">${tr("uni_check")}</div>`:"")+(p.uniRate?`<div class="how" style="margin:0 0 12px">${p.uniUntil!=null?tr("uni_note_until",{v:num(p.uniRate),d:mLabel(p.uniUntil)}):tr("uni_note",{v:num(p.uniRate)})}</div>`:"")+penMsg;
 
   const back=c.a1G+c.a2G;
   const takeBack=3*c.inst.net+c.arr2.net;
-  const deduct1=c.inst.gross-c.inst.net, deduct2=c.arr2.gross-c.arr2.net;
+  const total=c.gain[1]+c.gain[2]+c.gain[3]+c.gain[4];
 
-  let h=`
-  <div class="hero">
-    <small>Estimated back pay, before tax</small>
+  const checks=[];
+  if(p.payGross!==null) checks.push(Math.abs(c.oldGross-p.payGross)<2);
+  if(p.payPaye!==null) checks.push(Math.abs(c.oldSlip.paye-p.payPaye)<2);
+  if(p.slipNet!==null) checks.push(Math.abs((c.oldSlip.net-p.other)-p.slipNet)<2);
+  const statusHtml = checks.length ? `<div class="status ${checks.every(x=>x)?'ok':'bad'}">${checks.every(x=>x)?tr("status_ok"):tr("status_bad")}</div>` : "";
+
+  let h=statusHtml+`
+  <div class="total">
+    <small>${tr("backpay_hdr")}</small>
     <div class="amt">${money(back)}</div>
-    <small>Take-home from back pay: ${money(takeBack)}</small>
+    <span class="sub">${tr("backpay_sub")} ${money(takeBack)}</span>
   </div>
 
-  <div class="stats">
-    <div class="stat"><small>Monthly gross from Jan 2027</small><b>${money(c.jan.gross)}</b><span>Now ${money(c.oldGross)}</span></div>
-    <div class="stat"><small>Monthly take-home from Jan 2027</small><b>${money(c.jan.slip.net)}</b><span>Now ${money(c.oldSlip.net)}</span></div>
-    <div class="stat"><small>Extra take-home to June 2029</small><b class="pos">${money(c.netExtra)}</b><span>Approximate</span></div>
-  </div>
+  <div class="receipt">
+    <h3 style="margin-top:0">${tr("pay_pay")}</h3>
+    <div class="how">${tr("how_inst")}</div>
+    <div class="line"><span>${tr("inst_gross")}</span><b>${num(c.inst.gross)}</b></div>
+    <div class="line"><span>${tr("inst_ded")}</span><b>${minus(c.inst.gross-c.inst.net)}</b></div>
+    <div class="line"><span>${tr("inst_net")}</span><b>${num(c.inst.net)}</b></div>
+    <div class="how" style="margin-top:12px">${tr("how_arr2")}</div>
+    <div class="line"><span>${tr("arr2_gross")}</span><b>${num(c.arr2.gross)}</b></div>
+    <div class="line"><span>${tr("ded")}</span><b>${minus(c.arr2.gross-c.arr2.net)}</b></div>
+    <div class="line"><span>${tr("net")}</span><b>${num(c.arr2.net)}</b></div>
 
-  <div class="box">
-    <h2>Back pay payments</h2>
-    <table>
-      <tr><th></th><th>2025/26<br>(each of 3)</th><th>Jul–Dec 2026<br>(paid Jan 2027)</th></tr>
-      <tr><td>Gross</td><td>${num(c.inst.gross)}</td><td>${num(c.arr2.gross)}</td></tr>
-      <tr><td>Deductions</td><td>${minus(deduct1)}</td><td>${minus(deduct2)}</td></tr>
-      <tr class="tot"><td>Take-home</td><td>${num(c.inst.net)}</td><td>${num(c.arr2.net)}</td></tr>
+    <h3>${tr("monthly")}</h3>
+    <div class="how">${tr("how_gross")}</div>
+    <div class="how" style="margin:6px 0 8px">${p.uniRate?(p.uniUntil!=null?tr("comm_uni_until",{v:num(p.uniRate),d:mLabel(p.uniUntil)}):tr("comm_uni",{v:num(p.uniRate)})):tr("comm_agr")}</div>
+    <div class="line"><span>${tr("gross_now")}</span><b>${num(c.oldGross)}</b></div>
+    <div class="line"><span>${tr("gross_jan")}</span><b class="up">${num(c.jan.gross)}</b></div>
+    <div class="line"><span>${tr("net_now")}</span><b>${num(c.oldSlip.net)}</b></div>
+    <div class="line"><span>${tr("net_jan")}</span><b class="up">${num(c.jan.slip.net)}</b></div>
+
+    <details style="margin:10px 0"><summary>${tr("by_year")}</summary>
+    <div class="how">${tr("by_year_how")}</div>
+    <table class="yr">
+      <tr><th>${tr("yr")}</th><th>${tr("gross_m")}</th><th>${tr("net_m")}</th><th>${tr("gross_y")}</th><th>${tr("net_y")}</th></tr>
+      ${[1,2,3,4].map(fy=>{
+        const rs=c.rows.filter(r=>r.fy===fy);
+        const gy=rs.reduce((s,r)=>s+r.gross,0);
+        const ny=rs.reduce((s,r)=>s+r.slip.net,0);
+        return `<tr><td>${FYN[fy]}</td><td>${num(gy/12)}</td><td>${num(ny/12)}</td><td>${num(gy)}</td><td>${num(ny)}</td></tr>`;
+      }).join("")}
     </table>
-    <div class="sub">Payment dates for the 2025/26 instalments are not yet set in the agreement.</div>
-  </div>
 
-  <div class="box">
-    <h2>Extra gross pay per financial year</h2>
-    <table>
-      <tr><th>Year</th><th>Extra gross</th></tr>
-      ${[1,2,3,4].map(fy=>`<tr><td>${FYN[fy]}</td><td>${num(c.gain[fy])}</td></tr>`).join("")}
-      <tr class="tot"><td>Total</td><td>${num(c.gain[1]+c.gain[2]+c.gain[3]+c.gain[4])}</td></tr>
-    </table>
+    </details>
+    <h3>${tr("yearly")}</h3>
+    ${[1,2,3,4].map(fy=>`<div class="line"><span>${FYN[fy]}</span><b>${sgn(c.gain[fy])}</b></div>`).join("")}
+    <div class="line"><span>${tr("total")}</span><b class="up">${sgn(total)}</b></div>
+    <div class="line"><span>${tr("extra_net")}</span><b class="up">${sgn(c.netExtra)}</b></div>
   </div>`;
 
-  if(c.bookPays.length){
-    const b=c.bookPays[0];
-    h+=`<div class="box"><h2>Annual book and ICT allowance</h2>
-      <div>Gross ${money(b.amount)} a year. Take-home about ${money(b.net)} per payment, paid in ${LONG[p.book]}.</div>
-      <div class="sub">Assumed to start July 2025. Taxed on top of that month's salary.</div></div>`;
+  h+=`<details class="help"><summary>${tr("ex_title")}</summary><div class="helpin">
+    <p>${tr("ex_1",{a:num(back),b:num(c.inst.gross)})}</p>
+    <p>${tr("ex_2",{a:num(c.arr2.gross)})}</p>
+  </div></details>`;
+  h+=`<details class="help"><summary>${tr("terms")}</summary><dl class="terms" style="margin-top:8px">${T[LANG].terms_list.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl></details>`;
+
+  if(p.promo){
+    const base=compute(Object.assign({},p,{promo:null}));
+    const pts=[p.promo.m,18,24,36].filter((v,i,a)=>v<48 && a.indexOf(v)===i).sort((a,b)=>a-b);
+    const cmpRows=pts.map(idx=>{
+      const nowG=base.rows[idx].gross, nowN=base.rows[idx].slip.net-p.other;
+      const newG=c.rows[idx].gross, newN=c.rows[idx].slip.net-p.other;
+      return `<tr><td>${mLabel(idx)}</td><td>${num(nowG)}</td><td>${num(nowN)}</td><td>${num(newG)}</td><td>${num(newN)}</td><td>${sgn(newN-nowN)}</td></tr>`;
+    }).join("");
+    h+=`<div class="receipt" style="margin-top:16px">
+      <h3 style="margin-top:0">${tr("cmp_title")}</h3>
+      <table class="yr">
+        <tr><th>${tr("cmp_month")}</th><th>${tr("cmp_now")} ${gName(p.g0)}|${p.n0}<br>${tr("cmp_gross")}</th><th>${tr("cmp_now")}<br>${tr("cmp_net")}</th><th>${tr("cmp_new")} ${gName(p.promo.grade)}|${p.promo.notch}<br>${tr("cmp_gross")}</th><th>${tr("cmp_new")}<br>${tr("cmp_net")}</th><th>${tr("cmp_diff")}</th></tr>
+        ${cmpRows}
+      </table>
+    </div>`;
   }
 
-  h+=`<div class="box"><details style="margin-top:0"><summary>Key assumptions</summary>
-    <ul class="note">
-      <li>Your pay stays on your July 2025 payslip until December 2026.</li>
-      <li>Increments fall in the month you choose. The first is the next time that month comes after July 2025. Notch 12 is the top.</li>
-      <li>Commuter allowance rises to KES 18,000 in equal steps over three years, or from July 2025 if you choose the full amount.</li>
-      <li>Professorial allowance (UASU grades 15A and 14A) is paid monthly from July 2025 and is included in arrears.</li>
-      <li>New salaries start in January 2027. Arrears for 2025/26 are paid in three equal instalments.</li>
-      <li>Tax uses the 2025 monthly bands with KES 2,400 relief. NSSF is 6% up to KES 108,000. SHIF is 2.75% and the housing levy 1.5% of gross.</li>
-      <li>Annual leave allowance, passage and baggage, professional allowance, SACCO and loans are not included.</li>
-    </ul></details></div>`;
+  if(c.bookPays.length){
+    h+=`<p class="how" style="margin-top:12px">${tr("book_line",{amt:money(c.bookPays[0].amount),m:monthName(p.book),net:money(c.bookPays[0].net)})}</p>`;
+  }
+
+  if(p.payGross!==null || p.payPaye!==null || p.slipNet!==null){
+    const rr=[];
+    if(p.payGross!==null) rr.push([tr("rc_gross"), c.oldGross, p.payGross]);
+    if(p.payPaye!==null)  rr.push([tr("rc_paye"), c.oldSlip.paye, p.payPaye]);
+    if(p.slipNet!==null)  rr.push([tr("rc_net"), c.oldSlip.net-p.other, p.slipNet]);
+    const rowsR=rr.map(([lab,e,pay])=>{
+      const d=e-pay;
+      return `<tr><td>${lab}</td><td>${num(e)}</td><td>${num(pay)}</td><td>${sgn(d)}</td></tr>`;
+    }).join("");
+    const okAll=rr.every(([l,e,pay])=>Math.abs(e-pay)<2);
+    let impl="";
+    if(p.slipNet!==null){
+      impl=`<div class="line" style="margin-top:10px"><span>${tr("rc_implied")}</span><b>${num(c.oldSlip.net-p.slipNet)}</b></div>
+        <div class="line"><span>${tr("rc_entered")}</span><b>${num(p.other)}</b></div>`;
+    }
+    h+=`<div class="receipt" style="margin-top:16px">
+      <h3 style="margin-top:0">${tr("rc_title")}</h3>
+      <table class="yr">
+        <tr><th>${tr("rc_item")}</th><th>${tr("rc_est")}</th><th>${tr("rc_pay")}</th><th>${tr("rc_diff")}</th></tr>
+        ${rowsR}
+      </table>
+      ${impl}
+      <p class="how" style="margin:8px 0 0">${okAll?tr("rc_ok"):tr("rc_check")}</p>
+      <button class="sb" id="saveCheckBtn" type="button" style="margin-top:10px">${tr("save_check")}</button>
+    </div>`;
+  }
+
+  if(p.slipNet!==null){
+    const o=c.oldSlip, n=c.jan.slip, oth=p.other;
+    const now={basic:c.oldBasic,comm:p.cur,house:p.house,oa:p.otherAllow,prof:0,gross:c.oldGross,nssf:o.nssf,paye:o.paye,shif:o.shif,hous:o.housing,pen:o.pension,union:o.union,oth:oth,net:o.net-oth};
+    const jan={basic:c.jan.basic,comm:c.jan.commuter,house:p.house,oa:p.otherAllow,prof:c.jan.prof,gross:c.jan.gross,nssf:n.nssf,paye:n.paye,shif:n.shif,hous:n.housing,pen:n.pension,union:n.union,oth:oth,net:n.net-oth};
+    const keys=[["pc_basic","basic",0],["pc_comm","comm",0],["pc_house","house",0],["pc_oa","oa",0],["pc_prof","prof",0],["pc_gross","gross",1],["pc_nssf","nssf",0],["pc_paye","paye",0],["pc_shif","shif",0],["pc_hous","hous",0],["pc_pen","pen",0],["pc_union","union",0],["pc_oth","oth",0],["pc_net","net",1]];
+    const rowsHtml=keys.filter(([k,f])=>!(f==="prof"&&now.prof===0&&jan.prof===0)).map(([k,f,bold])=>{
+      const a=now[f], b=jan[f];
+      return `<tr${bold?' class="tot"':''}><td>${tr(k)}</td><td>${num(a)}</td><td>${num(b)}</td><td>${sgn(b-a)}</td></tr>`;
+    }).join("");
+    const d=now.net-p.slipNet;
+    const msg=Math.round(d)===0 ? tr("pc_ok") : tr("pc_match",{d:num(Math.abs(d))});
+    h+=`<div class="receipt" style="margin-top:16px">
+      <h3 style="margin-top:0">${tr("compare")}</h3>
+      <div class="how">${tr("pc_how")}</div>
+      <table class="yr">
+        <tr><th>${tr("pc_item")}</th><th>${tr("pc_now")}</th><th>${tr("pc_jan")}</th><th>${tr("pc_chg")}</th></tr>
+        ${rowsHtml}
+      </table>
+      <div class="line" style="margin-top:10px"><span>${tr("pc_payslip")}</span><b>${num(p.slipNet)}</b></div>
+      <p class="how" style="margin:8px 0 0">${msg}</p>
+    </div>`;
+  }
+
+  if(p.other>0 || p.slipNet!==null){
+    const nn=n=>(n<0?"-":"")+num(Math.abs(n));
+    const avg=(fy,from)=>{
+      const rs=c.rows.filter(r=>r.fy===fy && r.m>=from);
+      const k=rs.length;
+      return {gross:rs.reduce((s,r)=>s+r.gross,0)/k, net:rs.reduce((s,r)=>s+r.slip.net,0)/k-p.other};
+    };
+    const lines=[
+      [tr("yrs_jan"), {gross:c.jan.gross, net:c.jan.slip.net-p.other}],
+      [tr("yrs_fy",{fy:FYN[2]}), avg(2,18)],
+      [tr("yrs_fy",{fy:FYN[3]}), avg(3,0)],
+      [tr("yrs_fy",{fy:FYN[4]}), avg(4,0)]
+    ];
+    const rowsH=lines.map(([lab,v])=>{
+      const chg = p.slipNet!==null ? sgn(v.net-p.slipNet) : "-";
+      return `<tr><td>${lab}</td><td>${num(v.gross)}</td><td>${nn(v.net)}</td><td>${chg}</td></tr>`;
+    }).join("");
+    const warnH = p.other > c.oldSlip.net ? `<div class="warn">${tr("yrs_warn")}</div>` : "";
+    h+=`<div class="receipt" style="margin-top:16px">
+      <h3 style="margin-top:0">${tr("yrs_title")}</h3>
+      <div class="how">${tr("yrs_how")}</div>
+      ${warnH}
+      <table class="yr">
+        <tr><th>${tr("yrs_per")}</th><th>${tr("yrs_gross")}</th><th>${tr("yrs_net")}</th><th>${tr("yrs_chg")}</th></tr>
+        ${rowsH}
+      </table>
+    </div>`;
+  }
+
+  h+=checksBlock();
+  h+=`<p class="how">${tr("pv_note")}</p>`;
+  h+=`<details class="help"><summary>${tr("mismatch_title")}</summary>
+    <ol class="list">${tr("help_mismatch").map(x=>`<li>${x}</li>`).join("")}</ol></details>`;
 
   $("out").innerHTML=h;
+  $("printHead").innerHTML=`<b>${tr("title")}</b><br>Version 2.1 | Return to Work Formula, 30 October 2026<br>${tr("printed")}: ${new Date().toLocaleDateString(LANG==="sw"?"sw-KE":"en-GB")}<br>${tr("inputs")}: ${gName(p.g0)}, ${tr("notch")} ${p.n0}, ${tr("commuter")} ${num(p.cur)}, ${tr("house")} ${num(p.house)}, ${tr("pension")} ${p.pct}%`;
+  const fyTot=c.gain[1]+c.gain[2]+c.gain[3]+c.gain[4];
+  $("printSummary").innerHTML=`<div style="margin-top:8px"><b>${tr("summary_title")}</b><br>
+    ${tr("backpay_hdr")}: ${money(back)}<br>
+    ${tr("backpay_sub")} ${money(takeBack)}<br>
+    ${tr("gross_jan")}: ${money(c.jan.gross)}<br>
+    ${tr("net_jan")}: ${money(c.jan.slip.net)}<br>
+    ${tr("total")}: ${sgn(fyTot)}<br>
+    ${tr("extra_net")}: ${sgn(c.netExtra)}</div>`;
+  const yr=[1,2,3,4].map(fy=>{
+    const rs=c.rows.filter(r=>r.fy===fy);
+    const gy=rs.reduce((a,r)=>a+r.gross,0)/12;
+    const ny=rs.reduce((a,r)=>a+r.slip.net,0)/12-p.other;
+    return `<tr><td>${FYN[fy]}</td><td>${num(gy)}</td><td>${num(ny)}</td></tr>`;
+  }).join("");
+  const yesNo=v=>v?tr("hr_yes"):tr("hr_no");
+  const buildHr=()=>`<div class="hrp">
+    <h1>${tr("hr_title")}</h1>
+    <div class="hrm">${$("univName").value?$("univName").value+" | ":""}${tr("title")} | ${tr("hr_prepared")}: ${new Date().toLocaleDateString(LANG==="sw"?"sw-KE":"en-GB")} | Version 2.1 | Return to Work Formula, 30 October 2026</div>
+    <div class="hrcols">
+      <div>
+        <h2>${tr("hr_inputs")}</h2>
+        <table>
+          <tr><td>${tr("hr_staff")}</td><td>${CAT==="UASU"?"UASU":"KUSU"}</td></tr>
+          <tr><td>${tr("hr_grade")}</td><td>${gName(p.g0)}</td></tr>
+          <tr><td>${tr("hr_notch")}</td><td>${p.n0} (${num(TABLE[p.g0][p.n0-1][0])})</td></tr>
+          <tr><td>${tr("commuter")}</td><td>${num(p.cur)}${p.uniRate?" ("+tr("uni_rate_short")+")":""}</td></tr>
+          <tr><td>${tr("house")}</td><td>${num(p.house)}</td></tr>
+          <tr><td>${tr("hr_other")}</td><td>${num(p.other)}</td></tr>
+          <tr><td>${tr("hr_pension")}</td><td>${p.pct}%${penCapped?" ("+tr("pen_capped_note")+")":""}</td></tr>
+          <tr><td>${tr("hr_nssf")}</td><td>${yesNo(p.nssf)}</td></tr>
+          ${p.uniRate?`<tr><td>${tr("uni_until")}</td><td>${p.uniUntil!=null?mLabel(p.uniUntil):tr("hr_none")}</td></tr>`:""}
+          <tr><td>${tr("hr_promo")}</td><td>${p.promo?gName(p.promo.grade)+"|"+p.promo.notch+" ("+mLabel(p.promo.m)+")":tr("hr_none")}</td></tr>
+        </table>
+      </div>
+      <div>
+        <h2>${tr("hr_results")}</h2>
+        <table>
+          <tr><td>${tr("backpay_hdr")}</td><td>${num(back)}</td></tr>
+          <tr><td>${tr("inst_net")}</td><td>${num(c.inst.net)}</td></tr>
+          <tr><td>${tr("arr2_gross")}</td><td>${num(c.arr2.gross)}</td></tr>
+          <tr><td>${tr("gross_jan")}</td><td>${num(c.jan.gross)}</td></tr>
+          <tr><td>${tr("net_jan")}</td><td>${num(c.jan.slip.net-p.other)}</td></tr>
+          <tr><td>${tr("extra_net")}</td><td>${sgn(c.netExtra)}</td></tr>
+        </table>
+      </div>
+    </div>
+    <h2>${tr("monthly")}</h2>
+    <table><tr><th></th><th>${tr("gross_m")}</th><th>${tr("net_m")}</th></tr>${yr}</table>
+    <h2>${tr("how_title")}</h2>
+    <p class="hrn" style="margin-top:0">${tr("ex_1",{a:num(c.a1G),b:num(c.inst.gross)})}</p>
+    <p class="hrn" style="margin-top:4px">${tr("ex_2",{a:num(c.arr2.gross)})}</p>
+    <p class="hrn">${tr("hr_note")}</p>
+    <div class="hrsign">${tr("hr_sign")}: ____________________________</div>
+  </div>`;
+  const prevLang=LANG;
+  LANG=p.hrLang||"en";
+  const hrHtml=buildHr();
+  LANG=prevLang;
+  $("hrPrint").innerHTML=hrHtml;
+  $("hrPreview").innerHTML=hrHtml;
+  save();
 }
 
-function init(){
-  const n=$("n0"); for(let i=1;i<=12;i++) n.add(new Option("Notch "+i,i)); n.value=12;
-  const inc=$("inc"); LONG.forEach((mn,i)=>inc.add(new Option(mn,i))); inc.value=6;
-  const bm=$("bookM"); LONG.forEach((mn,i)=>bm.add(new Option(mn,i))); bm.value=6;
-  const pm=$("promoM"); pm.add(new Option("No promotion",-1));
-  for(let m=0;m<48;m++) pm.add(new Option(label(m),m));
-  pm.value=-1;
-  const pn=$("promoN"); for(let i=1;i<=12;i++) pn.add(new Option("Notch "+i,i)); pn.value=1;
+/* ===== Help panels ===== */
+function mapTable(rows){
+  return `<table class="yr"><tr><th>${tr("map_line")}</th><th>${tr("map_field")}</th><th>${tr("map_enter")}</th></tr>${rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("")}</table>`;
+}
+function faqHTML(){
+  return `<p><b>${tr("faq_title")}</b></p>` + tr("faq").map(([q,a])=>`<p><b>${q}</b><br>${a}</p>`).join("");
+}
+function helpBlock(n){
+  let body="";
+  if(n===1){ body=tr("h1_body").map(x=>`<p>${x}</p>`).join(""); }
+  if(n===2){ body=mapTable(tr("h2_map")) + faqHTML(); }
+  if(n===3){
+    body=mapTable(tr("h3_map"))
+      + `<p><b>${tr("help_no_title")}</b></p><ul>${tr("help_no").map(x=>`<li>${x}</li>`).join("")}</ul>`
+      + `<p>${tr("help_privacy")}</p><p>${tr("help_who")}</p><p>${tr("help_rules")}</p>`;
+  }
+  return `<details class="help"><summary>${tr("help_btn")}</summary><div class="helpin">${body}</div></details>`;
+}
+function renderHelp(){
+  [1,2,3].forEach(n=>{ $("help"+n).innerHTML=helpBlock(n); });
+}
 
+/* ===== Saved payslip checks (last three, on this device) ===== */
+const CHK_KEY="cba-checks-2.0";
+function checksList(){ try{ return JSON.parse(localStorage.getItem(CHK_KEY)||"[]"); }catch(e){ return []; } }
+function saveCheck(p){
+  const list=checksList();
+  list.unshift({d:new Date().toISOString().slice(0,10), g:p.payGross, paye:p.payPaye, net:p.slipNet});
+  try{ localStorage.setItem(CHK_KEY, JSON.stringify(list.slice(0,3))); }catch(e){}
+}
+function checksBlock(){
+  const list=checksList();
+  if(!list.length) return "";
+  const rowsC=list.map(x=>`<tr><td>${x.d}</td><td>${x.g==null?"-":num(x.g)}</td><td>${x.paye==null?"-":num(x.paye)}</td><td>${x.net==null?"-":num(x.net)}</td></tr>`).join("");
+  return `<div class="receipt" style="margin-top:16px">
+    <h3 style="margin-top:0">${tr("checks_title")}</h3>
+    <table class="yr"><tr><th>${tr("chk_date")}</th><th>${tr("chk_gross")}</th><th>${tr("chk_paye")}</th><th>${tr("chk_net")}</th></tr>${rowsC}</table>
+    <p class="how" style="margin:8px 0 0">${tr("checks_max")}</p>
+  </div>`;
+}
+
+/* ===== Tabs: estimator or about ===== */
+function setView(v){
+  const est=(v==="est");
+  $("tabEst").setAttribute("aria-pressed",est);
+  $("tabAbout").setAttribute("aria-pressed",!est);
+  document.querySelector(".track").hidden=!est;
+  $("stepno").hidden=!est;
+  $("aboutView").hidden=est;
+  if(est){ show(step,true); }
+  else { ["s1","s2","s3","s4","nav","feedback"].forEach(id=>{ $(id).hidden=true; }); $("aboutH").focus({preventScroll:true}); }
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ===== Save, restore and reset ===== */
+const DEFAULTS={cat:"UASU",g0:10,n0:12,commuter:15000,house:27800,pension:10,nssf:true,pensionMode:"pct",inc:6,mode:"gradual",bookM:6,basicCheck:"",payslipNet:"",promoM:-1,promoG:11,promoN:1,otherDed:"",otherAllow:"",payGross:"",payPaye:"",totalDed:"",univ:"",uniHigher:false,uniRateVal:"",hrLang:"en",uniUntil:""};
+const KEY="cba-estimator-v2";
+
+function currentState(){
+  return {cat:catNow(),g0:+$("g0").value,n0:+$("n0").value,commuter:$("commuter").value,house:$("house").value,
+    pension:$("pension").value,pensionMode:$("pensionMode").value,nssf:$("nssf").checked,inc:+$("inc").value,mode:$("mode").value,bookM:+$("bookM").value,
+    basicCheck:$("basicCheck").value,payslipNet:$("payslipNet").value,promoM:+$("promoM").value,promoG:+$("promoG").value,promoN:+$("promoN").value,otherDed:$("otherDed").value,otherAllow:$("otherAllow").value,payGross:$("payGross").value,payPaye:$("payPaye").value,totalDed:$("totalDed").value,univ:$("univName").value,uniHigher:$("uniHigher").checked,uniRateVal:$("uniRateVal").value,hrLang:$("hrLang").value,uniUntil:$("uniUntil").value};
+}
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(currentState())); }catch(e){} }
+
+function applyState(s){
+  document.querySelector(`input[name=cat][value=${s.cat}]`).checked=true;
   setCat();
-  fillGrades($("g0"),10,10);
-  fillGrades($("promoG"),11,11);
+  fillGrades($("g0"),s.g0,10);
+  fillGrades($("promoG"),s.promoG,11);
+  refreshNotches($("n0"),+$("g0").value,s.n0);
+  refreshNotches($("promoN"),+$("promoG").value,s.promoN);
+  $("commuter").value=s.commuter; $("house").value=s.house; $("pension").value=s.pension; $("pensionMode").value=s.pensionMode||"pct";
+  $("nssf").checked=s.nssf; $("inc").value=s.inc; $("mode").value=s.mode; $("bookM").value=s.bookM;
+  $("basicCheck").value=s.basicCheck; $("payslipNet").value=s.payslipNet;
+  $("promoM").value=s.promoM;
+  $("otherDed").value=s.otherDed||"";
+  $("otherAllow").value=s.otherAllow||"";
+  $("payGross").value=s.payGross||"";
+  $("payPaye").value=s.payPaye||"";
+  $("totalDed").value=s.totalDed||"";
+  $("univName").value=s.univ||"";
+  $("uniHigher").checked=!!s.uniHigher; $("uniRateVal").value=s.uniRateVal||""; $("uniBox").hidden=!s.uniHigher; $("hrLang").value=s.hrLang||"en"; $("uniUntil").value=s.uniUntil||"";
+}
 
-  document.querySelectorAll("#form input, #form select").forEach(el=>{
-    el.addEventListener("input",render);
-    el.addEventListener("change",render);
-  });
-  document.querySelectorAll("input[name=cat]").forEach(el=>{
-    el.addEventListener("change",()=>{
-      setCat();
-      fillGrades($("g0"),+$("g0").value,10);
-      fillGrades($("promoG"),+$("promoG").value,11);
-      render();
-    });
-  });
+function loadState(){
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(raw){ const s=JSON.parse(raw); if(s && s.cat) return s; }
+  }catch(e){}
+  return null;
+}
 
-  setupShare();
-  setupFeedback();
+function resetAll(){
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  applyState(DEFAULTS);
+  show(1);
+  $("msg").textContent=tr("reset_done");
   render();
 }
 
+/* ===== Share and feedback ===== */
 function setupShare(){
   const isWeb=location.protocol==="http:"||location.protocol==="https:";
   const url=isWeb?location.href.split("#")[0]:"";
-  const text="Estimate your 2025–2029 CBA pay (academic and administrative staff) with this free calculator:";
+  const text=LANG==="sw"?"Kikokotoo cha malipo ya CBA 2025-2029 (kitaaluma na utawala):":"Estimate your 2025-2029 CBA pay (academic and administrative staff) with this free calculator:";
   const full=url?`${text} ${url}`:text;
   $("shareWa").href="https://wa.me/?text="+encodeURIComponent(full);
   $("shareFb").href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url||"https://www.facebook.com/");
-  $("copyBtn").addEventListener("click",()=>{
-    const value=url||full;
-    if(navigator.clipboard){
-      navigator.clipboard.writeText(value).then(()=>{$("copyBtn").textContent="Copied ✓";});
-    }
-  });
+  $("copyBtn").onclick=()=>{ if(navigator.clipboard) navigator.clipboard.writeText(url||full).then(()=>{$("copyBtn").textContent=tr("copied");}); };
 }
 
 function setupFeedback(){
   const TO="suleiman.abdullahi.gaitho@gmail.com";
   function build(){
     const t=$("fbText").value.trim();
-    const r=document.querySelector("input[name=rate]:checked");
     const L=["Type: "+$("fbType").value];
-    if(r) L.push("Rating: "+r.value);
-    if($("fbName").value.trim()) L.push("Name: "+$("fbName").value.trim());
     if($("fbCtx").checked){
       const p=readInputs();
       L.push("Context: "+(CAT==="UASU"?"Academic (UASU)":"Administrative (KUSU)")+", grade "+gName(p.g0)+", notch "+p.n0);
     }
     return {t,body:L.join("\n")+"\n\n"+t};
   }
-  const say=m=>{$("fbMsg").textContent=m;};
-  $("fbSend").addEventListener("click",()=>{
+  $("fbSend").onclick=()=>{
     const b=build();
-    if(!b.t){say("Please type a message first.");$("fbText").focus();return;}
+    if(!b.t){$("fbMsg").textContent=tr("fb_empty");$("fbText").focus();return;}
     location.href="mailto:"+TO+"?subject="+encodeURIComponent("Pay estimator feedback: "+$("fbType").value)+"&body="+encodeURIComponent(b.body);
-    say("Opening your email app. If nothing opens, use Copy message and send it to "+TO+".");
-  });
-  $("fbCopy").addEventListener("click",()=>{
+    $("fbMsg").textContent=tr("fb_sent");
+  };
+  $("fbCopy").onclick=()=>{
     const b=build();
-    if(!b.t){say("Please type a message first.");$("fbText").focus();return;}
-    if(navigator.clipboard){navigator.clipboard.writeText(b.body).then(()=>say("Copied. Paste it in an email or WhatsApp to "+TO+"."),()=>say("Could not copy. Please select the text and copy it."));}
+    if(!b.t){$("fbMsg").textContent=tr("fb_empty");$("fbText").focus();return;}
+    if(navigator.clipboard) navigator.clipboard.writeText(b.body).then(()=>{$("fbMsg").textContent=tr("fb_copied");});
+  };
+}
+
+/* ===== Init ===== */
+function init(){
+  const pn=$("promoN"); pn.innerHTML=""; for(let i=1;i<=12;i++) pn.add(new Option("Notch "+i,i));
+  buildMonthOptions();
+  setCat();
+  fillGrades($("g0"),10,10);
+  fillGrades($("promoG"),11,11);
+  refreshNotches($("n0"),10,12);
+  refreshNotches($("promoN"),11,1);
+
+  const saved=loadState();
+  applyState(saved||DEFAULTS);
+
+  try{ const l=localStorage.getItem("cba-lang"); if(l==="sw") LANG="sw"; }catch(e){}
+  try{ const hl=localStorage.getItem("cba-hrlang"); $("hrLang").value = resolveHrLang(hl, saved, LANG); }catch(e){}
+
+  document.querySelectorAll("input[name=cat]").forEach(el=>el.addEventListener("change",()=>{
+    setCat();
+    fillGrades($("g0"),+$("g0").value,10);
+    fillGrades($("promoG"),+$("promoG").value,11);
+    refreshNotches($("n0"),+$("g0").value);
+    refreshNotches($("promoN"),+$("promoG").value);
+    if(step===4) render(); else save();
+  }));
+  $("g0").addEventListener("change",()=>{ setCat(); refreshNotches($("n0"),+$("g0").value); if(step===4) render(); else save(); });
+  $("promoG").addEventListener("change",()=>{ setCat(); refreshNotches($("promoN"),+$("promoG").value); if(step===4) render(); else save(); });
+
+  $("uniHigher").addEventListener("change",()=>{ $("uniBox").hidden=!$("uniHigher").checked; if(!$("uniHigher").checked){ $("uniUntil").value=""; } if(step===4) render(); else save(); });
+  $("hrLang").addEventListener("change",()=>{ try{ localStorage.setItem("cba-hrlang",$("hrLang").value); }catch(e){} if(step===4) render(); else save(); });
+  $("basicCheck").addEventListener("input",()=>{
+    setCat();
+    const v=$("basicCheck").value; if(v==="") return;
+    const g=+$("g0").value;
+    for(let n=1;n<=12;n++){ if(TABLE[g][n-1][0]===+v){ $("n0").value=n; break; } }
   });
+  const updateLive=()=>{
+    const el=$("loansLive"); const raw=$("totalDed").value;
+    if(raw===""){ el.textContent=""; return; }
+    const p=readInputs();
+    const v=loansFromTotal(p, compute(p).oldSlip, +raw);
+    el.textContent=tr("loans_live",{v:num(v)});
+  };
+  $("totalDed").addEventListener("input",updateLive);
+  $("g0").addEventListener("change",updateLive);
+  $("n0").addEventListener("change",updateLive);
+
+  document.querySelectorAll("#s1 input, #s2 input, #s3 input, #s3 select, #s2 select").forEach(el=>{
+    el.addEventListener("input",()=>{ if(step===4) render(); else save(); });
+    el.addEventListener("change",()=>{ if(step===4) render(); else save(); });
+  });
+
+  document.addEventListener("click",e=>{
+    if(e.target && e.target.id==="saveCheckBtn"){ saveCheck(readInputs()); render(); }
+  });
+  $("reportWrong").addEventListener("click",e=>{
+    e.preventDefault();
+    show(4,true);
+    $("fbType").value="Wrong figure";
+    $("feedback").scrollIntoView({behavior:"smooth"});
+    $("fbText").focus({preventScroll:true});
+  });
+
+  const CONTACT_PHONE="0798 538 172";   // shown as entered; the line stays hidden while empty
+  if(CONTACT_PHONE){
+    const digits=CONTACT_PHONE.replace(/\D+/g,"");
+    const intl = digits.startsWith("0") ? "+254"+digits.slice(1) : "+"+digits;
+    $("phoneLink").textContent=CONTACT_PHONE;
+    $("phoneLink").href="tel:"+intl;
+    $("phoneRow").hidden=false;
+  }
+  $("startPayslip").onclick=()=>{ show(3); $("payGross").focus({preventScroll:true}); };
+  $("forgetBtn").onclick=resetAll;
+  $("printStep3").onclick=()=>{ doPrint(); };
+  document.addEventListener("keydown",e=>{
+    if((e.ctrlKey||e.metaKey) && !e.shiftKey && !e.altKey && e.key.toLowerCase()==="p"){
+      e.preventDefault();
+      doPrint();
+    }
+  });
+  $("pdfBtn").onclick=()=>{ doPrint(); };
+  $("tabEst").onclick=()=>setView("est");
+  $("tabAbout").onclick=()=>setView("about");
+
+  $("langEn").onclick=()=>{LANG="en";applyLang();};
+  $("gEn").onclick=()=>{LANG="en";applyLang();};
+  $("gSw").onclick=()=>{LANG="sw";applyLang();};
+  $("langSw").onclick=()=>{LANG="sw";applyLang();};
+  $("next").onclick=()=>{
+    const ids = step===1 ? ["g0","n0"] : step===2 ? ["commuter","house","pension"] : [];
+    const miss = missingFor(ids);
+    if(miss.length){
+      $("formErr").textContent = tr("err_fill",{f:missingNames(miss).join(", ")});
+      $(miss[0]).focus();
+      return;
+    }
+    $("formErr").textContent="";
+    if(step<3) show(step+1); else show(4);
+  };
+  $("back").onclick=()=>{ if(step>1) show(step-1); };
+  $("editBtn").onclick=()=>show(3);
+  $("resetBtn").onclick=resetAll;
+  $("printBtn").onclick=()=>{ doPrint(); };
+
+  setupShare();
+  setupFeedback();
+  applyLang();
+  show(1,true);
+  $("msg").textContent=tr("saved");
+
+  const GATE_KEY="cba-accept-2.1-2026-11-02";
+  let accepted=false;
+  try{ accepted=localStorage.getItem(GATE_KEY)==="yes"; }catch(e){}
+  if(accepted){ $("gate").hidden=true; }
+  else {
+    $("gate").hidden=false;
+    $("gateCheck").addEventListener("change",()=>{ $("gateBtn").disabled=!$("gateCheck").checked; });
+    $("gateBtn").addEventListener("click",()=>{
+      if(!$("gateCheck").checked) return;
+      try{ localStorage.setItem(GATE_KEY,"yes"); }catch(e){}
+      $("gate").hidden=true;
+      $("h1").focus();
+    });
+    setTimeout(()=>$("gateCheck").focus(),0);
+  }
 }
 
 init();
