@@ -148,6 +148,80 @@ ul.list li{margin-bottom:6px}
   .total small,.total .sub{color:#000}
   .receipt{border:1px solid #000}
 }
+
+/* ===== Full-width layout, smaller and readable type ===== */
+body{font-size:15px;line-height:1.55}
+.app{max-width:none;width:100%;min-height:100vh;padding:0 clamp(16px,4vw,48px) 40px}
+.top{position:sticky;top:0;z-index:20;margin:0 calc(-1*clamp(16px,4vw,48px)) 14px;padding:12px clamp(16px,4vw,48px);background:var(--paper);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.2) blur(6px)}
+.brand b{font-size:16px}
+.brand small{font-size:12px}
+.mark{width:36px;height:36px;font-size:13px;border-radius:10px}
+.lang button{padding:6px 11px;font-size:12px}
+.tabs{margin-bottom:12px}
+.tabs button{min-height:40px;font-size:14px}
+.track{height:5px}
+.stepno{font-size:11px;margin:4px 0 12px}
+.panel{padding:clamp(18px,2.2vw,28px);border-radius:18px}
+h2{font-size:20px;margin-bottom:4px}
+h3{font-size:14px;margin:18px 0 6px}
+.lede{font-size:14px;margin-bottom:16px}
+.field label,.field .lbl{font-size:12.5px;margin-bottom:5px}
+.why,.hint,.how{font-size:12px}
+label{font-size:12.5px}
+select,input[type=number],input[type=text],textarea{height:40px;font-size:14px;padding:0 11px}
+textarea{padding:10px 11px}
+.opt{padding:13px 15px;border-radius:14px}
+.opt b{font-size:15px}
+.opt small{font-size:12.5px}
+.check,.toggle{font-size:13.5px;height:40px;padding:10px 13px}
+.btn{min-height:44px;font-size:14px;padding:0 14px;border-radius:12px}
+.sb{min-height:40px;font-size:13px;padding:0 14px;border-radius:10px}
+.nav{gap:10px;margin-top:14px;justify-content:flex-end}
+.nav .btn{flex:0 0 auto;min-width:132px;min-height:40px;font-size:14px;padding:0 20px}
+.nav .btn.ghost{min-width:0}
+details summary{font-size:13.5px}
+.hero{padding:18px 20px;border-radius:14px}
+.total{padding:18px 20px;border-radius:14px}
+.total small,.hero small{font-size:12.5px}
+.total .amt,.hero .amt{font-size:28px}
+.total .sub,.hero .sub{font-size:12.5px}
+.stat{padding:12px 14px}
+.stat small{font-size:11px}
+.stat b{font-size:16px}
+.stat span{font-size:11px}
+.line{font-size:13px;padding:9px 0}
+.receipt{padding:14px 16px;border-radius:14px}
+table{font-size:13px}
+table.yr{font-size:12.5px}
+th,td{padding:7px 5px}
+th{font-size:11px}
+.status{font-size:13px;padding:10px 12px;border-radius:10px}
+.warn{font-size:12.5px;padding:9px 11px;border-radius:10px}
+.gatebox{padding:20px;font-size:13.5px}
+.gatebox h2{font-size:18px}
+.gatebox p{font-size:13.5px}
+.legal{font-size:11px}
+.foot{font-size:11px}
+.badge{font-size:11px}
+
+/* two columns on wide screens; a single column on phones */
+@media(min-width:900px){
+  .choice{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  #aboutView .choice{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:1180px){
+  #out{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  #out>*{min-width:0}
+  #out>.total,#out>.stats,#out>.warn,#out>.status{grid-column:1/-1}
+  #s2 .row{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  body{font-size:14.5px}
+  .total .amt,.hero .amt{font-size:24px}
+  .row,.choice{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>

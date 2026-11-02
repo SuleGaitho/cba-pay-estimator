@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Layout spans the full page width. Two columns on wider screens, one column on phones.
+- Smaller, more readable type throughout, with a sticky header bar.
+
 - Fixed: a grade outside the current scale (for example, grade 9 under UASU) caused an error when the notch list was updated. The notch list now leaves itself unchanged in that case.
 - Fixed: the pension warning appeared only on the results page. It now appears straight away in Step 2.
 - Fixed: "Forget my answers" cleared the house allowance and did not restore the suggested amount.
