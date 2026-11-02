@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CBA 2025–2029 Pay Estimator | Kenyan Public Universities</title>
+<meta name="author" content="Suleiman Gaitho">
+<meta name="version" content="1.0">
+<meta name="description" content="Free pay estimator for Kenyan public university staff (UASU and KUSU): new salary, back pay and take-home under the 2025–2029 CBA.">
+<meta property="og:title" content="CBA 2025–2029 Pay Estimator">
+<meta property="og:description" content="Estimate your new salary, back pay and take-home pay. For UASU and KUSU staff in Kenyan public universities.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%B0%3C/text%3E%3C/svg%3E">
+<style>
+:root{--ink:#0f172a;--mute:#64748b;--line:#e2e8f0;--bg:#f1f5f4;--card:#fff;--soft:#f1f5f9;--acc:#0f766e;--acc2:#115e59;--up:#15803d;--shadow:0 1px 2px rgba(15,23,42,.05),0 8px 24px -12px rgba(15,23,42,.12)}
+@media(prefers-color-scheme:dark){:root{--ink:#e6edf3;--mute:#94a3b8;--line:#243041;--bg:#0b1220;--card:#111a2b;--soft:#182235;--acc:#2dd4bf;--acc2:#14b8a6;--up:#4ade80;--shadow:0 8px 24px -12px rgba(0,0,0,.6)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif}
+.top{background:linear-gradient(135deg,#064e3b 0%,#0f766e 55%,#0e7490 100%);color:#fff;padding:34px 16px 74px}
+.top .in{max-width:760px;margin:0 auto}
+.badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 12px;margin-bottom:12px}
+h1{font-size:clamp(24px,5vw,34px);line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
+.lead{color:rgba(255,255,255,.88);margin:0;font-size:15.5px;max-width:560px}
+.page{max-width:760px;margin:-48px auto 0;padding:0 16px 48px;position:relative}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
+.box h2{font-size:12px;margin:0 0 14px;text-transform:uppercase;letter-spacing:.07em;color:var(--mute);font-weight:700}
+.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--soft);border-radius:12px;padding:4px;gap:4px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{margin:0;text-align:center;padding:11px 8px;border-radius:9px;font-weight:600;font-size:15px;cursor:pointer;color:var(--mute);transition:all .15s}
+.seg input:checked+label{background:var(--acc);color:#fff;box-shadow:0 2px 8px rgba(15,118,110,.35)}
+@media(prefers-color-scheme:dark){.seg input:checked+label{color:#052e2b}}
+.seg input:focus-visible+label{outline:2px solid var(--acc);outline-offset:2px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin-bottom:5px}
+input[type=number],select{width:100%;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:16px;background:var(--card);color:var(--ink);transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(15,118,110,.2)}
+.check{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500;height:42px;margin:0;color:var(--ink)}
+.check input{width:20px;height:20px;accent-color:var(--acc)}
+details{margin-top:16px}
+summary{cursor:pointer;font-weight:600;color:var(--acc);font-size:15px;padding:6px 0}
+.hero{background:linear-gradient(135deg,#0f766e,#0e7490);color:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 12px 28px -12px rgba(15,118,110,.55)}
+.hero small{opacity:.9;font-size:13px;display:block}
+.hero .amt{font-size:clamp(32px,8vw,44px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:4px 0 10px;line-height:1.1}
+.hero small:last-child{display:inline-block;background:rgba(255,255,255,.18);padding:5px 12px;border-radius:999px;font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+@media(max-width:600px){.stats{grid-template-columns:1fr}}
+.stat{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+.stat small{color:var(--mute);font-size:12px;display:block;line-height:1.3;font-weight:600}
+.stat b{font-size:20px;font-variant-numeric:tabular-nums;display:block;margin-top:6px}
+.stat span{font-size:12px;color:var(--mute)}
+table{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{padding:11px 6px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;color:var(--mute);font-weight:600}
+tr.tot td{font-weight:700;border-bottom:none;background:var(--soft)}
+tr.tot td:first-child{border-radius:8px 0 0 8px}tr.tot td:last-child{border-radius:0 8px 8px 0}
+.pos{color:var(--up);font-weight:700}
+.warn{background:#fef9c3;border:1px solid #facc15;color:#713f12;border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:16px}
+.note{font-size:14px;color:var(--mute);margin:6px 0 0;padding-left:18px}
+.note li{margin-bottom:6px}
+.sub{font-size:13px;color:var(--mute);margin-top:10px}
+.share{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 18px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .1s}
+.btn:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
+.btn.wa{background:#25d366;border-color:#25d366;color:#fff}
+.btn.wa:hover{background:#1ebe5a;border-color:#1ebe5a;color:#fff}
+.btn.fb{background:#1877f2;border-color:#1877f2;color:#fff}
+.btn.fb:hover{background:#166fe5;border-color:#166fe5;color:#fff}
+.foot{font-size:12.5px;color:var(--mute);margin-top:20px;line-height:1.7;text-align:center}
+.credit{margin-top:14px;padding:16px;border-radius:14px;background:var(--card);border:1px solid var(--line);color:var(--ink);font-size:14px}
+.credit a{color:var(--acc);font-weight:600;word-break:break-all}
+.fdbk textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px;background:var(--card);color:var(--ink);resize:vertical}
+.fdbk textarea:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(15,118,110,.2)}
+.fdbk p{margin:0 0 14px;color:var(--mute);font-size:14px}
+.rate{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rate input{position:absolute;opacity:0;pointer-events:none}
+.rate label{margin:0;text-align:center;padding:10px 6px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)}
+.rate input:checked+label{background:var(--acc);border-color:var(--acc);color:#fff}
+@media(prefers-color-scheme:dark){.rate input:checked+label{color:#052e2b}}
+.rate input:focus-visible+label{outline:2px solid var(--acc);outline-offset:2px}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{color:#fff;opacity:.92}
+@media(prefers-color-scheme:dark){.btn.pri,.btn.pri:hover{color:#052e2b}}
+#fbMsg{font-size:13px;color:var(--up);margin-top:10px;min-height:18px}
+.how ol{margin:6px 0 0;padding-left:20px;font-size:14.5px;color:var(--ink)}
+.how li{margin-bottom:8px}
+.how b{color:var(--acc)}
+.ver{display:inline-block;font-size:12px;font-weight:700;background:var(--soft);color:var(--acc);border-radius:6px;padding:2px 8px;margin-left:6px}
+@media print{.how,.fdbk,.top{background:#fff;color:#000;padding:0}.lead{color:#444}.badge,.share,summary,#form,.foot,.seg{display:none}.page{margin:0}.box,.hero,.stat{box-shadow:none}.hero{background:#fff;color:#000;border:1px solid #000}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <span class="badge">Version 1.0 · UASU &amp; KUSU</span>
+  <h1>CBA 2025–2029 pay estimator</h1>
+  <p class="lead">Estimate your new salary, back pay and take-home under the Return to Work Formula of 30 October 2026.</p>
+</div></header>
+<div class="page">
+
+  <div class="box how">
+    <details>
+      <summary style="margin:0">How to use <span class="ver">V1.0</span></summary>
+      <ol>
+        <li><b>Pick your staff group:</b> Academic (UASU) or Administrative (KUSU).</li>
+        <li><b>Choose your grade and notch</b> exactly as on your July 2025 payslip.</li>
+        <li><b>Enter your allowances:</b> current commuter allowance, house allowance and pension percentage. Tick or untick NSSF to match your payslip.</li>
+        <li><b>Set your increment month</b> (the month your notch normally moves up).</li>
+        <li><b>Open More options</b> if you were promoted, want the full commuter amount from July 2025, or need to set the month book and ICT allowance is paid (UASU).</li>
+        <li><b>Read your results:</b> back pay, new monthly gross and take-home, the two back pay payments, and extra pay per financial year.</li>
+        <li><b>Check yourself:</b> type your July 2025 basic in "Basic on July 2025 payslip". A warning appears if it does not match your grade and notch.</li>
+        <li><b>Share, print or send feedback</b> using the buttons at the bottom of the page.</li>
+      </ol>
+      <p class="sub">Results update instantly as you change any field. Nothing you enter leaves your device.</p>
+    </details>
+  </div>
+
+  <div class="box">
+    <h2>Staff group</h2>
+    <div class="seg" role="radiogroup" aria-label="Staff group">
+      <input type="radio" name="cat" id="catU" value="UASU" checked><label for="catU">Academic (UASU)</label>
+      <input type="radio" name="cat" id="catK" value="KUSU"><label for="catK">Administrative (KUSU)</label>
+    </div>
+  </div>
+
+  <form class="box" id="form" onsubmit="return false">
+    <h2>Your details</h2>
+    <div class="grid">
+      <div><label for="g0">Grade</label><select id="g0"></select></div>
+      <div><label for="n0">Notch</label><select id="n0"></select></div>
+      <div><label for="commuter">Commuter now (KES/month)</label><input type="number" id="commuter" value="15000" min="0"></div>
+      <div><label for="house">House allowance (KES/month)</label><input type="number" id="house" value="27800" min="0"></div>
+      <div><label for="pension">Pension (% of basic)</label><input type="number" id="pension" value="10" min="0" max="20" step="0.5"></div>
+      <div><label for="inc">Increment month</label><select id="inc"></select></div>
+      <div class="full"><label class="check"><input type="checkbox" id="nssf" checked> Deduct NSSF (6%, up to KES 108,000)</label></div>
+    </div>
+    <details>
+      <summary>More options</summary>
+      <div class="grid" style="margin-top:12px">
+        <div><label for="mode">Commuter increase</label><select id="mode"><option value="gradual">Phased over 3 years</option><option value="full">Full KES 18,000 from Jul 2025</option></select></div>
+        <div><label for="bookM">Book &amp; ICT paid in (UASU)</label><select id="bookM"></select></div>
+        <div><label for="basicCheck">Basic on July 2025 payslip (check)</label><input type="number" id="basicCheck" placeholder="optional" min="0"></div>
+        <div><label for="promoM">Promotion from</label><select id="promoM"></select></div>
+        <div><label for="promoG">New grade</label><select id="promoG"></select></div>
+        <div><label for="promoN">New notch</label><select id="promoN"></select></div>
+      </div>
+    </details>
+  </form>
+
+  <div id="warn"></div>
+  <div id="out"></div>
+
+  <div class="box">
+    <h2>Share this calculator</h2>
+    <div class="share">
+      <a class="btn wa" id="shareWa" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn fb" id="shareFb" target="_blank" rel="noopener">Facebook</a>
+      <button class="btn" id="copyBtn" type="button">Copy link</button>
+      <button class="btn" type="button" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </div>
+
+  <div class="box fdbk" id="feedback">
+    <h2>Feedback &amp; suggestions</h2>
+    <p>Found a wrong figure, a missing allowance or have an idea? Tell us and help improve this tool for all staff.</p>
+    <div class="grid">
+      <div class="full"><label>How useful was this estimate?</label>
+        <div class="rate">
+          <span><input type="radio" name="rate" id="r3" value="Very useful"><label for="r3">👍 Very useful</label></span>
+          <span><input type="radio" name="rate" id="r2" value="Okay"><label for="r2">😐 Okay</label></span>
+          <span><input type="radio" name="rate" id="r1" value="Not useful"><label for="r1">👎 Not useful</label></span>
+        </div></div>
+      <div><label for="fbType">Type</label><select id="fbType"><option>Suggestion</option><option>Wrong figure / error</option><option>Missing feature</option><option>Question</option><option>Other</option></select></div>
+      <div><label for="fbName">Name (optional)</label><input type="text" id="fbName" placeholder="Your name" style="width:100%;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:16px;background:var(--card);color:var(--ink)"></div>
+      <div class="full"><label for="fbText">Your message</label><textarea id="fbText" placeholder="Type here…"></textarea></div>
+      <div class="full"><label class="check"><input type="checkbox" id="fbCtx" checked> Include my staff group, grade and notch (no pay figures)</label></div>
+    </div>
+    <div class="share" style="margin-top:12px">
+      <button class="btn pri" id="fbSend" type="button">Send by email</button>
+      <button class="btn" id="fbCopy" type="button">Copy message</button>
+    </div>
+    <div id="fbMsg" role="status"></div>
+  </div>
+
+  <div class="foot">Unofficial estimate for planning only. It is not payroll advice and is not affiliated with IPUCCF, FKE, UASU, KUSU or any university. Confirm final figures with your payroll office.</div>
+  <div class="credit">Made by <b>Suleiman Gaitho</b>, Garissa University, for Kenyan public university staff.<br>For consultation: <a href="mailto:suleiman.abdullahi.gaitho@gmail.com">suleiman.abdullahi.gaitho@gmail.com</a><br><span style="color:var(--mute);font-size:12.5px">Version 1.0 · © 2026 Suleiman Gaitho. All rights reserved. Copying, modifying or redistributing this tool is not permitted without written permission.</span></div>
+</div>
+
+<script>
+const KUSU_TABLE = {
+15:[[224631,232494,240632,249055,257772],[233616,244119,252664,261508,270661],[242962,256325,265297,274583,284194],[252680,269142,278562,288312,298403],[262789,282599,292490,302728,313324],[273301,296730,307116,317866,328992],[284233,311567,322472,333759,345441],[295604,327145,338596,350447,362713],[307428,343504,355527,367971,380850],[319725,360679,373303,386369,399892],[332515,378714,391969,405688,419888],[345816,397651,411569,425974,440884]],
+14:[[173864,179950,186249,192768,199515],[180819,188948,195562,202407,209492],[188053,198396,205340,212527,219966],[195574,208316,215608,223155,230966],[203398,218732,226388,234312,242513],[211534,229669,237708,246028,254639],[219995,241153,249594,258330,267372],[228796,253211,262074,271247,280741],[237948,265872,275178,284810,294779],[247467,279167,288938,299051,309518],[257366,293126,303386,314005,324996],[267662,307783,318556,329706,341246]],
+13:[[136171,140937,145870,150976,156261],[141619,147985,153165,158526,164075],[147284,155384,160823,166452,172278],[153175,163154,168865,174776,180894],[159303,171312,177308,183514,189937],[165676,179877,186173,192690,199435],[172303,188871,195482,202324,209406],[179195,198316,205258,212443,219879],[186365,208232,215521,223065,230873],[193819,218644,226297,234218,242416],[201572,229577,237613,245930,254538],[209636,241056,249493,258226,267264]],
+12:[[119858,124054,128396,132890,137542],[124653,130256,134815,139534,144418],[129640,136770,141557,146512,151640],[134826,143609,148636,153839,159224],[140220,150790,156068,161531,167185],[145829,158330,163872,169608,175545],[151662,166246,172065,178088,184322],[157729,174559,180669,186993,193538],[164039,183288,189704,196344,203217],[170600,192453,199189,206161,213377],[177425,202076,209149,216470,224047],[184523,212181,219608,227295,235251]],
+11:[[96006,99367,102845,106445,110171],[99848,104336,107988,111768,115680],[103842,109553,113388,117357,121465],[107996,115031,119058,123226,127539],[112317,120784,125012,129388,133917],[116810,126823,131262,135857,140612],[121482,133165,137826,142650,147643],[126342,139824,144718,149784,155027],[131395,146815,151954,157273,162778],[136653,154157,159553,165138,170918],[142119,161865,167531,173395,179464],[147805,169959,175908,182065,188438]],
+10:[[63647,65875,68181,70568,73038],[66194,69170,71591,74097,76691],[68843,72629,75172,77804,80528],[71596,76260,78930,81693,84553],[74460,80074,82877,85778,88781],[77439,84079,87022,90068,93221],[80538,88283,91373,94572,97883],[83759,92697,95942,99300,102776],[87110,97333,100740,104266,107916],[90594,102201,105779,109482,113314],[94218,107311,111067,114955,118979],[97988,112678,116622,120704,124929]],
+9:[[55373,57312,59318,61395,63544],[57588,60177,62284,64464,66721],[59892,63187,65399,67688,70058],[62288,66347,68670,71074,73562],[64779,69665,72104,74628,77240],[67372,73149,75710,78360,81103],[70067,76807,79496,82279,85159],[72870,80648,83471,86393,89417],[75785,84680,87644,90712,93887],[78818,88914,92026,95247,98581],[81971,93361,96629,100012,103513],[85250,98029,101461,105013,108689]],
+8:[[47621,49288,51014,52800,54648],[49527,51754,53566,55441,57382],[51507,54342,56244,58213,60251],[53568,57060,59058,61126,63266],[55711,59914,62011,64182,66429],[57941,62910,65112,67391,69750],[60259,66056,68368,70761,73238],[62671,69360,71788,74301,76902],[65177,72828,75377,78016,80747],[67785,76470,79147,81918,84786],[70497,80295,83106,86015,89026],[73317,84310,87261,90316,93478]],
+7:[[42858,44359,45912,47519,49183],[44573,46577,48208,49896,51643],[46357,48906,50618,52390,54224],[48211,51352,53150,55011,56937],[50140,53920,55808,57762,59784],[52147,56616,58598,60649,62772],[54233,59448,61529,63683,65912],[56402,62420,64605,66867,69208],[58660,65542,67836,70211,72669],[61007,68820,71229,73723,76304],[63448,72261,74791,77409,80119],[65986,75874,78530,81279,84124]],
+6:[[36914,38206,39544,40929,42362],[38392,40117,41522,42976,44481],[39927,42123,43598,45124,46704],[41525,44229,45778,47381,49040],[43186,46441,48067,49750,51492],[44913,48763,50470,52237,54066],[46711,51202,52995,54850,56770],[48580,53763,55645,57593,59609],[50523,56451,58427,60472,62589],[52544,59275,61350,63498,65721],[54647,62239,64418,66673,69007],[56833,65351,67639,70007,72458]],
+5:[[32485,33622,34799,36017,37278],[33785,35304,36540,37819,39143],[35137,37070,38368,39711,41101],[36543,38924,40287,41698,43158],[38004,40871,42302,43783,45316],[39525,42915,44418,45973,47583],[41106,45061,46639,48272,49962],[42750,47314,48970,50684,52458],[44461,49680,51419,53219,55082],[46239,52164,53990,55880,57836],[48089,54773,56691,58676,60730],[50014,57511,59524,61608,63765]]
+};
+
+const UASU_TABLE = {
+15:KUSU_TABLE[15],
+14:[[193182,199944,206943,214187,221684],[200911,209942,217290,224896,232768],[208947,220440,228156,236142,244407],[217306,231463,239565,247950,256629],[226000,243036,251543,260348,269461],[235040,255188,264120,273365,282933],[244442,267948,277327,287034,297081],[254220,281346,291194,301386,311935],[264389,295413,305753,316455,327531],[274965,310185,321042,332279,343909],[285965,325694,337094,348893,361105],[297403,341979,353949,366338,379160]],
+13:[[154739,160155,165761,171563,177568],[160929,168163,174049,180141,186446],[167367,176571,182751,189148,195769],[174063,185400,191889,198606,205558],[181025,194671,201485,208537,215836],[188267,204405,211560,218965,226629],[195798,214625,222137,229912,237959],[203631,225357,233245,241409,249859],[211776,236625,244907,253479,262351],[220247,248457,257153,266154,275470],[229057,260881,270012,279463,289245],[238221,273925,283513,293436,303707]],
+12:[[121928,126196,130613,135185,139917],[126805,132506,137144,141945,146914],[131877,139132,144002,149043,154260],[137154,146090,151204,156497,161975],[142640,153395,158764,164321,170073],[148347,161065,166703,172538,178577],[154281,169118,175038,181165,187506],[160453,177574,183790,190223,196881],[166872,186454,192980,199735,206726],[173548,195777,202630,209723,217064],[180490,205566,212761,220208,227916],[187710,215845,223400,231219,239312]],
+11:[[107872,111648,115556,119601,123788],[112187,117231,121335,125582,129978],[116675,123093,127402,131862,136478],[121344,129248,133772,138455,143301],[126198,135711,140461,145378,150467],[131246,142497,147485,152647,157990],[136496,149622,154859,160280,165890],[141956,157104,162603,168295,174186],[147636,164960,170734,176710,182895],[153542,173209,179272,185547,192042],[159683,181870,188236,194825,201644],[166072,190963,197647,204565,211725]],
+10:KUSU_TABLE[10]
+};
+
+const KUSU_LEAVE={15:21980,14:21197,13:19021,12:17570,11:14087,10:8754,9:8754,8:8173,7:8056,6:7154,5:6225};
+const UASU_LEAVE={15:21980,14:21197,13:19021,12:17570,11:14087,10:8754};
+const UASU_BOOK={15:18500,14:17500,13:15000,12:14000,11:12000,10:10000};
+const UASU_PROF={15:7500,14:6000};
+
+const SHORT=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const LONG=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const FYN=["","2025/26","2026/27","2027/28","2028/29"];
+const $=id=>document.getElementById(id);
+
+let CAT="UASU";
+let TABLE=UASU_TABLE;
+function catNow(){ return document.querySelector('input[name=cat]:checked').value; }
+function setCat(){ CAT=catNow(); TABLE = CAT==="UASU" ? UASU_TABLE : KUSU_TABLE; }
+function gradeList(){ return CAT==="UASU" ? [10,11,12,13,14,15] : [5,6,7,8,9,10,11,12,13,14,15]; }
+function gName(g){ return CAT==="UASU" ? g+"A" : String(g); }
+function fillGrades(sel,keep,fallback){
+  sel.innerHTML="";
+  const list=gradeList();
+  list.forEach(g=>sel.add(new Option("Grade "+gName(g),g)));
+  sel.value = list.includes(keep) ? keep : fallback;
+}
+
+const num=n=>Math.round(n).toLocaleString("en-US");
+const fmt=n=>"KES "+num(n);
+const ded=n=>Math.round(n)===0?"–":"−"+num(n);
+const chg=n=>(n>=0?"+":"−")+num(Math.abs(n));
+
+const calMonth=m=>(6+m)%12;
+const calYear=m=>2025+Math.floor((6+m)/12);
+const label=m=>SHORT[calMonth(m)]+" "+calYear(m);
+const fyOf=m=>Math.floor(m/12)+1;
+
+function tax(t){
+  if(t<=0) return 0;
+  const x=0.10*Math.min(t,24000)
+    +0.25*Math.max(0,Math.min(t,32333)-24000)
+    +0.30*Math.max(0,Math.min(t,500000)-32333)
+    +0.325*Math.max(0,Math.min(t,800000)-500000)
+    +0.35*Math.max(0,t-800000);
+  return Math.max(0,x-2400);
+}
+
+function payslip(gross,basic,p){
+  const nssf=p.nssf?0.06*Math.min(gross,108000):0;
+  const pension=p.pct/100*basic;
+  const union=0.02*basic;
+  const shif=0.0275*gross;
+  const housing=0.015*gross;
+  const taxable=gross-nssf-pension-shif-housing;
+  const paye=tax(taxable);
+  const net=gross-nssf-pension-union-shif-housing-paye;
+  return {gross,basic,nssf,pension,union,shif,housing,taxable,paye,net};
+}
+
+function arrearsPay(aGross,aBasic,base,p){
+  const nssf=p.nssf?Math.max(0,0.06*Math.min(base.gross+aGross,108000)-base.nssf):0;
+  const pension=p.pct/100*aBasic;
+  const union=0.02*aGross;
+  const shif=0.0275*aGross;
+  const housing=0.015*aGross;
+  const taxable=aGross-nssf-pension-shif-housing;
+  const paye=tax(base.taxable+taxable)-tax(base.taxable);
+  const net=aGross-nssf-pension-union-shif-housing-paye;
+  return {gross:aGross,nssf,pension,union,shif,housing,paye,net};
+}
+
+function lumpPay(amount,base){
+  const shif=0.0275*amount, housing=0.015*amount;
+  const paye=tax(base.taxable+amount-shif-housing)-tax(base.taxable);
+  const net=amount-shif-housing-paye;
+  return {gross:amount,shif,housing,paye,net};
+}
+
+function commuterFor(fy,cur,mode){
+  if(mode==="full") return 18000;
+  const step=(18000-cur)/3;
+  const v=fy===1?cur+step:fy===2?cur+2*step:18000;
+  return Math.round(Math.min(18000,Math.max(cur,v)));
+}
+
+function schedule(p){
+  const rows=[];
+  let g=p.g0, n=p.n0;
+  for(let m=0;m<48;m++){
+    if(p.promo && p.promo.m===m){ g=p.promo.grade; n=p.promo.notch; }
+    else if(m>=1 && calMonth(m)===p.inc && n<12){ n++; }
+    const fy=fyOf(m);
+    const basic=TABLE[g][n-1][fy];
+    const commuter=commuterFor(fy,p.cur,p.mode);
+    const prof=(CAT==="UASU"&&UASU_PROF[g])?UASU_PROF[g]:0;
+    const gross=basic+commuter+p.house+prof;
+    rows.push({m,label:label(m),fy,g,n,basic,commuter,prof,gross,slip:payslip(gross,basic,p)});
+  }
+  return rows;
+}
+
+function readInputs(){
+  setCat();
+  return {
+    g0:+$("g0").value, n0:+$("n0").value,
+    cur:+$("commuter").value||0,
+    house:+$("house").value||0,
+    pct:Math.min(20,Math.max(0,+$("pension").value||0)),
+    nssf:$("nssf").checked,
+    inc:+$("inc").value,
+    mode:$("mode").value,
+    book:+$("bookM").value,
+    promo:+$("promoM").value===-1?null:{m:+$("promoM").value,grade:+$("promoG").value,notch:+$("promoN").value},
+    check:$("basicCheck").value===""?null:+$("basicCheck").value
+  };
+}
+
+function compute(p){
+  const rows=schedule(p);
+  const oldBasic=TABLE[p.g0][p.n0-1][0];
+  const oldGross=oldBasic+p.cur+p.house;
+  const oldSlip=payslip(oldGross,oldBasic,p);
+  let a1G=0,a1B=0,a2G=0,a2B=0;
+  const gain=[0,0,0,0,0];
+  rows.forEach(r=>{
+    const dG=r.gross-oldGross, dB=r.basic-oldBasic;
+    gain[r.fy]+=dG;
+    if(r.fy===1){a1G+=dG;a1B+=dB;}
+    else if(r.m<=17){a2G+=dG;a2B+=dB;}
+  });
+  const inst=arrearsPay(a1G/3,a1B/3,oldSlip,p);
+  const jan=rows[18];
+  const arr2=arrearsPay(a2G,a2B,jan.slip,p);
+  let netExtra=3*inst.net+arr2.net;
+  for(let m=18;m<48;m++) netExtra+=rows[m].slip.net-oldSlip.net;
+  const bookPays=[];
+  if(CAT==="UASU"){
+    rows.forEach(r=>{
+      if(calMonth(r.m)===p.book && UASU_BOOK[r.g]){
+        const lp=lumpPay(UASU_BOOK[r.g],r.slip);
+        bookPays.push({label:r.label,amount:UASU_BOOK[r.g],...lp});
+        gain[r.fy]+=UASU_BOOK[r.g];
+        netExtra+=lp.net;
+      }
+    });
+  }
+  return {rows,oldBasic,oldGross,oldSlip,a1G,a2G,inst,arr2,jan,gain,netExtra,bookPays};
+}
+
+function render(){
+  const p=readInputs();
+  const c=compute(p);
+  const money=n=>"KES "+num(n);
+  const minus=n=>Math.round(n)===0?"–":"−"+num(n);
+
+  let warn="";
+  if(p.check!==null && Math.abs(p.check-c.oldBasic)>1){
+    warn=`<div class="warn">The basic on your payslip (KES ${num(p.check)}) does not match grade ${gName(p.g0)}, notch ${p.n0} (KES ${num(c.oldBasic)}). Check your grade and notch.</div>`;
+  }
+  $("warn").innerHTML=warn;
+
+  const back=c.a1G+c.a2G;
+  const takeBack=3*c.inst.net+c.arr2.net;
+  const deduct1=c.inst.gross-c.inst.net, deduct2=c.arr2.gross-c.arr2.net;
+
+  let h=`
+  <div class="hero">
+    <small>Estimated back pay, before tax</small>
+    <div class="amt">${money(back)}</div>
+    <small>Take-home from back pay: ${money(takeBack)}</small>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><small>Monthly gross from Jan 2027</small><b>${money(c.jan.gross)}</b><span>Now ${money(c.oldGross)}</span></div>
+    <div class="stat"><small>Monthly take-home from Jan 2027</small><b>${money(c.jan.slip.net)}</b><span>Now ${money(c.oldSlip.net)}</span></div>
+    <div class="stat"><small>Extra take-home to June 2029</small><b class="pos">${money(c.netExtra)}</b><span>Approximate</span></div>
+  </div>
+
+  <div class="box">
+    <h2>Back pay payments</h2>
+    <table>
+      <tr><th></th><th>2025/26<br>(each of 3)</th><th>Jul–Dec 2026<br>(paid Jan 2027)</th></tr>
+      <tr><td>Gross</td><td>${num(c.inst.gross)}</td><td>${num(c.arr2.gross)}</td></tr>
+      <tr><td>Deductions</td><td>${minus(deduct1)}</td><td>${minus(deduct2)}</td></tr>
+      <tr class="tot"><td>Take-home</td><td>${num(c.inst.net)}</td><td>${num(c.arr2.net)}</td></tr>
+    </table>
+    <div class="sub">Payment dates for the 2025/26 instalments are not yet set in the agreement.</div>
+  </div>
+
+  <div class="box">
+    <h2>Extra gross pay per financial year</h2>
+    <table>
+      <tr><th>Year</th><th>Extra gross</th></tr>
+      ${[1,2,3,4].map(fy=>`<tr><td>${FYN[fy]}</td><td>${num(c.gain[fy])}</td></tr>`).join("")}
+      <tr class="tot"><td>Total</td><td>${num(c.gain[1]+c.gain[2]+c.gain[3]+c.gain[4])}</td></tr>
+    </table>
+  </div>`;
+
+  if(c.bookPays.length){
+    const b=c.bookPays[0];
+    h+=`<div class="box"><h2>Annual book and ICT allowance</h2>
+      <div>Gross ${money(b.amount)} a year. Take-home about ${money(b.net)} per payment, paid in ${LONG[p.book]}.</div>
+      <div class="sub">Assumed to start July 2025. Taxed on top of that month's salary.</div></div>`;
+  }
+
+  h+=`<div class="box"><details style="margin-top:0"><summary>Key assumptions</summary>
+    <ul class="note">
+      <li>Your pay stays on your July 2025 payslip until December 2026.</li>
+      <li>Increments fall in the month you choose. The first is the next time that month comes after July 2025. Notch 12 is the top.</li>
+      <li>Commuter allowance rises to KES 18,000 in equal steps over three years, or from July 2025 if you choose the full amount.</li>
+      <li>Professorial allowance (UASU grades 15A and 14A) is paid monthly from July 2025 and is included in arrears.</li>
+      <li>New salaries start in January 2027. Arrears for 2025/26 are paid in three equal instalments.</li>
+      <li>Tax uses the 2025 monthly bands with KES 2,400 relief. NSSF is 6% up to KES 108,000. SHIF is 2.75% and the housing levy 1.5% of gross.</li>
+      <li>Annual leave allowance, passage and baggage, professional allowance, SACCO and loans are not included.</li>
+    </ul></details></div>`;
+
+  $("out").innerHTML=h;
+}
+
+function init(){
+  const n=$("n0"); for(let i=1;i<=12;i++) n.add(new Option("Notch "+i,i)); n.value=12;
+  const inc=$("inc"); LONG.forEach((mn,i)=>inc.add(new Option(mn,i))); inc.value=6;
+  const bm=$("bookM"); LONG.forEach((mn,i)=>bm.add(new Option(mn,i))); bm.value=6;
+  const pm=$("promoM"); pm.add(new Option("No promotion",-1));
+  for(let m=0;m<48;m++) pm.add(new Option(label(m),m));
+  pm.value=-1;
+  const pn=$("promoN"); for(let i=1;i<=12;i++) pn.add(new Option("Notch "+i,i)); pn.value=1;
+
+  setCat();
+  fillGrades($("g0"),10,10);
+  fillGrades($("promoG"),11,11);
+
+  document.querySelectorAll("#form input, #form select").forEach(el=>{
+    el.addEventListener("input",render);
+    el.addEventListener("change",render);
+  });
+  document.querySelectorAll("input[name=cat]").forEach(el=>{
+    el.addEventListener("change",()=>{
+      setCat();
+      fillGrades($("g0"),+$("g0").value,10);
+      fillGrades($("promoG"),+$("promoG").value,11);
+      render();
+    });
+  });
+
+  setupShare();
+  setupFeedback();
+  render();
+}
+
+function setupShare(){
+  const isWeb=location.protocol==="http:"||location.protocol==="https:";
+  const url=isWeb?location.href.split("#")[0]:"";
+  const text="Estimate your 2025–2029 CBA pay (academic and administrative staff) with this free calculator:";
+  const full=url?`${text} ${url}`:text;
+  $("shareWa").href="https://wa.me/?text="+encodeURIComponent(full);
+  $("shareFb").href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url||"https://www.facebook.com/");
+  $("copyBtn").addEventListener("click",()=>{
+    const value=url||full;
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(value).then(()=>{$("copyBtn").textContent="Copied ✓";});
+    }
+  });
+}
+
+function setupFeedback(){
+  const TO="suleiman.abdullahi.gaitho@gmail.com";
+  function build(){
+    const t=$("fbText").value.trim();
+    const r=document.querySelector("input[name=rate]:checked");
+    const L=["Type: "+$("fbType").value];
+    if(r) L.push("Rating: "+r.value);
+    if($("fbName").value.trim()) L.push("Name: "+$("fbName").value.trim());
+    if($("fbCtx").checked){
+      const p=readInputs();
+      L.push("Context: "+(CAT==="UASU"?"Academic (UASU)":"Administrative (KUSU)")+", grade "+gName(p.g0)+", notch "+p.n0);
+    }
+    return {t,body:L.join("\n")+"\n\n"+t};
+  }
+  const say=m=>{$("fbMsg").textContent=m;};
+  $("fbSend").addEventListener("click",()=>{
+    const b=build();
+    if(!b.t){say("Please type a message first.");$("fbText").focus();return;}
+    location.href="mailto:"+TO+"?subject="+encodeURIComponent("Pay estimator feedback: "+$("fbType").value)+"&body="+encodeURIComponent(b.body);
+    say("Opening your email app. If nothing opens, use Copy message and send it to "+TO+".");
+  });
+  $("fbCopy").addEventListener("click",()=>{
+    const b=build();
+    if(!b.t){say("Please type a message first.");$("fbText").focus();return;}
+    if(navigator.clipboard){navigator.clipboard.writeText(b.body).then(()=>say("Copied. Paste it in an email or WhatsApp to "+TO+"."),()=>say("Could not copy. Please select the text and copy it."));}
+  });
+}
+
+init();
+</script>
+</body>
+</html>
