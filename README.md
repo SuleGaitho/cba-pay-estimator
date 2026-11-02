@@ -279,9 +279,10 @@ The software is provided "as is", without warranty of any kind. Figures are unof
 
 ## Files
 
-- `v2/index.html`: the page, including the salary tables, rules and calculation. It works on its own, with no other files.
-- `v2/tests.js`: the automated checks.
-- `v2/CHANGELOG.md`: the list of changes by version.
+- `index.html`: the page, including the salary tables, rules and calculation. It works on its own, with no other files.
+- `favicon.svg`: the tab icon. Place it in the repository root, next to `index.html`.
+- `tests.js`: the automated checks.
+- `CHANGELOG.md`: the list of changes by version.
 
 ## Version 2.1
 
@@ -294,15 +295,15 @@ The software is provided "as is", without warranty of any kind. Figures are unof
 - One-page printable HR summary, with an on-screen preview.
 - About tab with the products, services, integrations and contact.
 
-See `v2/CHANGELOG.md` for the full list.
+See `CHANGELOG.md` for the full list.
 
 ## Running the checks
 
-From the `v2` folder, run:
+From the repository root, run:
 
     node tests.js
 
-All checks should pass before a new version is released. See `v2/CHANGELOG.md` for the list of changes.
+All checks should pass before a new version is released. See `CHANGELOG.md` for the list of changes.
 
 ## About the developer
 

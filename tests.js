@@ -8,7 +8,7 @@ const path = require("path");
 const html = fs.readFileSync(path.join(__dirname, "index.html"), "utf8");
 const engine = html.split("<script>")[1].split("/* ===== Language ===== */")[0];
 const api = new Function(engine + `
-  return {pensionCheck, missingIds, resolveHrLang, loansFromTotal, payslip, arrearsPay, lumpPay, schedule, compute, setCat, TABLE: () => TABLE,
+  return {houseSuggestion, pensionCheck, missingIds, resolveHrLang, loansFromTotal, payslip, arrearsPay, lumpPay, schedule, compute, setCat, TABLE: () => TABLE,
           setCAT: v => { CAT = v; TABLE = v === "UASU" ? UASU_TABLE : KUSU_TABLE; },
           KUSU_TABLE, UASU_TABLE};
 `)();
@@ -154,6 +154,12 @@ check("Separately saved printed-summary language wins", api.resolveHrLang("sw", 
 check("Saved state is used when no separate choice exists", api.resolveHrLang(null, { hrLang: "sw" }, "en") === "sw");
 check("Interface language is the last fallback", api.resolveHrLang(null, null, "sw") === "sw");
 check("English is the default when nothing is set", api.resolveHrLang(null, null, undefined) === "en");
+
+// 15. Suggested house allowances
+check("KUSU grade 8 suggests 28,307", api.houseSuggestion("KUSU", 8) === 28307);
+check("UASU grade 10A suggests 35,383", api.houseSuggestion("UASU", 10) === 35383);
+check("UASU grade 11A suggests 51,601", api.houseSuggestion("UASU", 11) === 51601);
+check("A grade without a confirmed amount is left blank", api.houseSuggestion("UASU", 12) === null && api.houseSuggestion("KUSU", 14) === null);
 
 console.log("\n" + pass + " passed, " + fail + " failed");
 process.exit(fail ? 1 : 0);

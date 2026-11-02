@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CBA 2025-2029 Pay Estimator</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiNiNDUzMmEiLz4KICA8dGV4dCB4PSIzMiIgeT0iNDQiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmYWYzIj5DPC90ZXh0Pgo8L3N2Zz4K">
 <meta name="author" content="Suleiman Gaitho">
 <meta name="description" content="Step-by-step estimate of new salary, back pay and take-home under the 2025-2029 CBA for UASU and KUSU staff.">
 <meta property="og:title" content="CBA 2025-2029 Pay Estimator">
@@ -12,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--font:Ubuntu,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--paper:#fffdf8;--page:#f4efe6;--ink:#1c1917;--mute:#6b6257;--line:#e7e0d2;--indigo:#3730a3;--indigo2:#312e81;--tint:#eef2ff;--gold:#92400e;--goldbg:#fef3c7;--green:#166534;--shadow:0 1px 2px rgba(28,25,23,.06),0 10px 30px -18px rgba(28,25,23,.35)}
-@media(prefers-color-scheme:dark){:root{--paper:#1a1d27;--page:#11131b;--ink:#ececf1;--mute:#a4a8b8;--line:#2c3042;--indigo:#a5b4fc;--indigo2:#c7d2fe;--tint:#232846;--gold:#fcd34d;--goldbg:#3a2f12;--green:#86efac;--shadow:0 10px 30px -18px rgba(0,0,0,.7)}}
+:root{--font:Ubuntu,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--paper:#fffaf3;--page:#f6ecde;--ink:#2b1d14;--mute:#7a6553;--line:#e9d9c4;--indigo:#b4532a;--indigo2:#8a3a1c;--tint:#fbe9dc;--gold:#92400e;--goldbg:#fde9c4;--green:#2f6b3a;--shadow:0 1px 2px rgba(28,25,23,.06),0 10px 30px -18px rgba(28,25,23,.35)}
+@media(prefers-color-scheme:dark){:root{--paper:#241a14;--page:#17110d;--ink:#f6ebe0;--mute:#bfa894;--line:#3b2c22;--indigo:#f0a77e;--indigo2:#ffc9a8;--tint:#3a2a20;--gold:#fcd34d;--goldbg:#3a2f12;--green:#9fd7a8;--shadow:0 10px 30px -18px rgba(0,0,0,.7)}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 .gate{position:fixed;inset:0;background:rgba(15,15,20,.65);display:flex;align-items:center;justify-content:center;padding:16px;z-index:100}
@@ -231,8 +232,9 @@ ul.list li{margin-bottom:6px}
       </div>
       <div class="field">
         <label for="house" data-t="house">House allowance</label>
-        <input type="number" id="house" value="27800" min="0" inputmode="numeric">
-        <div class="why" data-t="house_hint">KES per month. Unchanged by the agreement.</div>
+        <input type="number" id="house" placeholder="Enter from your payslip" min="0" inputmode="numeric">
+        <div class="why" data-t="house_hint">KES per month. It varies by grade, so enter the amount on your payslip.</div>
+        <div class="why" id="houseSuggestNote" hidden style="color:var(--indigo);font-weight:600" data-t="house_suggest">Suggested for this grade from the agreement schedule. Check it against your payslip.</div>
       </div>
     </div>
     <div class="row">
@@ -639,6 +641,17 @@ function loansFromTotal(p, base, total){
   return Math.max(0, Math.round(total-statutory));
 }
 
+/* Suggested house allowance by grade (KES per month). Only amounts that are clearly legible in the source are included.
+   Other grades are left blank, to be entered from the payslip. Edit this table when the 2025-2029 schedule is confirmed. */
+const HOUSE_SUGGEST={
+  UASU:{10:35383, 11:51601, 13:58972},
+  KUSU:{5:17692, 7:24768, 8:28307, 9:31845, 10:35383, 12:55286, 13:58972}
+};
+function houseSuggestion(cat, grade){
+  const t = HOUSE_SUGGEST[cat];
+  return (t && t[grade]!==undefined) ? t[grade] : null;
+}
+
 /* Pure helpers, checked by tests.js */
 function pensionCheck(raw, mode, basic){
   let pct = raw;
@@ -662,7 +675,7 @@ en:{
   grade:"Grade", notch:"Notch (July 2025 salary)", notch_hint:"Each notch shows its July 2025 basic salary.",
   s2_title:"Allowances", s2_lede:"Prefilled with common values. Change them to match your payslip.",
   commuter:"Commuter or car allowance now", prefilled:"prefilled", commuter_hint:"KES per month. Car allowance is the commuter allowance. Rises to KES 18,000 under the agreement.",
-  house:"House allowance", house_hint:"KES per month. Unchanged by the agreement.",
+  house:"House allowance", house_hint:"KES per month. It varies by grade, so enter the amount on your payslip.",
   pension:"Pension (% of basic)", pension_hint:"Check your payslip: the % of basic salary deducted as pension (for example 7.5).", stat:"Statutory deductions",
   nssf:"Deduct NSSF (6%, up to KES 108,000)",
   s3_title:"Timing and options", s3_lede:"When your notch moves up, and anything you want to compare.",
@@ -685,6 +698,7 @@ en:{
   pc_how:"Deductions are shown as amounts taken from pay. Loans and other deductions are taken after tax.",
   pc_basic:"Basic", pc_comm:"Commuter", pc_house:"House", pc_prof:"Professorial", pc_gross:"Gross", pc_nssf:"NSSF", pc_paye:"PAYE", pc_shif:"SHIF", pc_hous:"Housing levy", pc_pen:"Pension", pc_union:"Union dues", pc_oth:"Loans and other deductions", pc_net:"Take-home",
   pc_match:"The estimate now is KES {d} away from your payslip. Check your allowances, pension and NSSF setting.", pc_ok:"The estimate now matches your payslip.", pc_payslip:"Your payslip take-home",
+  house_suggest:"Suggested for this grade from the agreement schedule. Check it against your payslip.",
   uni_check:"Check the review date with your payroll office before you rely on this estimate.", pen_capped_note:"limited to 0% to 20%",
   uni_until:"Review date: the university rate ends", uni_until_none:"Not set: keep it for the whole period",
   uni_note_until:"Your university's commuter rate of KES {v} is used until {d}. After that the agreement rate applies.",
@@ -788,7 +802,7 @@ sw:{
   grade:"Daraja", notch:"Notch (mshahara wa Julai 2025)", notch_hint:"Kila notch inaonyesha mshahara wake wa msingi wa Julai 2025.",
   s2_title:"Posho", s2_lede:"Zimejazwa awali kwa thamani za kawaida. Zibadilishe ili zilingane na payslip yako.",
   commuter:"Posho ya usafiri au gari sasa", prefilled:"imejazwa", commuter_hint:"KES kwa mwezi. Posho ya gari ni posho ya usafiri. Itapanda hadi KES 18,000 kwa makubaliano.",
-  house:"Posho ya nyumba", house_hint:"KES kwa mwezi. Haibadiliki kwa makubaliano haya.",
+  house:"Posho ya nyumba", house_hint:"KES kwa mwezi. Hutofautiana kwa daraja, kwa hiyo weka kiasi kilicho kwenye payslip yako.",
   pension:"Pensheni (% ya mshahara wa msingi)", pension_hint:"Kagua payslip yako: asilimia ya mshahara wa msingi inayokatwa kama pensheni (k.m. 7.5).", stat:"Makato ya kisheria",
   nssf:"Kata NSSF (6%, hadi KES 108,000)",
   s3_title:"Muda na chaguo", s3_lede:"Notch yako inapopanda, na chochote unachotaka kulinganisha.",
@@ -811,6 +825,7 @@ sw:{
   pc_how:"Makato yanaonyeshwa kama kiasi kilichokatwa kwenye mshahara. Mikopo na makato mengine hukatwa baada ya kodi.",
   pc_basic:"Msingi", pc_comm:"Usafiri", pc_house:"Nyumba", pc_prof:"Uprofesa", pc_gross:"Jumla", pc_nssf:"NSSF", pc_paye:"PAYE", pc_shif:"SHIF", pc_hous:"Levy ya nyumba", pc_pen:"Pensheni", pc_union:"Ada ya chama", pc_oth:"Mikopo na makato mengine", pc_net:"Mshahara halisi",
   pc_match:"Makadirio ya sasa yako KES {d} mbali na payslip yako. Kagua posho, pensheni na mpangilio wa NSSF.", pc_ok:"Makadirio ya sasa yanalingana na payslip yako.", pc_payslip:"Mshahara halisi kwenye payslip yako",
+  house_suggest:"Imependekezwa kwa daraja hili kutoka jedwali la makubaliano. Kagua dhidi ya payslip yako.",
   uni_check:"Thibitisha tarehe ya mapitio na ofisi yako ya malipo kabla ya kutegemea makadirio haya.", pen_capped_note:"imepunguzwa hadi 0% hadi 20%",
   uni_until:"Tarehe ya mapitio: kiwango cha chuo kinaisha", uni_until_none:"Haijawekwa: kibaki kwa kipindi chote",
   uni_note_until:"Kiwango cha posho ya usafiri cha chuo chako cha KES {v} kinatumika hadi {d}. Baada ya hapo kiwango cha makubaliano kinatumika.",
@@ -921,6 +936,7 @@ const plus=n=>(n>=0?"+":"-")+num(Math.abs(n));
 const sgn=n=>(Math.round(n)>=0?"+":"-")+num(Math.abs(n));
 
 function refreshNotches(sel,grade,keep){
+  if(!TABLE[grade]) return;   // grade not in the current scale; keep the list as it is
   const current = keep || +sel.value || 12;
   sel.innerHTML="";
   for(let n=1;n<=12;n++) sel.add(new Option(`Notch ${n} -> KES ${num(TABLE[grade][n-1][0])}`, n));
@@ -1026,6 +1042,13 @@ function missingFor(ids){
   return missingIds(vals, ids);
 }
 function missingNames(ids){ return ids.map(id=>tr({g0:"f_grade",n0:"f_notch",commuter:"f_commuter",house:"f_house",pension:"f_pension"}[id])); }
+
+function suggestHouse(){
+  const h = houseSuggestion(CAT, +$("g0").value);
+  $("house").value = (h===null) ? "" : h;
+  $("house").placeholder = (h===null) ? "Enter from your payslip" : "";
+  $("houseSuggestNote").hidden = (h===null);
+}
 
 function doPrint(){ render(); window.print(); }
 
@@ -1343,7 +1366,7 @@ function setView(v){
 }
 
 /* ===== Save, restore and reset ===== */
-const DEFAULTS={cat:"UASU",g0:10,n0:12,commuter:15000,house:27800,pension:10,nssf:true,pensionMode:"pct",inc:6,mode:"gradual",bookM:6,basicCheck:"",payslipNet:"",promoM:-1,promoG:11,promoN:1,otherDed:"",otherAllow:"",payGross:"",payPaye:"",totalDed:"",univ:"",uniHigher:false,uniRateVal:"",hrLang:"en",uniUntil:""};
+const DEFAULTS={cat:"UASU",g0:10,n0:12,commuter:15000,house:"",pension:10,nssf:true,pensionMode:"pct",inc:6,mode:"gradual",bookM:6,basicCheck:"",payslipNet:"",promoM:-1,promoG:11,promoN:1,otherDed:"",otherAllow:"",payGross:"",payPaye:"",totalDed:"",univ:"",uniHigher:false,uniRateVal:"",hrLang:"en",uniUntil:""};
 const KEY="cba-estimator-v2";
 
 function currentState(){
@@ -1384,6 +1407,7 @@ function loadState(){
 function resetAll(){
   try{ localStorage.removeItem(KEY); }catch(e){}
   applyState(DEFAULTS);
+  suggestHouse();
   show(1);
   $("msg").textContent=tr("reset_done");
   render();
@@ -1436,21 +1460,27 @@ function init(){
 
   const saved=loadState();
   applyState(saved||DEFAULTS);
+  if(!$("house").value) suggestHouse();
 
   try{ const l=localStorage.getItem("cba-lang"); if(l==="sw") LANG="sw"; }catch(e){}
   try{ const hl=localStorage.getItem("cba-hrlang"); $("hrLang").value = resolveHrLang(hl, saved, LANG); }catch(e){}
 
   document.querySelectorAll("input[name=cat]").forEach(el=>el.addEventListener("change",()=>{
     setCat();
+    suggestHouse();
     fillGrades($("g0"),+$("g0").value,10);
     fillGrades($("promoG"),+$("promoG").value,11);
     refreshNotches($("n0"),+$("g0").value);
     refreshNotches($("promoN"),+$("promoG").value);
     if(step===4) render(); else save();
   }));
-  $("g0").addEventListener("change",()=>{ setCat(); refreshNotches($("n0"),+$("g0").value); if(step===4) render(); else save(); });
+  $("g0").addEventListener("change",()=>{ setCat(); refreshNotches($("n0"),+$("g0").value); suggestHouse(); if(step===4) render(); else save(); });
   $("promoG").addEventListener("change",()=>{ setCat(); refreshNotches($("promoN"),+$("promoG").value); if(step===4) render(); else save(); });
 
+  $("pension").addEventListener("input",()=>{
+    const pc=pensionCheck(+$("pension").value,"pct",0);
+    $("formErr").textContent = ($("pensionMode").value==="pct" && pc.capped) ? tr("pen_warn",{v:pc.used}) : "";
+  });
   $("uniHigher").addEventListener("change",()=>{ $("uniBox").hidden=!$("uniHigher").checked; if(!$("uniHigher").checked){ $("uniUntil").value=""; } if(step===4) render(); else save(); });
   $("hrLang").addEventListener("change",()=>{ try{ localStorage.setItem("cba-hrlang",$("hrLang").value); }catch(e){} if(step===4) render(); else save(); });
   $("basicCheck").addEventListener("input",()=>{

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Fixed: a grade outside the current scale (for example, grade 9 under UASU) caused an error when the notch list was updated. The notch list now leaves itself unchanged in that case.
+- Fixed: the pension warning appeared only on the results page. It now appears straight away in Step 2.
+- Fixed: "Forget my answers" cleared the house allowance and did not restore the suggested amount.
+
+- House allowance is suggested for each grade when the grade or staff group changes. The suggested amounts are editable. Only amounts that are clearly legible in the source are included (KUSU 5, 7, 8, 9, 10, 12, 13; UASU 10A, 11A, 13A). Other grades are blank, to be entered from the payslip.
+- Assumption: the suggested amounts come from the 2021-2025 KUSU schedule and published reports of current UASU allowances. Confirm them against the 2025-2029 schedule.
+
 - Usage is tracked with GitHub repository traffic (Insights, then Traffic). The page itself has no tracking code.
 
 - Tests (now 46 checks): the review date, the pension check, the missing-field messages and the printed-summary language.
