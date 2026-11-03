@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Results: an "Allowances for this grade" card. It shows, for the chosen grade, which allowances are in the estimate (commuter, house, professorial, book and ICT) and which are reference only (annual leave). Passage and baggage are noted as not yet published.
+
 - Layout spans the full page width. Two columns on wider screens, one column on phones.
 - Smaller, more readable type throughout, with a sticky header bar.
 
@@ -10,7 +12,7 @@
 - Fixed: "Forget my answers" cleared the house allowance and did not restore the suggested amount.
 
 - House allowance is suggested for each grade when the grade or staff group changes. The suggested amounts are editable. Only amounts that are clearly legible in the source are included (KUSU 5, 7, 8, 9, 10, 12, 13; UASU 10A, 11A, 13A). Other grades are blank, to be entered from the payslip.
-- Assumption: the suggested amounts come from the 2021-2025 KUSU schedule and published reports of current UASU allowances. Confirm them against the 2025-2029 schedule.
+- House allowance suggestions are the 2021-2025 rates. KUSU from the 2021-2025 schedule; UASU from published lists of the current rates (10A to 15A). The 2025-2029 house allowance is still under negotiation, so the wording on the page says so.
 
 - Usage is tracked with GitHub repository traffic (Insights, then Traffic). The page itself has no tracking code.
 

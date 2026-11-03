@@ -336,7 +336,7 @@ th{font-size:11px}
         <label for="house" data-t="house">House allowance</label>
         <input type="number" id="house" placeholder="Enter from your payslip" min="0" inputmode="numeric">
         <div class="why" data-t="house_hint">KES per month. It varies by grade, so enter the amount on your payslip.</div>
-        <div class="why" id="houseSuggestNote" hidden style="color:var(--indigo);font-weight:600" data-t="house_suggest">Suggested for this grade from the agreement schedule. Check it against your payslip.</div>
+        <div class="why" id="houseSuggestNote" hidden style="color:var(--indigo);font-weight:600" data-t="house_suggest">Suggested from the 2021-2025 house allowance rates. The 2025-2029 house allowance is still under negotiation, so check it against your payslip.</div>
       </div>
     </div>
     <div class="row">
@@ -666,8 +666,10 @@ function schedule(p){
     const basic=TABLE[g][n-1][fy];
     const commuter=(p.uniRate && (p.uniUntil==null || m<p.uniUntil))?p.uniRate:commuterFor(fy,p.cur,p.mode);
     const prof=(CAT==="UASU"&&UASU_PROF[g])?UASU_PROF[g]:0;
-    const gross=basic+commuter+p.house+(p.otherAllow||0)+prof;
-    rows.push({m,label:label(m),fy,g,n,basic,commuter,prof,gross,slip:payslip(gross,basic,p)});
+    const hsug=houseSuggestion(CAT,g);
+    const houseNow=(g!==p.g0 && hsug!==null)?hsug:p.house;
+    const gross=basic+commuter+houseNow+(p.otherAllow||0)+prof;
+    rows.push({m,label:label(m),fy,g,n,basic,commuter,house:houseNow,prof,gross,slip:payslip(gross,basic,p)});
   }
   return rows;
 }
@@ -743,11 +745,11 @@ function loansFromTotal(p, base, total){
   return Math.max(0, Math.round(total-statutory));
 }
 
-/* Suggested house allowance by grade (KES per month). Only amounts that are clearly legible in the source are included.
+/* Suggested house allowance by grade (KES per month). Amounts are from the 2021-2025 KUSU schedule and the 2025-2029 salary tables supplied (house allowance figures).
    Other grades are left blank, to be entered from the payslip. Edit this table when the 2025-2029 schedule is confirmed. */
 const HOUSE_SUGGEST={
-  UASU:{10:35383, 11:51601, 13:58972},
-  KUSU:{5:17692, 7:24768, 8:28307, 9:31845, 10:35383, 12:55286, 13:58972}
+  UASU:{10:35383, 11:51601, 12:55286, 13:58972, 14:66344, 15:73715},
+  KUSU:{5:17692, 6:21230, 7:24768, 8:28307, 9:31845, 10:35383, 11:47915, 12:55286, 13:58972, 14:62658, 15:73715}
 };
 function houseSuggestion(cat, grade){
   const t = HOUSE_SUGGEST[cat];
@@ -800,7 +802,12 @@ en:{
   pc_how:"Deductions are shown as amounts taken from pay. Loans and other deductions are taken after tax.",
   pc_basic:"Basic", pc_comm:"Commuter", pc_house:"House", pc_prof:"Professorial", pc_gross:"Gross", pc_nssf:"NSSF", pc_paye:"PAYE", pc_shif:"SHIF", pc_hous:"Housing levy", pc_pen:"Pension", pc_union:"Union dues", pc_oth:"Loans and other deductions", pc_net:"Take-home",
   pc_match:"The estimate now is KES {d} away from your payslip. Check your allowances, pension and NSSF setting.", pc_ok:"The estimate now matches your payslip.", pc_payslip:"Your payslip take-home",
-  house_suggest:"Suggested for this grade from the agreement schedule. Check it against your payslip.",
+  al_title:"Allowances for this grade", al_item:"Allowance", al_amount:"Amount (KES)", al_status:"Status",
+  al_commuter:"Commuter or car allowance", al_commuter_amt:"18,000 a month minimum", al_house:"House allowance (your entry)",
+  al_prof:"Professorial allowance", al_book:"Book and ICT allowance", al_leave:"Annual leave allowance", al_passage:"Passage and baggage allowance",
+  al_in:"In this estimate", al_out:"Reference only", al_month:"month", al_year:"year",
+  al_note:"Passage and baggage amounts are not yet published, so they are not included.", pay_relief:"PAYE is worked out after the KES 2,400 monthly personal relief, and after NSSF, pension, SHIF and housing levy.",
+  house_suggest:"Suggested from the 2021-2025 house allowance rates. The 2025-2029 house allowance is still under negotiation, so check it against your payslip.",
   uni_check:"Check the review date with your payroll office before you rely on this estimate.", pen_capped_note:"limited to 0% to 20%",
   uni_until:"Review date: the university rate ends", uni_until_none:"Not set: keep it for the whole period",
   uni_note_until:"Your university's commuter rate of KES {v} is used until {d}. After that the agreement rate applies.",
@@ -927,7 +934,12 @@ sw:{
   pc_how:"Makato yanaonyeshwa kama kiasi kilichokatwa kwenye mshahara. Mikopo na makato mengine hukatwa baada ya kodi.",
   pc_basic:"Msingi", pc_comm:"Usafiri", pc_house:"Nyumba", pc_prof:"Uprofesa", pc_gross:"Jumla", pc_nssf:"NSSF", pc_paye:"PAYE", pc_shif:"SHIF", pc_hous:"Levy ya nyumba", pc_pen:"Pensheni", pc_union:"Ada ya chama", pc_oth:"Mikopo na makato mengine", pc_net:"Mshahara halisi",
   pc_match:"Makadirio ya sasa yako KES {d} mbali na payslip yako. Kagua posho, pensheni na mpangilio wa NSSF.", pc_ok:"Makadirio ya sasa yanalingana na payslip yako.", pc_payslip:"Mshahara halisi kwenye payslip yako",
-  house_suggest:"Imependekezwa kwa daraja hili kutoka jedwali la makubaliano. Kagua dhidi ya payslip yako.",
+  al_title:"Posho za daraja hili", al_item:"Posho", al_amount:"Kiasi (KES)", al_status:"Hali",
+  al_commuter:"Posho ya usafiri au gari", al_commuter_amt:"KES 18,000 kwa mwezi kima cha chini", al_house:"Posho ya nyumba (uliyoingiza)",
+  al_prof:"Posho ya uprofesa", al_book:"Posho ya Vitabu na ICT", al_leave:"Posho ya likizo ya mwaka", al_passage:"Posho ya usafiri wa mizigo",
+  al_in:"Imo katika makadirio", al_out:"Kwa kumbukumbu tu", al_month:"mwezi", al_year:"mwaka",
+  al_note:"Kiasi cha usafiri wa mizigo bado hakijachapishwa, kwa hiyo hakijajumuishwa.", pay_relief:"PAYE inakokotolewa baada ya punguzo la kodi binafsi la KES 2,400 kwa mwezi, na baada ya NSSF, pensheni, SHIF na levy ya nyumba.",
+  house_suggest:"Imependekezwa kutoka viwango vya posho ya nyumba vya 2021-2025. Posho ya nyumba ya 2025-2029 bado inajadiliwa, kwa hiyo kagua dhidi ya payslip yako.",
   uni_check:"Thibitisha tarehe ya mapitio na ofisi yako ya malipo kabla ya kutegemea makadirio haya.", pen_capped_note:"imepunguzwa hadi 0% hadi 20%",
   uni_until:"Tarehe ya mapitio: kiwango cha chuo kinaisha", uni_until_none:"Haijawekwa: kibaki kwa kipindi chote",
   uni_note_until:"Kiwango cha posho ya usafiri cha chuo chako cha KES {v} kinatumika hadi {d}. Baada ya hapo kiwango cha makubaliano kinatumika.",
@@ -1237,6 +1249,25 @@ function render(){
     <div class="line"><span>${tr("extra_net")}</span><b class="up">${sgn(c.netExtra)}</b></div>
   </div>`;
 
+  {
+    const isU = CAT==="UASU", g = p.g0;
+    const leave = isU ? UASU_LEAVE[g] : KUSU_LEAVE[g];
+    const bookA = (isU && UASU_BOOK[g]) ? UASU_BOOK[g] : null;
+    const profA = (isU && UASU_PROF[g]) ? UASU_PROF[g] : null;
+    h+=`<div class="receipt" style="margin-top:16px">
+      <h3 style="margin-top:0">${tr("al_title")}</h3>
+      <table class="yr">
+        <tr><th>${tr("al_item")}</th><th>${tr("al_amount")}</th><th>${tr("al_status")}</th></tr>
+        <tr><td>${tr("al_commuter")}</td><td>${tr("al_commuter_amt")}</td><td>${tr("al_in")}</td></tr>
+        <tr><td>${tr("al_house")}</td><td>${num(p.house)}</td><td>${tr("al_in")}</td></tr>
+        ${profA!==null?`<tr><td>${tr("al_prof")}</td><td>${num(profA)} / ${tr("al_month")}</td><td>${tr("al_in")}</td></tr>`:""}
+        ${bookA!==null?`<tr><td>${tr("al_book")}</td><td>${num(bookA)} / ${tr("al_year")}</td><td>${tr("al_in")}</td></tr>`:""}
+        ${leave!==undefined?`<tr><td>${tr("al_leave")}</td><td>${num(leave)} / ${tr("al_year")}</td><td>${tr("al_out")}</td></tr>`:""}
+        <tr><td>${tr("al_passage")}</td><td>-</td><td>${tr("al_out")}</td></tr>
+      </table>
+      <div class="how">${tr("al_note")}</div>
+    </div>`;
+  }
   h+=`<details class="help"><summary>${tr("ex_title")}</summary><div class="helpin">
     <p>${tr("ex_1",{a:num(back),b:num(c.inst.gross)})}</p>
     <p>${tr("ex_2",{a:num(c.arr2.gross)})}</p>
@@ -1287,6 +1318,7 @@ function render(){
       </table>
       ${impl}
       <p class="how" style="margin:8px 0 0">${okAll?tr("rc_ok"):tr("rc_check")}</p>
+      <p class="how" style="margin:6px 0 0">${tr("pay_relief")}</p>
       <button class="sb" id="saveCheckBtn" type="button" style="margin-top:10px">${tr("save_check")}</button>
     </div>`;
   }
@@ -1294,7 +1326,7 @@ function render(){
   if(p.slipNet!==null){
     const o=c.oldSlip, n=c.jan.slip, oth=p.other;
     const now={basic:c.oldBasic,comm:p.cur,house:p.house,oa:p.otherAllow,prof:0,gross:c.oldGross,nssf:o.nssf,paye:o.paye,shif:o.shif,hous:o.housing,pen:o.pension,union:o.union,oth:oth,net:o.net-oth};
-    const jan={basic:c.jan.basic,comm:c.jan.commuter,house:p.house,oa:p.otherAllow,prof:c.jan.prof,gross:c.jan.gross,nssf:n.nssf,paye:n.paye,shif:n.shif,hous:n.housing,pen:n.pension,union:n.union,oth:oth,net:n.net-oth};
+    const jan={basic:c.jan.basic,comm:c.jan.commuter,house:c.jan.house,oa:p.otherAllow,prof:c.jan.prof,gross:c.jan.gross,nssf:n.nssf,paye:n.paye,shif:n.shif,hous:n.housing,pen:n.pension,union:n.union,oth:oth,net:n.net-oth};
     const keys=[["pc_basic","basic",0],["pc_comm","comm",0],["pc_house","house",0],["pc_oa","oa",0],["pc_prof","prof",0],["pc_gross","gross",1],["pc_nssf","nssf",0],["pc_paye","paye",0],["pc_shif","shif",0],["pc_hous","hous",0],["pc_pen","pen",0],["pc_union","union",0],["pc_oth","oth",0],["pc_net","net",1]];
     const rowsHtml=keys.filter(([k,f])=>!(f==="prof"&&now.prof===0&&jan.prof===0)).map(([k,f,bold])=>{
       const a=now[f], b=jan[f];
@@ -1519,7 +1551,7 @@ function resetAll(){
 function setupShare(){
   const isWeb=location.protocol==="http:"||location.protocol==="https:";
   const url=isWeb?location.href.split("#")[0]:"";
-  const text=LANG==="sw"?"Kikokotoo cha malipo ya CBA 2025-2029 (kitaaluma na utawala):":"Estimate your 2025-2029 CBA pay (academic and administrative staff) with this free calculator:";
+  const text=LANG==="sw"?"Je, CBA ya 2025-2029 inaathiri vipi mshahara wako? Kikokotoo hiki cha bure kinaonyesha mshahara mpya, malimbikizo na mshahara halisi. Jaribu hapa:":"Wondering what the 2025-2029 CBA means for your pay? This free estimator shows your new salary, back pay and take-home. Try it here:";
   const full=url?`${text} ${url}`:text;
   $("shareWa").href="https://wa.me/?text="+encodeURIComponent(full);
   $("shareFb").href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url||"https://www.facebook.com/");

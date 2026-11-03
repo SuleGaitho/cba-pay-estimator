@@ -159,7 +159,22 @@ check("English is the default when nothing is set", api.resolveHrLang(null, null
 check("KUSU grade 8 suggests 28,307", api.houseSuggestion("KUSU", 8) === 28307);
 check("UASU grade 10A suggests 35,383", api.houseSuggestion("UASU", 10) === 35383);
 check("UASU grade 11A suggests 51,601", api.houseSuggestion("UASU", 11) === 51601);
-check("A grade without a confirmed amount is left blank", api.houseSuggestion("UASU", 12) === null && api.houseSuggestion("KUSU", 14) === null);
+check("KUSU grade 14 suggests 62,658", api.houseSuggestion("KUSU", 14) === 62658);
+check("UASU grade 12A suggests 55,286", api.houseSuggestion("UASU", 12) === 55286);
+check("UASU grade 14A suggests 66,344", api.houseSuggestion("UASU", 14) === 66344);
+check("A grade outside the scale is left blank", api.houseSuggestion("UASU", 16) === null);
+
+// 16. Increments are diagonal: one notch down, and into the next year's rate each July
+api.setCAT("UASU");
+const diag = api.schedule({ g0: 10, n0: 5, cur: 15000, house: 27800, otherAllow: 0, pct: 10, nssf: true, inc: 6, mode: "gradual", book: 6, promo: null, check: null, slipNet: null, other: 0 });
+check("July 2025 is notch 5 at the 2025/26 rate", diag[0].n === 5 && diag[0].basic === 80074, diag[0].basic);
+check("July 2026 is notch 6 at the 2026/27 rate (diagonal)", diag[12].n === 6 && diag[12].basic === 87022, diag[12].basic);
+
+// 17. House allowance follows the grade after a promotion
+const promoRows = api.schedule({ g0: 10, n0: 5, cur: 15000, house: 27800, otherAllow: 0, pct: 10, nssf: true, inc: 6, mode: "gradual", book: 6, promo: { m: 12, grade: 11, notch: 5 }, check: null, slipNet: null, other: 0 });
+check("House allowance before a promotion is the entered amount", promoRows[11].house === 27800, promoRows[11].house);
+check("House allowance after a promotion to 11A is the 11A suggestion", promoRows[12].house === 51601, promoRows[12].house);
+api.setCAT("UASU");
 
 console.log("\n" + pass + " passed, " + fail + " failed");
 process.exit(fail ? 1 : 0);
